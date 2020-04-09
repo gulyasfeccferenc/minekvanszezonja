@@ -2,13 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="731b4648-e19d-4f81-9c38-be3dc6b69971" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/radish.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Logo/Logo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Logo/Logo.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItem/NavigationItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItem/NavigationItem.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/SideDrawer/SideDrawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/SideDrawer/SideDrawer.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Backdrop/Backdrop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Backdrop/Backdrop.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +66,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\minekvanszezonja\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\minekvanszezonja\public" />
       <recent name="C:\Projects\minekvanszezonja\src" />
@@ -63,7 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1586192293054</updated>
       <workItem from="1586192294290" duration="2507000" />
-      <workItem from="1586328697513" duration="609000" />
+      <workItem from="1586328697513" duration="1805000" />
+      <workItem from="1586375372591" duration="14610000" />
     </task>
     <servers />
   </component>
@@ -71,6 +94,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="405" y="197" key="EditFileWatcherDialog" timestamp="1586377704366">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="405" y="197" key="EditFileWatcherDialog/0.0.1536.834/-1920.0.1920.1050@0.0.1536.834" timestamp="1586377704366" />
     <state width="1493" height="214" key="GridCell.Tab.0.bottom" timestamp="1586253449198">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -87,5 +114,13 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.834/-1920.0.1920.1050@0.0.1536.834" timestamp="1586253449198" />
+    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1586376074459">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.834/-1920.0.1920.1050@0.0.1536.834" timestamp="1586376074459" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586379476435">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/-1920.0.1920.1050@0.0.1536.834" timestamp="1586379476435" />
   </component>
 </project>

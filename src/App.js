@@ -1,17 +1,12 @@
 import React from 'react';
-import logo from './radish.png';
-import './App.css';
+import './App.module.scss';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Minek van szezonja? Hamarosan kiderül!
-        </p>
-      </header>
-    </div>
+    <Layout>
+        test
+    </Layout>
   );
 }
 
