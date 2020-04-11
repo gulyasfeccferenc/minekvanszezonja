@@ -1,0 +1,14 @@
+.SearchContainer {
+  padding: 8px;
+  text-align: center;
+
+  .Search {
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.75);
+    border: 0;
+    min-width: 300px;
+    font-size: 1.5em;
+    text-align: center;
+  }
+}

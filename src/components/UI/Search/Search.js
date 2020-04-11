@@ -1,8 +1,14 @@
 import React from "react";
+import classes from './Search.module.scss';
 
 const Search = (props) => (
-    <div>
-        <input type="text" placeholder="írd ide mit keresel"/>
+    <div className={classes.SearchContainer}>
+            <input type="text"
+                   className={classes.Search}
+                   value={props.value}
+                   autoFocus
+                   onChange={props.change}
+                   placeholder="írd ide mit keresel"/>
     </div>
 );
 
