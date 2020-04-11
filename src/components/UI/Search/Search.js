@@ -3,7 +3,7 @@ import classes from './Search.module.scss';
 
 const Search = (props) => (
     <div className={classes.SearchContainer}>
-            <input type="text"
+            <input type="search"
                    className={classes.Search}
                    value={props.value}
                    autoFocus

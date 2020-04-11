@@ -1,0 +1,22 @@
+.TableRow {
+
+}
+
+.Grid {
+  background: #79c23c;
+  color: #79c23c;
+  padding: 1px;
+  cursor: default;
+  transition: all .2s ease-out;
+
+  &:hover {
+    background: #61972f;
+    color: #79c23c;
+  }
+
+  &:empty {
+    background: transparent;
+  }
+
+
+}
