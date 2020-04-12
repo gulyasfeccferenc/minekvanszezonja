@@ -11,4 +11,11 @@
     font-size: 1.1em;
     overflow: hidden;
   }
+
+  .FullWidth {
+    grid-column: 1 / 14;
+    text-align: center;
+    font-size: 1.1em;
+    color: floralwhite;
+  }
 }
