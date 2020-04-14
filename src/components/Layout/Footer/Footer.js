@@ -11,7 +11,7 @@ const footer = (props) => (
             <img src={carrot} alt=""/>
             <img src={carrot} alt=""/>
         </div>
-        <p>Made with 🌱 by <a href="https://gulyasfeccferenc.github.io">gulyasfeccferenc</a></p>
+        <p>Made with <span role="img" alt="radish">🌱</span> by <a href="https://gulyasfeccferenc.github.io">gulyasfeccferenc</a></p>
     </footer>
 )
 
