@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="731b4648-e19d-4f81-9c38-be3dc6b69971" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Com/AxiosHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/TableView/TableRow/TableRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/TableView/TableRow/TableRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/TableView/TableRow/TableRow.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/TableView/TableRow/TableRow.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Backdrop/Backdrop.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Backdrop/Backdrop.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Search/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UI/TableView/TableView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/TableView/TableView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/TableView/TableView.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/TableView/TableView.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +70,7 @@
       <workItem from="1586192294290" duration="2507000" />
       <workItem from="1586328697513" duration="1805000" />
       <workItem from="1586375372591" duration="14610000" />
+      <workItem from="1587054803192" duration="3499000" />
     </task>
     <servers />
   </component>

@@ -36,7 +36,6 @@ const TableView = (props) => {
 
     return (
         <Fragment>
-            <p>{props.searchedTerm}</p>
             <div className={classes.GridContainer}>
                 <div className={classes.GridHeader}></div>
                 <div className={classes.GridHeader} title="Január">Jan</div>

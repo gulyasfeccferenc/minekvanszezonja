@@ -1,5 +1,5 @@
 .Content {
-  min-height: 100vh;
+  min-height: calc(100vh - 192px);
   position: relative;
-  top: 96px;
+  margin: 96px auto;
 }

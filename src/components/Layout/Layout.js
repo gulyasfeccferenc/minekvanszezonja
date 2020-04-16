@@ -7,7 +7,7 @@ import Footer from "./Footer/Footer";
 
 class Layout extends Component {
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     };
 
     closeSideDrawer = () => {

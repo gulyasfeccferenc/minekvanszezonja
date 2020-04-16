@@ -29,6 +29,8 @@ class App extends Component {
     searchChangeHandler = (event) => {
         if (event.target.value) {
             this.setState({searchedItem: event.target.value});
+        } else {
+            this.setState({searchedItem: ''});
         }
     }
 
