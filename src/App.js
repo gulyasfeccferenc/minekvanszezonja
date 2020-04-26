@@ -4,6 +4,9 @@ import Layout from './components/Layout/Layout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import instance from './components/Com/AxiosHandler';
+import NoMatch from "./components/Navigation/NoMatch/NoMatch";
+import {Route, Switch} from "react-router";
+import Plant from "./components/UI/Plant/Plant";
 
 class App extends Component {
     constructor(props) {
@@ -38,9 +41,13 @@ class App extends Component {
         return (
             <Layout>
                 <Search change={this.searchChangeHandler}></Search>
-                <TableView searchedTerm={this.state.searchedItem}
-                           plants={this.state.plants}></TableView>
-            </Layout>)
+                <Switch>
+                    <Route path="/plants/:plantId" component={Plant} />
+                    <Route path="/" exact render={(props) => <TableView searchedTerm={this.state.searchedItem} plants={this.state.plants} /> } />
+                    <Route component={NoMatch}/>
+                </Switch>
+            </Layout>
+                )
     }
 }
 

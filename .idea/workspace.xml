@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="731b4648-e19d-4f81-9c38-be3dc6b69971" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NoMatch/NoMatch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Plant/Plant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Backdrop/Backdrop.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Backdrop/Backdrop.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Toolbar/Toolbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UI/TableView/TableView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/TableView/TableView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,12 +50,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Fecc\WebstormProjects\react\minekvanszezonja\src\components\UI" />
+      <recent name="C:\Projects\minekvanszezonja\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Fecc\WebstormProjects\react\minekvanszezonja\src\assets" />
       <recent name="C:\Projects\minekvanszezonja\public" />
-      <recent name="C:\Projects\minekvanszezonja\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\minekvanszezonja\src" />
     </key>
   </component>
@@ -110,17 +113,19 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="691" y="229" key="VCS.ChangeListViewerDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1586469867867" />
-    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1586376074459">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="116" y="117" width="1688" height="816" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587828541117">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.834/-1920.0.1920.1050@0.0.1536.834" timestamp="1586376074459" />
+    <state x="116" y="117" width="1688" height="816" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1587828541117" />
     <state x="569" y="371" key="git4idea.ui.GitUnstashDialog" timestamp="1586469874694">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="569" y="371" key="git4idea.ui.GitUnstashDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1586469874694" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586379476435">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="539" y="195" width="840" height="854" key="search.everywhere.popup" timestamp="1587828909162">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/-1920.0.1920.1050@0.0.1536.834" timestamp="1586379476435" />
+    <state x="539" y="195" width="840" height="854" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1587828909162" />
   </component>
 </project>

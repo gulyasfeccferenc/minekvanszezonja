@@ -3,7 +3,7 @@ import classes from './TableView.module.scss'
 import TableRow from './TableRow/TableRow';
 
 const TableView = (props) => {
-    const plants = Object.keys(props.plants);
+    const plants = props.plants ? Object.keys(props.plants) : [];
     let plantRows;
     let filteredPlants;
     if (props.searchedTerm && props.searchedTerm.length > 2) {
