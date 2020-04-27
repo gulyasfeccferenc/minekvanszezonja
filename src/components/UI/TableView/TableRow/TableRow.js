@@ -1,11 +1,15 @@
 import React, {Fragment} from "react";
 import classes from './TableRow.module.scss';
+import {NavLink} from "react-router-dom";
+import Plant from "../../Plant/Plant";
 
 const TableRow = (props) => {
 
     return (
         <Fragment>
-            <div title={props.description}>{props.name}</div>
+                <NavLink to={"/plants/" + props.name}>
+                        <div title={props.description}>{props.name}</div>
+                </NavLink>
             <div className={classes.Grid}>{props.season.includes(1) ? 'X':null}</div>
             <div className={classes.Grid}>{props.season.includes(2) ? 'X':null}</div>
             <div className={classes.Grid}>{props.season.includes(3) ? 'X':null}</div>

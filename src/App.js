@@ -3,7 +3,6 @@ import './App.module.scss';
 import Layout from './components/Layout/Layout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
-import instance from './components/Com/AxiosHandler';
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
 import {Route, Switch} from "react-router";
 import Plant from "./components/UI/Plant/Plant";
@@ -12,21 +11,12 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchedItem: '',
-            plants: []
+            searchedItem: ''
         };
     }
 
     componentDidMount() {
-        const self = this;
-        instance.get('plants.json')
-            .then(function (response) {
-                self.setState({plants: response.data});
-            })
-            .catch(function (error) {
-                // handle error
-                console.error("Some nasty error happened here: ", error);
-            });
+
     }
 
     searchChangeHandler = (event) => {
@@ -43,7 +33,7 @@ class App extends Component {
                 <Search change={this.searchChangeHandler}></Search>
                 <Switch>
                     <Route path="/plants/:plantId" component={Plant} />
-                    <Route path="/" exact render={(props) => <TableView searchedTerm={this.state.searchedItem} plants={this.state.plants} /> } />
+                    <Route path="/" exact render={(props) => <TableView {...props} /> } />
                     <Route component={NoMatch}/>
                 </Switch>
             </Layout>

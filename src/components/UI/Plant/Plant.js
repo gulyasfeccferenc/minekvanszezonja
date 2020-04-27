@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Plant extends Component {
     state = {
-        courseTitle: ''
+        plantId: ''
     }
 
     componentDidMount () {
@@ -17,8 +17,8 @@ class Plant extends Component {
         console.log(this.props);
         const query = new URLSearchParams(this.props.location.search);
         for (let param of query.entries()) {
-            if (this.state.courseTitle !== param[1]) {
-                this.setState({courseTitle: param[1]});
+            if (this.state.plantId !== param[1]) {
+                this.setState({plantId: param[1]});
             }
         }
     }
@@ -26,8 +26,8 @@ class Plant extends Component {
     render () {
         return (
             <div>
-                <h1>{this.state.courseTitle}</h1>
-                <p>You selected the Course with ID: {this.props.match.params.courseId}</p>
+                <h1>{this.state.plantId}</h1>
+                <p>You selected the plant: {this.props.match.params.plantId}</p>
             </div>
         );
     }
