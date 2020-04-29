@@ -1,7 +1,6 @@
 import React, {Fragment} from "react";
 import classes from './TableRow.module.scss';
 import {NavLink} from "react-router-dom";
-import Plant from "../../Plant/Plant";
 
 const TableRow = (props) => {
 
