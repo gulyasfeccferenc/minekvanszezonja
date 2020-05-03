@@ -82,22 +82,8 @@ class Plant extends Component {
         }
         if (this.state.plantData) {
             plantForm = (<form>
-                {/*<DynamicInput inputtype="text"*/}
-                {/*              value={this.state.plantData.name}*/}
-                {/*              elementConfig={}*/}
-                {/*></DynamicInput>*/}
-
-                {/*<DynamicInput inputtype="textarea"*/}
-                {/*              name="plantDesc"*/}
-                {/*              label="Description"*/}
-                {/*              id="plantDesc"*/}
-                {/*              cols="30"*/}
-                {/*              rows="10"*/}
-                {/*              value={this.state.plantData.details}*/}
-                {/*              onChange={(news) => console.warn('news is', news)}*/}
-                {/*></DynamicInput>*/}
                 {formElementArray.map((formElement) => (
-                    <DynamicInput elementType={formElement.config.inputtype}
+                    <DynamicInput inputtype={formElement.config.inputtype}
                                   elementConfig={formElement.config.inputConfig}
                                   value={formElement.config.value}
                                   key={formElement.id}
