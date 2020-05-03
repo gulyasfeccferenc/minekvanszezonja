@@ -1,0 +1,26 @@
+.Input {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto 1em auto;
+
+  label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .InputElement {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    margin: 0.5em 0;
+    padding: 6px;
+    font-family: inherit;
+    border: 2px solid #ccc;
+    transition: all .3s ease-in;
+
+    &:focus {
+      border: 2px solid #6f388d;
+    }
+  }
+}

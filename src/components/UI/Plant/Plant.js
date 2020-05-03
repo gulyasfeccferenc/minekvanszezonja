@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import instance from "../../Com/AxiosHandler";
 import classes from './Plant.module.scss';
+import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 
 class Plant extends Component {
 
@@ -8,6 +9,43 @@ class Plant extends Component {
         super(props);
         this.state = {
             plantId: '',
+            plantFormFields: {
+                name: {
+                    inputtype: 'text',
+                    inputConfig: {
+                        name: 'plantName',
+                        label: 'Name of the plant',
+                        onChange: (news) => console.warn('news is', news),
+                    },
+                    value: 'this.state.plantData.name'
+                },
+                details: {
+                    inputtype: 'textarea',
+                    inputConfig: {
+                        name: "plantDesc",
+                        label: "Description",
+                        id: "plantDesc",
+                        cols: "30",
+                        rows: "10",
+                        onChange: (news) => console.warn('news is', news),
+                    },
+                    value: 'this.state.plantData.details'
+                },
+                planttype: {
+                    inputtype: 'select',
+                    inputConfig: {
+                        name: "plantType",
+                        label: "Type of the plant",
+                        options: [
+                            {value: 'plant', displayValue: 'Plant'},
+                            {value: 'fruit', displayValue: 'Fruit'},
+                            {value: 'vegetable', displayValue: 'Vegetable'},
+                            {value: 'herb', displayValue: 'Herb'},
+                        ]
+                    },
+                    value: 'this.state.plantData.details'
+                }
+            }
         }
     }
 
@@ -17,7 +55,6 @@ class Plant extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.getPlantInfo();
-
     }
 
     getPlantInfo() {
@@ -36,14 +73,36 @@ class Plant extends Component {
 
     generatePlantForm() {
         let plantForm = '';
+        const formElementArray = [];
+        for (let key in this.state.plantFormFields) {
+            formElementArray.push({
+                id: key,
+                config: this.state.plantFormFields[key]
+            });
+        }
         if (this.state.plantData) {
             plantForm = (<form>
-                <label>
-                    <input type="text" value={this.state.plantData.name} name="plantName"/>
-                </label><br />
-                <label>
-                    <textarea name="plantDesc" id="plantDesc" cols="30" rows="10" value={this.state.plantData.details} onChange={(news) => console.warn('news is', news)}/>
-                </label><br />
+                {/*<DynamicInput inputtype="text"*/}
+                {/*              value={this.state.plantData.name}*/}
+                {/*              elementConfig={}*/}
+                {/*></DynamicInput>*/}
+
+                {/*<DynamicInput inputtype="textarea"*/}
+                {/*              name="plantDesc"*/}
+                {/*              label="Description"*/}
+                {/*              id="plantDesc"*/}
+                {/*              cols="30"*/}
+                {/*              rows="10"*/}
+                {/*              value={this.state.plantData.details}*/}
+                {/*              onChange={(news) => console.warn('news is', news)}*/}
+                {/*></DynamicInput>*/}
+                {formElementArray.map((formElement) => (
+                    <DynamicInput elementType={formElement.config.inputtype}
+                                  elementConfig={formElement.config.inputConfig}
+                                  value={formElement.config.value}
+                                  key={formElement.id}
+                    />
+                ))}
                 <label>
                     <select name="plantType" id="plantType" value={this.state.plantData.type} onChange={(news) => console.warn('news is', news)}>
                         <option value="plant">Plant</option>
