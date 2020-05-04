@@ -12,15 +12,17 @@
   .InputElement {
     display: block;
     width: 100%;
+    box-sizing: border-box;
     border-radius: 6px;
     margin: 0.5em 0;
     padding: 6px;
     font-family: inherit;
-    border: 2px solid #ccc;
-    transition: all .3s ease-in;
+    border: 0;
+    border-bottom: 4px solid #ccc;
+    transition: border-bottom-color .3s ease-in;
 
     &:focus {
-      border: 2px solid #6f388d;
+      border-bottom: 4px solid #6f388d;
     }
   }
 }

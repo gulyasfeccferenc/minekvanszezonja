@@ -15,7 +15,6 @@ class Plant extends Component {
                     inputConfig: {
                         name: 'plantName',
                         label: 'Name of the plant',
-                        onChange: (news) => console.warn('news is', news),
                     },
                     value: 'this.state.plantData.name'
                 },
@@ -27,7 +26,6 @@ class Plant extends Component {
                         id: "plantDesc",
                         cols: "30",
                         rows: "10",
-                        onChange: (news) => console.warn('news is', news),
                     },
                     value: 'this.state.plantData.details'
                 },
@@ -41,12 +39,35 @@ class Plant extends Component {
                             {value: 'fruit', displayValue: 'Fruit'},
                             {value: 'vegetable', displayValue: 'Vegetable'},
                             {value: 'herb', displayValue: 'Herb'},
-                        ]
+                        ],
+                        // onChange: (key) => {
+                        //     let plantChoice = ""+key.nativeEvent.target.value;
+                        //     console.warn('key', plantChoice);
+                        //     if (plantChoice) {
+                        //         this.setState(
+                        //             (prevState) => (
+                        //                 {...prevState, plantFormFields:
+                        //                         {...prevState.planttype, planttype: {
+                        //                                 value: plantChoice}}}));
+                        //     }
+                        // },
                     },
                     value: 'this.state.plantData.details'
                 }
             }
         }
+    }
+
+    inputChangeHandler = (event, inputIdentifier) => {
+        const updatedPlantForm = {
+            ...this.state.plantFormFields
+        };
+        const updatedPlantFormElement = {
+            ...updatedPlantForm[inputIdentifier]
+        };
+        updatedPlantFormElement.value = event.target.value;
+        updatedPlantForm[inputIdentifier] = updatedPlantFormElement;
+        this.setState({plantFormFields: updatedPlantForm});
     }
 
     componentDidMount () {
@@ -86,17 +107,10 @@ class Plant extends Component {
                     <DynamicInput inputtype={formElement.config.inputtype}
                                   elementConfig={formElement.config.inputConfig}
                                   value={formElement.config.value}
+                                  change={(event) => this.inputChangeHandler(event, formElement.id)}
                                   key={formElement.id}
                     />
                 ))}
-                <label>
-                    <select name="plantType" id="plantType" value={this.state.plantData.type} onChange={(news) => console.warn('news is', news)}>
-                        <option value="plant">Plant</option>
-                        <option value="vegetable">Vegetable</option>
-                        <option value="fruit">Fruit</option>
-                        <option value="herb">Herb</option>
-                    </select>
-                </label>
             </form>);
         }
         return plantForm;
