@@ -51,7 +51,7 @@ class TableView extends Component {
             } else {
                 this.plantRows = this.filteredPlants.map(item => {
                     return (<TableRow key={item.id + '_key'}
-                                      name={item.id}
+                                      name={item.name}
                                       description={item.details}
                                       season={item.season}
                     />);
@@ -60,7 +60,8 @@ class TableView extends Component {
         } else {
             this.plantRows = this.state.plants.map(item => {
                 return (<TableRow key={item.id + '_key'}
-                                  name={item.id}
+                                  id={item.id}
+                                  name={item.name}
                                   description={item.details}
                                   season={item.season}
                 />);

@@ -9,6 +9,7 @@ class Plant extends Component {
         super(props);
         this.state = {
             plantId: '',
+            loading: true,
             plantFormFields: {
                 name: {
                     inputtype: 'text',
@@ -75,15 +76,30 @@ class Plant extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        this.getPlantInfo();
+        if (this.state.loading) {
+            this.getPlantInfo();
+        }
     }
 
-    getPlantInfo() {
+    getPlantInfo = () => {
         const self = this;
         if (self.state.plantId && !self.state.plantData) {
             instance.get(`plants/${self.state.plantId}.json`)
                 .then(function (response) {
-                    self.setState({plantData: response.data});
+                    console.warn('plantdata', response.data);
+                    const updatedPlantForm = {
+                        ...self.state.plantFormFields
+                    };
+                    const updatedNameElement = {...updatedPlantForm['name']};
+                    const updatedDetailsElement = {...updatedPlantForm['details']};
+                    const updatedTypeElement = {...updatedPlantForm['planttype']};
+                    updatedNameElement.value = response.data.name;
+                    updatedDetailsElement.value = response.data.details;
+                    updatedTypeElement.value = response.data.planttype;
+                    updatedPlantForm['name'] = updatedNameElement;
+                    updatedPlantForm['details'] = updatedDetailsElement;
+                    updatedPlantForm['planttype'] = updatedTypeElement;
+                    self.setState({loading: false, plantFormFields: updatedPlantForm});
                 })
                 .catch(function (error) {
                     // handle error
@@ -101,8 +117,9 @@ class Plant extends Component {
                 config: this.state.plantFormFields[key]
             });
         }
-        if (this.state.plantData) {
-            plantForm = (<form>
+        console.warn('what???', formElementArray);
+        if (!this.state.loading) {
+            plantForm = (<form onSubmit={this.saveHandler}>
                 {formElementArray.map((formElement) => (
                     <DynamicInput inputtype={formElement.config.inputtype}
                                   elementConfig={formElement.config.inputConfig}
@@ -111,9 +128,25 @@ class Plant extends Component {
                                   key={formElement.id}
                     />
                 ))}
+                <button type="submit">Save</button>
             </form>);
         }
         return plantForm;
+    }
+
+    saveHandler = (event) => {
+        event.preventDefault();
+        this.setState({loading: true});
+        const plantData = {};
+        plantData.id = this.state.plantId;
+        for (let formElementId in this.state.plantFormFields) {
+            plantData[formElementId] = this.state.plantFormFields[formElementId].value;
+        }
+        instance.post(`/plants.json`, plantData)
+            .then((resp) => {
+                console.warn('response', resp);
+                this.setState({loading: false});
+            })
     }
 
 
@@ -128,7 +161,7 @@ class Plant extends Component {
         const plantForm = this.generatePlantForm();
         return (
             <div className={classes.Plant}>
-                <h1>{this.state.plantId}</h1>
+                <h1>{this.state.plantFormFields.name.value}</h1>
                 {plantForm}
                 <p>You selected the plant: {this.props.match.params.plantId}</p>
             </div>
