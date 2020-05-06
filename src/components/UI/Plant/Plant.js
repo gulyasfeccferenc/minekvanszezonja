@@ -17,7 +17,7 @@ class Plant extends Component {
                         name: 'plantName',
                         label: 'Name of the plant',
                     },
-                    value: 'this.state.plantData.name'
+                    value: ''
                 },
                 details: {
                     inputtype: 'textarea',
@@ -28,7 +28,7 @@ class Plant extends Component {
                         cols: "30",
                         rows: "10",
                     },
-                    value: 'this.state.plantData.details'
+                    value: ''
                 },
                 planttype: {
                     inputtype: 'select',
@@ -83,7 +83,7 @@ class Plant extends Component {
 
     getPlantInfo = () => {
         const self = this;
-        if (self.state.plantId && !self.state.plantData) {
+        if (!this.props.new && self.state.plantId && !self.state.plantData) {
             instance.get(`plants/${self.state.plantId}.json`)
                 .then(function (response) {
                     console.warn('plantdata', response.data);
@@ -104,7 +104,10 @@ class Plant extends Component {
                 .catch(function (error) {
                     // handle error
                     console.error("Some nasty error happened here: ", error);
+                    self.setState({loading: false});
                 });
+        } else {
+            self.setState({loading: false});
         }
     }
 
@@ -117,7 +120,6 @@ class Plant extends Component {
                 config: this.state.plantFormFields[key]
             });
         }
-        console.warn('what???', formElementArray);
         if (!this.state.loading) {
             plantForm = (<form onSubmit={this.saveHandler}>
                 {formElementArray.map((formElement) => (
@@ -145,7 +147,8 @@ class Plant extends Component {
         instance.post(`/plants.json`, plantData)
             .then((resp) => {
                 console.warn('response', resp);
-                this.setState({loading: false});
+                this.setState({loading: false, plantId: resp.data.name});
+                this.props.history.push(`/plants/${resp.data.name}`);
             })
     }
 

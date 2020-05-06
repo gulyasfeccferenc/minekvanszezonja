@@ -2,6 +2,7 @@ import React, {Component, Fragment} from "react";
 import classes from './TableView.module.scss'
 import TableRow from './TableRow/TableRow';
 import instance from "../../Com/AxiosHandler";
+import {NavLink} from "react-router-dom";
 
 class TableView extends Component {
     state = {
@@ -74,7 +75,9 @@ class TableView extends Component {
         if (Object.keys(this.state.plants).length > 1) {
             this.calculatePlantRows();
         } else {
-            this.plantRows = <p className={classes.FullWidth}>Nincs növény az adatbázisban</p>;
+            this.plantRows = <Fragment><p className={classes.FullWidth}>Nincs növény az adatbázisban</p><NavLink to={"/plants/new"}>
+                <p>Adj hozzá egy újat</p>
+            </NavLink></Fragment>;
         }
         return (
             <Fragment>
@@ -94,6 +97,9 @@ class TableView extends Component {
                     <div className={classes.GridHeader} title="December">Dec</div>
                     {this.plantRows}
                 </div>
+                <NavLink to={"/plants/new"}>
+                    <p>+ Adj hozzá egy újat</p>
+                </NavLink>
             </Fragment>
         )
     }

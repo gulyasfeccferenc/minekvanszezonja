@@ -32,6 +32,7 @@ class App extends Component {
             <Layout>
                 <Search change={this.searchChangeHandler}></Search>
                 <Switch>
+                    <Route path="/plants/new" component={Plant} new={true} />
                     <Route path="/plants/:plantId" component={Plant} />
                     <Route path="/" exact render={(props) => <TableView {...props} /> } />
                     <Route component={NoMatch}/>
