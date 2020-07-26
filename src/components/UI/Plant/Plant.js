@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import instance from "../../Com/AxiosHandler";
 import classes from './Plant.module.scss';
 import DynamicInput from "../../Form/DynamicInput/DynamicInput";
+import {db} from "../../../services/firebase";
 
 class Plant extends Component {
 
@@ -84,28 +84,21 @@ class Plant extends Component {
     getPlantInfo = () => {
         const self = this;
         if (!this.props.new && self.state.plantId && !self.state.plantData) {
-            instance.get(`plants/${self.state.plantId}.json`)
-                .then(function (response) {
-                    console.warn('plantdata', response.data);
-                    const updatedPlantForm = {
-                        ...self.state.plantFormFields
-                    };
-                    const updatedNameElement = {...updatedPlantForm['name']};
-                    const updatedDetailsElement = {...updatedPlantForm['details']};
-                    const updatedTypeElement = {...updatedPlantForm['planttype']};
-                    updatedNameElement.value = response.data.name;
-                    updatedDetailsElement.value = response.data.details;
-                    updatedTypeElement.value = response.data.planttype;
-                    updatedPlantForm['name'] = updatedNameElement;
-                    updatedPlantForm['details'] = updatedDetailsElement;
-                    updatedPlantForm['planttype'] = updatedTypeElement;
-                    self.setState({loading: false, plantFormFields: updatedPlantForm});
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.error("Some nasty error happened here: ", error);
-                    self.setState({loading: false});
-                });
+            db.ref(`plants/${self.state.plantId}`).once('value').then(snapshot => {
+                const updatedPlantForm = {
+                    ...self.state.plantFormFields
+                };
+                const updatedNameElement = {...updatedPlantForm['name']};
+                const updatedDetailsElement = {...updatedPlantForm['details']};
+                const updatedTypeElement = {...updatedPlantForm['planttype']};
+                updatedNameElement.value = snapshot.val().name;
+                updatedDetailsElement.value = snapshot.val().details;
+                updatedTypeElement.value = snapshot.val().planttype;
+                updatedPlantForm['name'] = updatedNameElement;
+                updatedPlantForm['details'] = updatedDetailsElement;
+                updatedPlantForm['planttype'] = updatedTypeElement;
+                self.setState({loading: false, plantFormFields: updatedPlantForm});
+            })
         } else {
             self.setState({loading: false});
         }
@@ -140,16 +133,26 @@ class Plant extends Component {
         event.preventDefault();
         this.setState({loading: true});
         const plantData = {};
-        plantData.id = this.state.plantId;
+
+        // Differentiate whether its a new plant or an existing one
+        if (this.state.plantId) {
+            plantData.id = this.state.plantId || this.props.match.params.plantId;
+        } else {
+            plantData.id = db.ref().child('plants').push().key;
+        }
+
         for (let formElementId in this.state.plantFormFields) {
             plantData[formElementId] = this.state.plantFormFields[formElementId].value;
         }
-        instance.post(`/plants.json`, plantData)
-            .then((resp) => {
-                console.warn('response', resp);
-                this.setState({loading: false, plantId: resp.data.name});
-                this.props.history.push(`/plants/${resp.data.name}`);
-            })
+        db.ref(`plants/${plantData.id}`).set(plantData, (error) => {
+            if (error) {
+                console.error('An error happened during save', error);
+            }
+            this.setState({loading: false});
+        }).then(r => {
+            this.setState({loading: false, plantId: plantData.id});
+            this.props.history.push(`/plants/${plantData.id}`);
+        })
     }
 
 

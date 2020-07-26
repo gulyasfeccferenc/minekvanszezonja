@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from "react";
 import classes from './TableView.module.scss'
 import TableRow from './TableRow/TableRow';
-import instance from "../../Com/AxiosHandler";
 import {NavLink} from "react-router-dom";
+import {db} from "../../../services/firebase"
 
 class TableView extends Component {
     state = {
@@ -20,21 +20,13 @@ class TableView extends Component {
 
     componentDidMount() {
         const self = this;
-        instance.get('plants.json')
-            .then(function (response) {
-                const rawPlantData = [];
-                for (let key in response.data) {
-                    rawPlantData.push({
-                        ...response.data[key],
-                        id: key
-                    });
-                }
-                self.setState({plants: rawPlantData});
-            })
-            .catch(function (error) {
-                // handle error
-                console.error("Some nasty error happened here: ", error);
+        db.ref("plants/").on("value", snapshot => {
+            const rawPlantData = [];
+            snapshot.forEach(snap => {
+                rawPlantData.push({...snap.val(), id: snap.key});
             });
+            self.setState({plants: rawPlantData});
+        });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -72,7 +64,7 @@ class TableView extends Component {
 
 
     render() {
-        if (Object.keys(this.state.plants).length > 1) {
+        if (Object.keys(this.state.plants).length > 0) {
             this.calculatePlantRows();
         } else {
             this.plantRows = <Fragment><p className={classes.FullWidth}>Nincs növény az adatbázisban</p><NavLink to={"/plants/new"}>
