@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import './App.module.scss';
+import 'antd/dist/antd.min.css';
 import Layout from './components/Layout/Layout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
 import {Route, Switch} from "react-router";
 import Plant from "./components/UI/Plant/Plant";
+import './App.module.scss';
 
 class App extends Component {
     constructor(props) {

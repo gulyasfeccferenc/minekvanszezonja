@@ -1,8 +1,10 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import classes from './TableView.module.scss'
 import TableRow from './TableRow/TableRow';
 import {NavLink} from "react-router-dom";
 import {db} from "../../../services/firebase"
+import {Button, Empty} from "antd";
+import {AppstoreAddOutlined} from "@ant-design/icons";
 
 class TableView extends Component {
     state = {
@@ -67,12 +69,18 @@ class TableView extends Component {
         if (Object.keys(this.state.plants).length > 0) {
             this.calculatePlantRows();
         } else {
-            this.plantRows = <Fragment><p className={classes.FullWidth}>Nincs növény az adatbázisban</p><NavLink to={"/plants/new"}>
-                <p>Adj hozzá egy újat</p>
-            </NavLink></Fragment>;
+            return (
+                    <section>
+                        <Empty>
+                            <p className={classes.FullWidth}>Nincs növény az adatbázisban</p>
+                            <NavLink to={"/plants/new"}>
+                                <Button type="primary" shape="round" icon={<AppstoreAddOutlined />}>Adj hozzá egy újat</Button>
+                            </NavLink>
+                        </Empty>
+                    </section>);
         }
         return (
-            <Fragment>
+            <section>
                 <div className={classes.GridContainer}>
                     <div className={classes.GridHeader}></div>
                     <div className={classes.GridHeader} title="Január">Jan</div>
@@ -90,9 +98,9 @@ class TableView extends Component {
                     {this.plantRows}
                 </div>
                 <NavLink to={"/plants/new"}>
-                    <p>+ Adj hozzá egy újat</p>
+                    <Button type="primary" shape="round" icon={<AppstoreAddOutlined />}>Adj hozzá egy újat</Button>
                 </NavLink>
-            </Fragment>
+            </section>
         )
     }
 };
