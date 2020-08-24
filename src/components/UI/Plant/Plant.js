@@ -3,6 +3,7 @@ import classes from './Plant.module.scss';
 import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 import {db} from "../../../services/firebase";
 
+
 class Plant extends Component {
 
     constructor(props) {
@@ -30,28 +31,40 @@ class Plant extends Component {
                     },
                     value: ''
                 },
+                season: {
+                    inputtype: 'multiselect',
+                    inputConfig: {
+                        name: 'season',
+                        label: 'Seasons when this plant is flourishing',
+                        options: [
+                            {value: 0, displayValue: 'January'},
+                            {value: 1, displayValue: 'Feb'},
+                            {value: 2, displayValue: 'March'},
+                            {value: 3, displayValue: 'Apr'},
+                            {value: 4, displayValue: 'May'},
+                            {value: 5, displayValue: 'Jun'},
+                            {value: 6, displayValue: 'Jul'},
+                            {value: 7, displayValue: 'Aug'},
+                            {value: 8, displayValue: 'Sep'},
+                            {value: 9, displayValue: 'Okt'},
+                            {value: 10, displayValue: 'Nov'},
+                            {value: 11, displayValue: 'Dec'},
+                        ],
+                        optionsChange: this.inputChangeHandler
+                    },
+                    value: ''
+                },
                 planttype: {
                     inputtype: 'select',
                     inputConfig: {
                         name: "plantType",
                         label: "Type of the plant",
                         options: [
-                            {value: 'plant', displayValue: 'Plant'},
-                            {value: 'fruit', displayValue: 'Fruit'},
-                            {value: 'vegetable', displayValue: 'Vegetable'},
-                            {value: 'herb', displayValue: 'Herb'},
+                            {value: 'plant', displayValue: 'Plant 🍃'},
+                            {value: 'fruit', displayValue: 'Fruit 🍎'},
+                            {value: 'vegetable', displayValue: 'Vegetable 🥕'},
+                            {value: 'herb', displayValue: 'Herb 🌿'},
                         ],
-                        // onChange: (key) => {
-                        //     let plantChoice = ""+key.nativeEvent.target.value;
-                        //     console.warn('key', plantChoice);
-                        //     if (plantChoice) {
-                        //         this.setState(
-                        //             (prevState) => (
-                        //                 {...prevState, plantFormFields:
-                        //                         {...prevState.planttype, planttype: {
-                        //                                 value: plantChoice}}}));
-                        //     }
-                        // },
                     },
                     value: 'this.state.plantData.details'
                 }
@@ -59,14 +72,18 @@ class Plant extends Component {
         }
     }
 
-    inputChangeHandler = (event, inputIdentifier) => {
+    inputChangeHandler = (event, inputIdentifier, multiselectValue) => {
         const updatedPlantForm = {
             ...this.state.plantFormFields
         };
         const updatedPlantFormElement = {
             ...updatedPlantForm[inputIdentifier]
         };
-        updatedPlantFormElement.value = event.target.value;
+        if (updatedPlantFormElement.inputtype === 'multiselect') {
+            updatedPlantFormElement.value = event;
+        } else {
+            updatedPlantFormElement.value = event.target.value;
+        }
         updatedPlantForm[inputIdentifier] = updatedPlantFormElement;
         this.setState({plantFormFields: updatedPlantForm});
     }
@@ -91,12 +108,15 @@ class Plant extends Component {
                 const updatedNameElement = {...updatedPlantForm['name']};
                 const updatedDetailsElement = {...updatedPlantForm['details']};
                 const updatedTypeElement = {...updatedPlantForm['planttype']};
+                const updatedSeasonElement = {...updatedPlantForm['season']};
                 updatedNameElement.value = snapshot.val().name;
                 updatedDetailsElement.value = snapshot.val().details;
                 updatedTypeElement.value = snapshot.val().planttype;
+                updatedSeasonElement.value = snapshot.val().season;
                 updatedPlantForm['name'] = updatedNameElement;
                 updatedPlantForm['details'] = updatedDetailsElement;
                 updatedPlantForm['planttype'] = updatedTypeElement;
+                updatedPlantForm['season'] = updatedSeasonElement;
                 self.setState({loading: false, plantFormFields: updatedPlantForm});
             })
         } else {
@@ -144,6 +164,7 @@ class Plant extends Component {
         for (let formElementId in this.state.plantFormFields) {
             plantData[formElementId] = this.state.plantFormFields[formElementId].value;
         }
+
         db.ref(`plants/${plantData.id}`).set(plantData, (error) => {
             if (error) {
                 console.error('An error happened during save', error);
