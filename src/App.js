@@ -20,6 +20,10 @@ class App extends Component {
 
     }
 
+    /**
+     * Will deal with the state change of search input
+     * @param {Event} event 
+     */
     searchChangeHandler = (event) => {
         if (event.target.value) {
             this.setState({searchedItem: event.target.value});
@@ -35,7 +39,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/plants/new" component={Plant} new={true} />
                     <Route path="/plants/:plantId" component={Plant} />
-                    <Route path="/" exact render={(props) => <TableView {...props} /> } />
+                    <Route path="/" exact render={(props) => <TableView {...props} {...this.state} /> } />
                     <Route component={NoMatch}/>
                 </Switch>
             </Layout>

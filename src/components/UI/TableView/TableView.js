@@ -35,14 +35,14 @@ class TableView extends Component {
     }
 
     calculatePlantRows() {
-        if (this.props.searchedTerm && this.props.searchedTerm.length > 2) {
-            const filterValue = this.props.searchedTerm.toLowerCase();
+        if (this.props.searchedItem && this.props.searchedItem.length > 2) {
+            const filterValue = this.props.searchedItem.toString().toLowerCase();
             this.filteredPlants = this.state.plants.filter(item => {
-                return item.toLowerCase().includes(filterValue);
+                return item.name.toLowerCase().includes(filterValue);
             });
 
             if (this.filteredPlants.length < 1) {
-                this.plantRows = <p className={classes.FullWidth}>A keresett növény ({this.props.searchedTerm}) sajnos nem található!</p>;
+                this.plantRows = <p className={classes.FullWidth}>A keresett növény ({this.props.searchedItem}) sajnos nem található!</p>;
             } else {
                 this.plantRows = this.filteredPlants.map(item => {
                     return (<TableRow key={item.id + '_key'}
