@@ -35,7 +35,7 @@ class App extends Component {
     render() {
         return (
             <Layout>
-                <Search change={this.searchChangeHandler}></Search>
+                <Route path="/" exact={true} component={Search} change={this.searchChangeHandler} />
                 <Switch>
                     <Route path="/plants/new" component={Plant} new={true} />
                     <Route path="/plants/:plantId" component={Plant} />
