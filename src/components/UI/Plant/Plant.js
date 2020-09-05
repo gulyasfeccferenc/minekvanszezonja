@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import classes from './Plant.module.scss';
 import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 import {db} from "../../../services/firebase";
+import {Button} from 'antd';
+import {BackwardOutlined, DeleteOutlined, SaveOutlined} from '@ant-design/icons';
 
 
 class Plant extends Component {
+    saving = false;
 
     constructor(props) {
         super(props);
@@ -134,7 +137,7 @@ class Plant extends Component {
             });
         }
         if (!this.state.loading) {
-            plantForm = (<form onSubmit={this.saveHandler}>
+            plantForm = (<form >
                 {formElementArray.map((formElement) => (
                     <DynamicInput inputtype={formElement.config.inputtype}
                                   elementConfig={formElement.config.inputConfig}
@@ -143,7 +146,9 @@ class Plant extends Component {
                                   key={formElement.id}
                     />
                 ))}
-                <button type="submit">Save</button>
+                <Button type="primary" size={"large"} loading={this.saving} onClick={this.saveHandler} icon={<SaveOutlined />}>
+                    Save
+                </Button>
             </form>);
         }
         return plantForm;
@@ -151,6 +156,7 @@ class Plant extends Component {
 
     saveHandler = (event) => {
         event.preventDefault();
+        this.saving = true;
         this.setState({loading: true});
         const plantData = {};
 
@@ -169,9 +175,10 @@ class Plant extends Component {
             if (error) {
                 console.error('An error happened during save', error);
             }
-            this.setState({loading: false});
+            setTimeout(() => {this.saving = false}, 1000);
         }).then(r => {
             this.setState({loading: false, plantId: plantData.id});
+            this.saving = false;
             this.props.history.push(`/plants/${plantData.id}`);
         })
     }
@@ -189,6 +196,13 @@ class Plant extends Component {
         return (
             <div className={classes.Plant}>
                 <h1>{this.state.plantFormFields.name.value}</h1>
+                <Button type="dashed" icon={<BackwardOutlined />}>
+                    Back
+                </Button>
+                {!this.props.new && this.state.plantId ? (
+                    <Button type="danger" icon={<DeleteOutlined />}>
+                        Delete
+                    </Button>) : null}
                 {plantForm}
                 <p>You selected the plant: {this.props.match.params.plantId}</p>
             </div>
