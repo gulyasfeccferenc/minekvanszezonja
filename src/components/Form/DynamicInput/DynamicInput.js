@@ -33,15 +33,24 @@ const monthsColor = {
 
 function tagRender(props) {
     const { label, value, closable, onClose } = props;
-
-    return (
-        <Tag color={monthsColor[value]} style={{ marginRight: 3 }} closable={closable} onClose={onClose}>
-            {label}
-        </Tag>
-    );
+    if (label && value) {
+        return (
+            <Tag color={monthsColor[value]} style={{ marginRight: 3 }} closable={closable} onClose={onClose}>
+                {label}
+            </Tag>
+        );
+    }
+    return null;
 }
 
+/**
+ * Deal with changes in the multiselect and sorting selected values by number.
+ * @param event
+ * @param field
+ * @param wat
+ */
 function multiselectChangeHandler(event, field, wat) {
+    event = event.sort((a, b) => a - b);
     wat.change(event, wat.elementConfig.name)
 }
 
@@ -77,7 +86,7 @@ const dynamicInput = (props) => {
                                     options={months}
                                     allowClear="true"
                                     onChange={(event, field) => multiselectChangeHandler(event, field, props)}
-                                    // onSelect={props.change}
+                                    placeholder={"Choose when the given plant has its season"}
                                     tagRender={tagRender}
                                     value={props.value}
             />)

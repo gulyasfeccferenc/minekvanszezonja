@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import classes from './Plant.module.scss';
 import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 import {db} from "../../../services/firebase";
-import {Button} from 'antd';
+import {Button, Popconfirm} from 'antd';
 import {BackwardOutlined, DeleteOutlined, SaveOutlined} from '@ant-design/icons';
 
 
@@ -55,7 +55,7 @@ class Plant extends Component {
                         ],
                         optionsChange: this.inputChangeHandler
                     },
-                    value: ''
+                    value: []
                 },
                 planttype: {
                     inputtype: 'select',
@@ -191,18 +191,30 @@ class Plant extends Component {
         }
     }
 
+    deletePlant() {
+        console.warn('enyje');
+    }
+
     render () {
         const plantForm = this.generatePlantForm();
+
         return (
             <div className={classes.Plant}>
-                <h1>{this.state.plantFormFields.name.value}</h1>
-                <Button type="dashed" icon={<BackwardOutlined />}>
+                <h1>{this.state.plantFormFields.name.value || 'New plant'}</h1>
+                <Button type="dashed" icon={<BackwardOutlined />} onClick={() => {this.props.history.goBack()}} >
                     Back
                 </Button>
                 {!this.props.new && this.state.plantId ? (
-                    <Button type="danger" icon={<DeleteOutlined />}>
-                        Delete
-                    </Button>) : null}
+                    <Popconfirm
+                        title="Are you sure delete this plant?"
+                        onConfirm={this.deletePlant}
+                        okText="Yes, delete is!"
+                        cancelText="No, I've changed my mind!"
+                    >
+                        <Button type="danger" icon={<DeleteOutlined />}>
+                            Delete
+                        </Button>
+                    </Popconfirm>) : null}
                 {plantForm}
                 <p>You selected the plant: {this.props.match.params.plantId}</p>
             </div>
