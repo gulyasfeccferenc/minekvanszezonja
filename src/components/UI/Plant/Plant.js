@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import classes from './Plant.module.scss';
 import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 import {db} from "../../../services/firebase";
-import {Button, Popconfirm} from 'antd';
+import {Button, notification, Popconfirm} from 'antd';
 import {BackwardOutlined, DeleteOutlined, SaveOutlined} from '@ant-design/icons';
 
 
@@ -14,6 +14,7 @@ class Plant extends Component {
         this.state = {
             plantId: '',
             loading: true,
+            plantName: '',
             plantFormFields: {
                 name: {
                     inputtype: 'text',
@@ -120,7 +121,7 @@ class Plant extends Component {
                 updatedPlantForm['details'] = updatedDetailsElement;
                 updatedPlantForm['planttype'] = updatedTypeElement;
                 updatedPlantForm['season'] = updatedSeasonElement;
-                self.setState({loading: false, plantFormFields: updatedPlantForm});
+                self.setState({loading: false, plantFormFields: updatedPlantForm, plantName: updatedNameElement.value});
             })
         } else {
             self.setState({loading: false});
@@ -192,7 +193,19 @@ class Plant extends Component {
     }
 
     deletePlant() {
-        console.warn('enyje');
+        let currentPlant = this.state.plantName;
+        console.warn('enyje', this.state);
+        db.ref(`plants/${this.state.plantId}`).remove((e) => {
+            console.warn('An error happened', e)
+        }).then(r  => {
+            notification.info({
+                message: `Bye-bye ${currentPlant}!`,
+                description:
+                    'The given plant  got removed from the database!',
+                placement: 'bottomRight',
+            });
+            this.props.history.goBack();
+        })
     }
 
     render () {
@@ -207,7 +220,7 @@ class Plant extends Component {
                 {!this.props.new && this.state.plantId ? (
                     <Popconfirm
                         title="Are you sure delete this plant?"
-                        onConfirm={this.deletePlant}
+                        onConfirm={() => {this.deletePlant()}}
                         okText="Yes, delete is!"
                         cancelText="No, I've changed my mind!"
                     >
