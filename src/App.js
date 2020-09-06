@@ -4,7 +4,7 @@ import PageLayout from './components/Layout/PageLayout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
-import {Route, Switch} from "react-router";
+import {Route, Switch, withRouter} from "react-router";
 import Plant from "./components/UI/Plant/Plant";
 import './App.module.scss';
 import About from "./components/Pages/About/About";
@@ -34,10 +34,11 @@ class App extends Component {
     }
 
     render() {
+        const searchField = (<Search change={(event) => this.searchChangeHandler(event)}/>)
         return (
             <UserProvider>
                 <PageLayout>
-                    <Route path="/table" exact={true} component={Search} change={this.searchChangeHandler} />
+                    {this.props.location.pathname.startsWith('/table') ? searchField : null}
                     <Switch>
                         <Route path="/plants/new" component={Plant} new={true} />
                         <Route path="/plants/:plantId" component={Plant} />
@@ -52,4 +53,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withRouter(App);

@@ -17,8 +17,7 @@ export default class Login extends Component {
 
     onChangeHandler(event) {
         const {name, value} = event.currentTarget;
-        console.warn('change happened', name);
-        console.warn('change happened', value);
+
         if (name === 'email') {
             this.setState({user: value});
         } else if (name === 'password') {
@@ -28,7 +27,6 @@ export default class Login extends Component {
 
     loginHandler(event) {
         event.preventDefault();
-        console.info(`trying auth with email: ${this.state.user} and with my super hacky secret password ${this.state.password}`);
         auth().signInWithEmailAndPassword(this.state.user, this.state.password).catch(error => {
             // setError("Error signing in with password and email!");
             console.error("Error signing in with password and email", error);

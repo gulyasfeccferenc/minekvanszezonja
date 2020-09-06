@@ -17,7 +17,7 @@ const Search = (props) => {
                    ref={searchField}
                    onChange={props.change}
                    onEmptied={props.change}
-                   placeholder="írd ide mit keresel"/>
+                   placeholder="Mit keresel?"/>
     </div>
 )};
 
