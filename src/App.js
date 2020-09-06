@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.min.css';
-import Layout from './components/Layout/Layout';
+import PageLayout from './components/Layout/PageLayout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
@@ -34,7 +34,7 @@ class App extends Component {
 
     render() {
         return (
-            <Layout>
+            <PageLayout>
                 <Route path="/" exact={true} component={Search} change={this.searchChangeHandler} />
                 <Switch>
                     <Route path="/plants/new" component={Plant} new={true} />
@@ -42,7 +42,7 @@ class App extends Component {
                     <Route path="/" exact render={(props) => <TableView {...props} {...this.state} /> } />
                     <Route component={NoMatch}/>
                 </Switch>
-            </Layout>
+            </PageLayout>
                 )
     }
 }

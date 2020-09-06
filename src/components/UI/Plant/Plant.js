@@ -20,7 +20,7 @@ class Plant extends Component {
                     inputtype: 'text',
                     inputConfig: {
                         name: 'plantName',
-                        label: 'Name of the plant',
+                        label: 'Növény neve',
                     },
                     value: ''
                 },
@@ -28,7 +28,7 @@ class Plant extends Component {
                     inputtype: 'textarea',
                     inputConfig: {
                         name: "plantDesc",
-                        label: "Description",
+                        label: "Leírás",
                         id: "plantDesc",
                         cols: "30",
                         rows: "10",
@@ -39,7 +39,7 @@ class Plant extends Component {
                     inputtype: 'multiselect',
                     inputConfig: {
                         name: 'season',
-                        label: 'Seasons when this plant is flourishing',
+                        label: 'Mikor érik az adott növény?',
                         options: [
                             {value: 0, displayValue: 'January'},
                             {value: 1, displayValue: 'Feb'},
@@ -62,12 +62,12 @@ class Plant extends Component {
                     inputtype: 'select',
                     inputConfig: {
                         name: "plantType",
-                        label: "Type of the plant",
+                        label: "A növény típusa",
                         options: [
-                            {value: 'plant', displayValue: 'Plant 🍃'},
-                            {value: 'fruit', displayValue: 'Fruit 🍎'},
-                            {value: 'vegetable', displayValue: 'Vegetable 🥕'},
-                            {value: 'herb', displayValue: 'Herb 🌿'},
+                            {value: 'plant', displayValue: 'Növény 🍃'},
+                            {value: 'fruit', displayValue: 'Gyümölcs 🍎'},
+                            {value: 'vegetable', displayValue: 'Zöldség 🥕'},
+                            {value: 'herb', displayValue: 'Fűszernövény 🌿'},
                         ],
                     },
                     value: 'this.state.plantData.details'
@@ -148,7 +148,7 @@ class Plant extends Component {
                     />
                 ))}
                 <Button type="primary" size={"large"} loading={this.saving} onClick={this.saveHandler} icon={<SaveOutlined />}>
-                    Save
+                    Mentés
                 </Button>
             </form>);
         }
@@ -194,14 +194,13 @@ class Plant extends Component {
 
     deletePlant() {
         let currentPlant = this.state.plantName;
-        console.warn('enyje', this.state);
         db.ref(`plants/${this.state.plantId}`).remove((e) => {
             console.warn('An error happened', e)
         }).then(r  => {
             notification.info({
                 message: `Bye-bye ${currentPlant}!`,
                 description:
-                    'The given plant  got removed from the database!',
+                    'A kiválasztott növényt töröltük az adatbázisból!',
                 placement: 'bottomRight',
             });
             this.props.history.goBack();
@@ -213,23 +212,23 @@ class Plant extends Component {
 
         return (
             <div className={classes.Plant}>
-                <h1>{this.state.plantFormFields.name.value || 'New plant'}</h1>
+                <h1>{this.state.plantFormFields.name.value || 'Új növény'}</h1>
                 <Button type="dashed" icon={<BackwardOutlined />} onClick={() => {this.props.history.goBack()}} >
-                    Back
+                    Vissza
                 </Button>
                 {!this.props.new && this.state.plantId ? (
                     <Popconfirm
-                        title="Are you sure delete this plant?"
+                        title="Biztosan törölni szeretnéd?"
                         onConfirm={() => {this.deletePlant()}}
-                        okText="Yes, delete is!"
-                        cancelText="No, I've changed my mind!"
+                        okText="Igen, töröljük!"
+                        cancelText="Nem, meggondoltam magam!"
                     >
                         <Button type="danger" icon={<DeleteOutlined />}>
-                            Delete
+                            Törlés
                         </Button>
                     </Popconfirm>) : null}
                 {plantForm}
-                <p>You selected the plant: {this.props.match.params.plantId}</p>
+                <p>A kiválasztott növény: {this.props.match.params.plantId}</p>
             </div>
         );
     }
