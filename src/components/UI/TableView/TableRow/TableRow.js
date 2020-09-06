@@ -1,14 +1,18 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useContext} from "react";
 import classes from './TableRow.module.scss';
 import {NavLink} from "react-router-dom";
+import {UserContext} from "../../../../services/UserProvider";
+import {Tooltip} from "antd";
 
 const TableRow = (props) => {
-
+    const user = useContext(UserContext);
+    const plantName = (<Tooltip title={props.description}><div>{props.name}</div></Tooltip>);
+    const navLink = (<NavLink to={"/plants/" + props.id}>
+        {plantName}
+    </NavLink>)
     return (
         <Fragment>
-                <NavLink to={"/plants/" + props.id}>
-                        <div title={props.description}>{props.name}</div>
-                </NavLink>
+            {user ? navLink : plantName}
             <div className={classes.Grid}>{(props.season && props.season.includes(1))? 'X':null}</div>
             <div className={classes.Grid}>{(props.season && props.season.includes(2))? 'X':null}</div>
             <div className={classes.Grid}>{(props.season && props.season.includes(3))? 'X':null}</div>

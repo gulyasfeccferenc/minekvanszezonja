@@ -5,6 +5,7 @@ import {db} from "../../../services/firebase";
 import {Button, notification, Popconfirm} from 'antd';
 import {BackwardOutlined, DeleteOutlined, SaveOutlined} from '@ant-design/icons';
 import {UserContext} from "../../../services/UserProvider";
+import Title from "antd/es/typography/Title";
 
 
 class Plant extends Component {
@@ -210,11 +211,12 @@ class Plant extends Component {
     }
 
     render () {
+        if (!this.context) return (<Title>Ehhez a művelethez nincs jogosultságod</Title>);
         const plantForm = this.generatePlantForm();
 
         return (
             <div className={classes.Plant}>
-                <h1>{this.state.plantFormFields.name.value || 'Új növény'}</h1>
+                <Title>{this.state.plantFormFields.name.value || 'Új növény'}</Title>
                 <Button type="dashed" icon={<BackwardOutlined />} onClick={() => {this.props.history.goBack()}} >
                     Vissza
                 </Button>
