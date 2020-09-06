@@ -4,9 +4,11 @@ import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 import {db} from "../../../services/firebase";
 import {Button, notification, Popconfirm} from 'antd';
 import {BackwardOutlined, DeleteOutlined, SaveOutlined} from '@ant-design/icons';
+import {UserContext} from "../../../services/UserProvider";
 
 
 class Plant extends Component {
+    static contextType = UserContext;
     saving = false;
 
     constructor(props) {

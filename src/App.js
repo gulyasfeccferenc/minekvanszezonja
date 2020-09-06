@@ -7,17 +7,18 @@ import NoMatch from "./components/Navigation/NoMatch/NoMatch";
 import {Route, Switch} from "react-router";
 import Plant from "./components/UI/Plant/Plant";
 import './App.module.scss';
+import About from "./components/Pages/About/About";
+import Login from "./components/Pages/Login/Login";
+import UserProvider from "./services/UserProvider";
+
 
 class App extends Component {
+    user = null;
     constructor(props) {
         super(props);
         this.state = {
             searchedItem: ''
         };
-    }
-
-    componentDidMount() {
-
     }
 
     /**
@@ -34,15 +35,19 @@ class App extends Component {
 
     render() {
         return (
-            <PageLayout>
-                <Route path="/" exact={true} component={Search} change={this.searchChangeHandler} />
-                <Switch>
-                    <Route path="/plants/new" component={Plant} new={true} />
-                    <Route path="/plants/:plantId" component={Plant} />
-                    <Route path="/" exact render={(props) => <TableView {...props} {...this.state} /> } />
-                    <Route component={NoMatch}/>
-                </Switch>
-            </PageLayout>
+            <UserProvider>
+                <PageLayout>
+                    <Route path="/table" exact={true} component={Search} change={this.searchChangeHandler} />
+                    <Switch>
+                        <Route path="/plants/new" component={Plant} new={true} />
+                        <Route path="/plants/:plantId" component={Plant} />
+                        <Route path="/table" exact render={(props) => <TableView {...props} {...this.state} /> } />
+                        <Route path="/login" component={Login} />
+                        <Route path="/about" component={About} />
+                        <Route component={NoMatch}/>
+                    </Switch>
+                </PageLayout>
+            </UserProvider>
                 )
     }
 }
