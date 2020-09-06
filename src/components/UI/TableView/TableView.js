@@ -5,17 +5,18 @@ import {NavLink} from "react-router-dom";
 import {db} from "../../../services/firebase"
 import {Button, Empty} from "antd";
 import {AppstoreAddOutlined} from "@ant-design/icons";
+import {UserContext} from "../../../services/UserProvider";
 
 class TableView extends Component {
-    state = {
-        plants: []
-    };
+    static contextType = UserContext;
 
     constructor(props) {
         super(props);
         this.plantRows = null;
         this.filteredPlants = null;
-        // this.state.plants = props.plants ? Object.keys(props.plants) : [];
+        this.state = {
+            plants: []
+        };
     }
 
 
@@ -73,9 +74,7 @@ class TableView extends Component {
                     <section>
                         <Empty>
                             <p className={classes.FullWidth}>Nincs növény az adatbázisban</p>
-                            <NavLink to={"/plants/new"}>
-                                <Button type="primary" shape="round" icon={<AppstoreAddOutlined />}>Adj hozzá egy újat</Button>
-                            </NavLink>
+                            {this.context ? this.newButton : null}
                         </Empty>
                     </section>);
         }
@@ -97,12 +96,14 @@ class TableView extends Component {
                     <div className={classes.GridHeader} title="December">Dec</div>
                     {this.plantRows}
                 </div>
-                <NavLink to={"/plants/new"}>
-                    <Button type="primary" shape="round" icon={<AppstoreAddOutlined />}>Adj hozzá egy újat</Button>
-                </NavLink>
+                {this.context ? this.newButton : null}
             </section>
         )
     }
+
+    newButton = (<NavLink to={"/plants/new"}>
+        <Button type="primary" shape="round" icon={<AppstoreAddOutlined />}>Adj hozzá egy újat</Button>
+    </NavLink>);
 };
 
 export default TableView;

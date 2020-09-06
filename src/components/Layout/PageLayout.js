@@ -4,14 +4,18 @@ import Footer from "./Footer/Footer";
 import {Layout, Menu} from 'antd';
 import {BuildOutlined, IdcardOutlined, LoginOutlined, TableOutlined,} from '@ant-design/icons';
 import logoImage from "../../radish.png";
+import {withRouter} from "react-router-dom"
 
 const { Content, Sider } = Layout;
 // const { SubMenu } = Menu;
 
 class PageLayout extends Component {
-    state = {
-        showSideDrawer: false,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            showSideDrawer: false,
+        };
+    }
 
     toggleSideDrawer = () => {
         this.setState(( prevState ) => {
@@ -19,6 +23,9 @@ class PageLayout extends Component {
         });
     };
 
+    handleMenuClick(viewTitle) {
+        this.props.history.push(`/${viewTitle}`);
+    }
 
     render() {
         return (
@@ -29,13 +36,13 @@ class PageLayout extends Component {
                             <img src={logoImage} alt="Minek van szezonja"/>
                         </div>
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                            <Menu.Item key="1" icon={<TableOutlined />}>
+                            <Menu.Item key="1" onClick={() => {this.handleMenuClick('table')}} icon={<TableOutlined />} >
                                 Táblázat nézet
                             </Menu.Item>
-                            <Menu.Item key="2" disabled={true} icon={<IdcardOutlined />}>
+                            <Menu.Item key="2" disabled={true} onClick={() => {this.handleMenuClick('card')}} icon={<IdcardOutlined />}>
                                 Kártya nézet
                             </Menu.Item>
-                            <Menu.Item key="3" disabled={true} icon={<LoginOutlined />}>
+                            <Menu.Item key="3" onClick={() => {this.handleMenuClick('login')}} icon={<LoginOutlined />}>
                                 Bejelentkezés
                             </Menu.Item>
                             {/*<SubMenu key="sub1" icon={<UserOutlined />} title="User">*/}
@@ -43,7 +50,7 @@ class PageLayout extends Component {
                             {/*    <Menu.Item key="4">Bill</Menu.Item>*/}
                             {/*    <Menu.Item key="5">Alex</Menu.Item>*/}
                             {/*</SubMenu>*/}
-                            <Menu.Item key="9" icon={<BuildOutlined />}>
+                            <Menu.Item key="9" onClick={() => {this.handleMenuClick('about')}} icon={<BuildOutlined />}>
                                 Az oldalról
                             </Menu.Item>
                         </Menu>
@@ -60,4 +67,4 @@ class PageLayout extends Component {
     }
 };
 
-export default PageLayout;
+export default withRouter(PageLayout);
