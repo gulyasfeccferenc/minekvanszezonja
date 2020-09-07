@@ -1,5 +1,9 @@
 .TableRow {
+  display: contents;
 
+  &:hover > div {
+    background: rgba(64, 228, 10, .35);
+  }
 }
 
 .Grid {

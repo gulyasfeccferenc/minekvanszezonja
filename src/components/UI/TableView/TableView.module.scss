@@ -6,6 +6,15 @@
   grid-gap: 2px;
   max-width: 800px;
   margin: 0 auto 1rem auto;
+  overflow: auto;
+
+  a {
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    background: rgba(246,247,249,.75);
+  }
 
   .GridHeader {
     font-size: 1.1em;

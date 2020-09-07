@@ -81,19 +81,19 @@ class TableView extends Component {
         return (
             <section>
                 <div className={classes.GridContainer}>
-                    <div className={classes.GridHeader}></div>
-                    <div className={classes.GridHeader} title="Január">Jan</div>
-                    <div className={classes.GridHeader} title="Február">Feb</div>
-                    <div className={classes.GridHeader} title="Március">Már</div>
-                    <div className={classes.GridHeader} title="Április">Ápr</div>
-                    <div className={classes.GridHeader} title="Május">Máj</div>
-                    <div className={classes.GridHeader} title="Június">Jún</div>
-                    <div className={classes.GridHeader} title="Július">Júl</div>
-                    <div className={classes.GridHeader} title="Augusztus">Aug</div>
-                    <div className={classes.GridHeader} title="Szeptember">Szep</div>
-                    <div className={classes.GridHeader} title="Október">Okt</div>
-                    <div className={classes.GridHeader} title="November">Nov</div>
-                    <div className={classes.GridHeader} title="December">Dec</div>
+                        <div className={classes.GridHeader}></div>
+                        <div className={classes.GridHeader} title="Január">Jan</div>
+                        <div className={classes.GridHeader} title="Február">Feb</div>
+                        <div className={classes.GridHeader} title="Március">Már</div>
+                        <div className={classes.GridHeader} title="Április">Ápr</div>
+                        <div className={classes.GridHeader} title="Május">Máj</div>
+                        <div className={classes.GridHeader} title="Június">Jún</div>
+                        <div className={classes.GridHeader} title="Július">Júl</div>
+                        <div className={classes.GridHeader} title="Augusztus">Aug</div>
+                        <div className={classes.GridHeader} title="Szeptember">Szep</div>
+                        <div className={classes.GridHeader} title="Október">Okt</div>
+                        <div className={classes.GridHeader} title="November">Nov</div>
+                        <div className={classes.GridHeader} title="December">Dec</div>
                     {this.plantRows}
                 </div>
                 {this.context ? this.newButton : null}
