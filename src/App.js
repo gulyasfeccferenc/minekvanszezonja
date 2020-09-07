@@ -4,7 +4,7 @@ import PageLayout from './components/Layout/PageLayout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
-import {Route, Switch, withRouter} from "react-router";
+import {Redirect, Route, Switch, withRouter} from "react-router";
 import Plant from "./components/UI/Plant/Plant";
 import './App.module.scss';
 import About from "./components/Pages/About/About";
@@ -40,6 +40,7 @@ class App extends Component {
                 <PageLayout>
                     {this.props.location.pathname.startsWith('/table') ? searchField : null}
                     <Switch>
+                        <Route path="/" exact={true} render={() => <Redirect to='/table'  />} />
                         <Route path="/plants/new" component={Plant} new={true} />
                         <Route path="/plants/:plantId" component={Plant} />
                         <Route path="/table" exact render={(props) => <TableView {...props} {...this.state} /> } />
