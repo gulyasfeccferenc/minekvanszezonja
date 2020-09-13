@@ -4,13 +4,13 @@ import PageLayout from './components/Layout/PageLayout';
 import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
-import {Redirect, Route, Switch, withRouter} from "react-router";
+import {MemoryRouter, Redirect, Route, Switch, withRouter} from "react-router";
 import Plant from "./components/UI/Plant/Plant";
 import './App.module.scss';
 import About from "./components/Pages/About/About";
 import Login from "./components/Pages/Login/Login";
 import UserProvider from "./services/UserProvider";
-
+import CardView from "./components/UI/CardView/CardView";
 
 class App extends Component {
     user = null;
@@ -36,20 +36,23 @@ class App extends Component {
     render() {
         const searchField = (<Search change={(event) => this.searchChangeHandler(event)}/>)
         return (
-            <UserProvider>
-                <PageLayout>
-                    {this.props.location.pathname.startsWith('/table') ? searchField : null}
-                    <Switch>
-                        <Route path="/" exact={true} render={() => <Redirect to='/table'  />} />
-                        <Route path="/plants/new" component={Plant} new={true} />
-                        <Route path="/plants/:plantId" component={Plant} />
-                        <Route path="/table" exact render={(props) => <TableView {...props} {...this.state} /> } />
-                        <Route path="/login" component={Login} />
-                        <Route path="/about" component={About} />
-                        <Route component={NoMatch}/>
-                    </Switch>
-                </PageLayout>
-            </UserProvider>
+            <MemoryRouter>
+                <UserProvider>
+                    <PageLayout>
+                        {this.props.location.pathname.startsWith('/table') ? searchField : null}
+                        <Switch>
+                            <Route path="/" exact={true} render={() => <Redirect to='/table'  />} />
+                            <Route path="/plants/new" component={Plant} new={true} />
+                            <Route path="/plants/:plantId" component={Plant} />
+                            <Route path="/table" exact render={(props) => <TableView {...props} {...this.state} /> } />
+                            <Route path="/cards" exact render={(props) => <CardView {...props} {...this.state} /> } />
+                            <Route path="/login" component={Login} />
+                            <Route path="/about" component={About} />
+                            <Route component={NoMatch}/>
+                        </Switch>
+                    </PageLayout>
+                </UserProvider>
+            </MemoryRouter>
                 )
     }
 }

@@ -39,7 +39,7 @@ class PageLayout extends Component {
                             <Menu.Item key="1" onClick={() => {this.handleMenuClick('table')}} icon={<TableOutlined />} >
                                 Táblázat nézet
                             </Menu.Item>
-                            <Menu.Item key="2" disabled={true} onClick={() => {this.handleMenuClick('card')}} icon={<IdcardOutlined />}>
+                            <Menu.Item key="2" disabled={true} onClick={() => {this.handleMenuClick('cards')}} icon={<IdcardOutlined />}>
                                 Kártya nézet
                             </Menu.Item>
                             <Menu.Item key="3" onClick={() => {this.handleMenuClick('login')}} icon={<LoginOutlined />}>
