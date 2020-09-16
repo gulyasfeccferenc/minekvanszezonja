@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import 'antd/dist/antd.min.css';
 import PageLayout from './components/Layout/PageLayout';
 import Search from './components/UI/Search/Search';
@@ -23,7 +23,7 @@ class App extends Component {
 
     /**
      * Will deal with the state change of search input
-     * @param {Event} event 
+     * @param {Event} event
      */
     searchChangeHandler = (event) => {
         if (event.target.value) {
@@ -39,13 +39,12 @@ class App extends Component {
             <MemoryRouter>
                 <UserProvider>
                     <PageLayout>
-                        {this.props.location.pathname.startsWith('/table') ? searchField : null}
                         <Switch>
                             <Route path="/" exact={true} render={() => <Redirect to='/table'  />} />
                             <Route path="/plants/new" component={Plant} new={true} />
                             <Route path="/plants/:plantId" component={Plant} />
-                            <Route path="/table" exact render={(props) => <TableView {...props} {...this.state} /> } />
-                            <Route path="/cards" exact render={(props) => <CardView {...props} {...this.state} /> } />
+                            <Route path="/table" exact render={(props) => <Fragment>{searchField}<TableView {...props} {...this.state} /></Fragment> } />
+                            <Route path="/cards" exact render={(props) => <Fragment>{searchField}<CardView {...props} {...this.state} /></Fragment> } />
                             <Route path="/login" component={Login} />
                             <Route path="/about" component={About} />
                             <Route component={NoMatch}/>
