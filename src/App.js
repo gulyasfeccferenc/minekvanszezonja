@@ -11,6 +11,7 @@ import Login from "./components/Pages/Login/Login";
 import UserProvider from "./services/UserProvider";
 import CardView from "./components/UI/CardView/CardView";
 import { Input } from "antd";
+import ReactGA from 'react-ga';
 
 const { Search } = Input;
 
@@ -27,6 +28,7 @@ class App extends Component {
             searchedItem: '',
             searchField: this.searchField
         };
+        ReactGA.initialize('UA-163347419-1');
     }
 
     /**
@@ -36,6 +38,11 @@ class App extends Component {
     searchChangeHandler = (value) => {
         if (value) {
             this.setState({searchedItem: value});
+            ReactGA.event({
+                category: 'User',
+                action: 'Hit search',
+                value: value,
+            });
         } else {
             this.setState({searchedItem: ''});
         }
