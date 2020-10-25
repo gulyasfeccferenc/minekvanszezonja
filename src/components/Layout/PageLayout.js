@@ -6,14 +6,14 @@ import {BuildOutlined, IdcardOutlined, LoginOutlined, TableOutlined,} from '@ant
 import logoImage from "../../radish.png";
 import {withRouter} from "react-router-dom"
 
-const { Content, Sider } = Layout;
-// const { SubMenu } = Menu;
+const { Content, Sider, Header } = Layout;
 
 class PageLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showSideDrawer: false,
+            searchField: props.searchField,
         };
     }
 
@@ -25,6 +25,11 @@ class PageLayout extends Component {
 
     handleMenuClick(viewTitle) {
         this.props.history.push(`/${viewTitle}`);
+    }
+
+    searchBarNeeded() {
+        return (this.props.location?.pathname.startsWith('/table') ||
+        this.props.location?.pathname.startsWith('/cards'))
     }
 
     render() {
@@ -56,6 +61,9 @@ class PageLayout extends Component {
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">
+                        <Header className={styles.Header}>
+                            {this.searchBarNeeded() ? this.state.searchField : ''}
+                        </Header>
                         <Content style={{ margin: '0 16px' }}>
                             <main className={styles.Content}>{this.props.children}</main>
                         </Content>

@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import 'antd/dist/antd.min.css';
 import PageLayout from './components/Layout/PageLayout';
-import Search from './components/UI/Search/Search';
 import TableView from "./components/UI/TableView/TableView";
 import NoMatch from "./components/Navigation/NoMatch/NoMatch";
 import {MemoryRouter, Redirect, Route, Switch, withRouter} from "react-router";
@@ -11,13 +10,22 @@ import About from "./components/Pages/About/About";
 import Login from "./components/Pages/Login/Login";
 import UserProvider from "./services/UserProvider";
 import CardView from "./components/UI/CardView/CardView";
+import { Input } from "antd";
+
+const { Search } = Input;
 
 class App extends Component {
     user = null;
+    searchField = (<Search
+        placeholder="Mit keresel?"
+        onSearch={(event) => {this.searchChangeHandler(event)}}
+        style={{ width: 200 }} />);
+
     constructor(props) {
         super(props);
         this.state = {
-            searchedItem: ''
+            searchedItem: '',
+            searchField: this.searchField
         };
     }
 
@@ -25,26 +33,26 @@ class App extends Component {
      * Will deal with the state change of search input
      * @param {Event} event
      */
-    searchChangeHandler = (event) => {
-        if (event.target.value) {
-            this.setState({searchedItem: event.target.value});
+    searchChangeHandler = (value) => {
+        if (value) {
+            this.setState({searchedItem: value});
         } else {
             this.setState({searchedItem: ''});
         }
     }
 
     render() {
-        const searchField = (<Search change={(event) => this.searchChangeHandler(event)}/>)
+
         return (
             <MemoryRouter>
                 <UserProvider>
-                    <PageLayout>
+                    <PageLayout searchField={this.searchField}>
                         <Switch>
                             <Route path="/" exact={true} render={() => <Redirect to='/table'  />} />
                             <Route path="/plants/new" component={Plant} new={true} />
                             <Route path="/plants/:plantId" component={Plant} />
-                            <Route path="/table" exact render={(props) => <Fragment>{searchField}<TableView {...props} {...this.state} /></Fragment> } />
-                            <Route path="/cards" exact render={(props) => <Fragment>{searchField}<CardView {...props} {...this.state} /></Fragment> } />
+                            <Route path="/table" exact render={(props) => <TableView {...props} {...this.state} /> } />
+                            <Route path="/cards" exact render={(props) => <CardView {...props} {...this.state} /> } />
                             <Route path="/login" component={Login} />
                             <Route path="/about" component={About} />
                             <Route component={NoMatch}/>
