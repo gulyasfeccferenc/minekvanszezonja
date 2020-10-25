@@ -19,6 +19,8 @@ class App extends Component {
     user = null;
     searchField = (<Search
         placeholder="Mit keresel?"
+        autoFocus={true}
+        allowClear
         onSearch={(event) => {this.searchChangeHandler(event)}}
         style={{ width: 200 }} />);
 
