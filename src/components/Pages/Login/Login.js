@@ -34,7 +34,6 @@ export default class Login extends Component {
     }
 
     render() {
-
         return (
             <Fragment>
                 <Title>Bejelentkezés</Title>
@@ -50,7 +49,6 @@ export default class Login extends Component {
                         <Input.Password
                             placeholder="Jelszó"
                             name={"password"}
-                            iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                             autoComplete={"current-password"}
                             onChange={(event) => this.onChangeHandler(event)}
                         />

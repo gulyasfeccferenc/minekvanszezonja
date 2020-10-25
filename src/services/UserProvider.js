@@ -1,4 +1,5 @@
 import React, {Component, createContext} from "react";
+import { notification } from "antd";
 import {auth} from "./firebase";
 
 export const UserContext = createContext({ user: null });
@@ -8,8 +9,13 @@ class UserProvider extends Component {
     };
 
     componentDidMount = () => {
-        auth().onAuthStateChanged(userAuth => {
+        this.authSubscription = auth().onAuthStateChanged(userAuth => {
             this.setState({ user: userAuth});
+            notification["success"]({
+                message: 'Sikeres bejelentkezés!',
+                description:
+                    `Üdv itt ${userAuth.displayName} (${userAuth.email})`,
+            });
         });
     };
 
