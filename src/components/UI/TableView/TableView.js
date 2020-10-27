@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import classes from './TableView.module.scss'
 import TableRow from './TableRow/TableRow';
 import {NavLink} from "react-router-dom";
 import {db} from "../../../services/firebase"
-import {Button, Empty} from "antd";
+import {Button, Empty, Checkbox} from "antd";
 import {AppstoreAddOutlined} from "@ant-design/icons";
 import {UserContext} from "../../../services/UserProvider";
 
@@ -18,8 +18,6 @@ class TableView extends Component {
             plants: []
         };
     }
-
-
 
     componentDidMount() {
         const self = this;
@@ -79,8 +77,17 @@ class TableView extends Component {
                     </section>);
         }
         return (
-            <section>
-                <div className={classes.GridContainer}>
+            <Fragment>
+                <Checkbox onChange={this.onFilterSelect}>Zöldség 🥕</Checkbox>
+                <Checkbox onChange={this.onFilterSelect}>Gyümölcs 🍒</Checkbox>
+                <Checkbox onChange={this.onFilterSelect}>Gyógynövény 🌿</Checkbox>
+                <br/>
+                <Checkbox onChange={this.onFilterSelect}>Tavaszi 🍃</Checkbox>
+                <Checkbox onChange={this.onFilterSelect}>Nyári 🌞</Checkbox>
+                <Checkbox onChange={this.onFilterSelect}>Őszi 🍂</Checkbox>
+                <Checkbox onChange={this.onFilterSelect}>Téli ❄</Checkbox>
+                <section>
+                    <div className={classes.GridContainer}>
                         <div className={classes.GridHeader}></div>
                         <div className={classes.GridHeader} title="Január">Jan</div>
                         <div className={classes.GridHeader} title="Február">Feb</div>
@@ -94,11 +101,16 @@ class TableView extends Component {
                         <div className={classes.GridHeader} title="Október">Okt</div>
                         <div className={classes.GridHeader} title="November">Nov</div>
                         <div className={classes.GridHeader} title="December">Dec</div>
-                    {this.plantRows}
-                </div>
-                {this.context ? this.newButton : null}
-            </section>
+                        {this.plantRows}
+                    </div>
+                    {this.context ? this.newButton : null}
+                </section>
+            </Fragment>
         )
+    }
+
+    onFilterSelect() {
+
     }
 
     newButton = (<NavLink to={"/plants/new"}>
