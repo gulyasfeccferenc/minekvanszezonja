@@ -20,7 +20,7 @@
     font-family: inherit;
     border: 0;
     border-bottom: 4px solid #ccc;
-    transition: border-bottom-color .3s ease-in;
+    transition: border-bottom-color 0.3s ease-in;
 
     &:focus {
       border-bottom: 4px solid #6f388d;

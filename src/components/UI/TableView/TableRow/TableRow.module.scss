@@ -2,7 +2,7 @@
   display: contents;
 
   &:hover > div {
-    background: rgba(64, 228, 10, .35);
+    background: rgba(64, 228, 10, 0.35);
   }
 }
 
@@ -11,7 +11,7 @@
   color: #79c23c;
   padding: 1px;
   cursor: default;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   text-align: center;
 
   &:hover {
