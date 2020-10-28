@@ -11,11 +11,14 @@ class UserProvider extends Component {
     componentDidMount = () => {
         this.authSubscription = auth().onAuthStateChanged(userAuth => {
             this.setState({ user: userAuth});
-            notification["success"]({
-                message: 'Sikeres bejelentkezés!',
-                description:
-                    `Üdv itt ${userAuth.displayName} (${userAuth.email})`,
-            });
+
+            if (userAuth) {
+                notification["success"]({
+                    message: 'Sikeres bejelentkezés!',
+                    description:
+                        `Üdv itt ${userAuth.displayName} (${userAuth.email})`,
+                });
+            }
         });
     };
 
