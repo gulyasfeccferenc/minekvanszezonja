@@ -1,6 +1,6 @@
-import React from "react";
-import classes from "./Footer.module.scss";
-import carrot from "../../../assets/carrot.png";
+import React from 'react';
+import classes from './Footer.module.scss';
+import carrot from '../../../assets/carrot.png';
 
 const footer = (props) => (
   <footer className={classes.Footer}>
@@ -13,15 +13,20 @@ const footer = (props) => (
     </div>
     <br />
     <p>
-      Kérdés, ötlet, javaslat:{" "}
+      Kérdés, ötlet, javaslat:
+      {' '}
       <a href="mailto:admin@minekvanszezonja.hu">admin🐛minekvanszezonja.hu</a>
     </p>
     <p>
-      Made with{" "}
+      Made with
+      {' '}
       <span role="img" alt="radish" aria-label="radis icon">
         🌱
-      </span>{" "}
-      by <a href="https://gulyasfeccferenc.github.io">gulyasfeccferenc</a>
+      </span>
+      {' '}
+      by
+      {' '}
+      <a href="https://gulyasfeccferenc.github.io">gulyasfeccferenc</a>
     </p>
   </footer>
 );

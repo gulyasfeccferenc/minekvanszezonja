@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import classes from "./Search.module.scss";
+import React, { useEffect, useRef } from 'react';
+import classes from './Search.module.scss';
 
 const Search = (props) => {
   const searchField = useRef(null);

@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from "react";
-import { Typography } from "antd";
+import React, { Component, Fragment } from 'react';
+import { Typography } from 'antd';
 
 const { Title } = Typography;
 
 export default class About extends Component {
   render() {
     return (
-      <Fragment>
+      <>
         <Title>Minek van szezonja?</Title>
         <p>
           Az oldal tanulóprojektként jött létre, hogy a React keretrendszert
@@ -20,11 +20,13 @@ export default class About extends Component {
         <h3>0.1</h3>
         <p>
           Az oldal jelenleg egy táblázatos nézettel és egy példaadatbázis
-          növényeinek adataival felkerült a{" "}
-          <a href="https://minekvanszezonja.hu">https://minekvanszezonja.hu</a>{" "}
+          növényeinek adataival felkerült a
+          {' '}
+          <a href="https://minekvanszezonja.hu">https://minekvanszezonja.hu</a>
+          {' '}
           domainre
         </p>
-      </Fragment>
+      </>
     );
   }
 }
