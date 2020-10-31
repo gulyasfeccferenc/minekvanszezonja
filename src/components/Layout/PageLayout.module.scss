@@ -28,3 +28,10 @@
   z-index: 1;
   width: 100%;
 }
+
+.Sider {
+  position: sticky;
+  top: 0px;
+  alignSelf: flex-start;
+  height: 100vh;
+}

@@ -87,14 +87,16 @@ class TableView extends Component {
     }
     return (
       <Fragment>
-        <Checkbox onChange={this.onFilterSelect}>Zöldség 🥕</Checkbox>
-        <Checkbox onChange={this.onFilterSelect}>Gyümölcs 🍒</Checkbox>
-        <Checkbox onChange={this.onFilterSelect}>Gyógynövény 🌿</Checkbox>
-        <br />
-        <Checkbox onChange={this.onFilterSelect}>Tavaszi 🍃</Checkbox>
-        <Checkbox onChange={this.onFilterSelect}>Nyári 🌞</Checkbox>
-        <Checkbox onChange={this.onFilterSelect}>Őszi 🍂</Checkbox>
-        <Checkbox onChange={this.onFilterSelect}>Téli ❄</Checkbox>
+        <div hidden>
+          <Checkbox onChange={this.onFilterSelect}>Zöldség 🥕</Checkbox>
+          <Checkbox onChange={this.onFilterSelect}>Gyümölcs 🍒</Checkbox>
+          <Checkbox onChange={this.onFilterSelect}>Gyógynövény 🌿</Checkbox>
+          <br />
+          <Checkbox onChange={this.onFilterSelect}>Tavaszi 🍃</Checkbox>
+          <Checkbox onChange={this.onFilterSelect}>Nyári 🌞</Checkbox>
+          <Checkbox onChange={this.onFilterSelect}>Őszi 🍂</Checkbox>
+          <Checkbox onChange={this.onFilterSelect}>Téli ❄</Checkbox>
+        </div>
         <section>
           <div className={classes.GridContainer}>
             <div className={classes.GridHeader}></div>
