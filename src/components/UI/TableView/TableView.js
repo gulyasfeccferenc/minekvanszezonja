@@ -73,6 +73,7 @@ class TableView extends Component {
   }
 
   render() {
+    let mobileView = window.innerWidth < 400;
     if (Object.keys(this.state.plants).length > 0) {
       this.calculatePlantRows();
     } else {
@@ -97,7 +98,7 @@ class TableView extends Component {
           <Checkbox onChange={this.onFilterSelect}>Őszi 🍂</Checkbox>
           <Checkbox onChange={this.onFilterSelect}>Téli ❄</Checkbox>
         </div>
-        <section>
+        <section className={mobileView ? classes.NoPadding : ''}>
           <div className={classes.GridContainer}>
             <div className={classes.GridHeader}></div>
             <div className={classes.GridHeader} title="Január">

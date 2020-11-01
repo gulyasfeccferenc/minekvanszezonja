@@ -1,3 +1,6 @@
+.NoPadding {
+  padding: 0;
+}
 .GridContainer {
   display: grid;
   grid-template-columns: auto 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
@@ -7,6 +10,13 @@
   max-width: 800px;
   margin: 0 auto 1rem auto;
   overflow: auto;
+
+  &.sm-optimized {
+    grid-template-columns: auto 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
+    grid-template-rows: 24px;
+    align-content: space-between;
+    grid-gap: 1px;
+  }
 
   a {
     position: sticky;

@@ -45,10 +45,11 @@ class PageLayout extends Component {
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
             collapsible
-            breakpoint="sm"
+            breakpoint="md"
             collapsed={this.state.showSideDrawer}
             onCollapse={this.toggleSideDrawer}
             className={styles.Sider}
+            collapsedWidth={window.innerWidth.toFixed(0) > 400 ? 80 : 0}
           >
             <div className={styles.Logo}>
               <img src={logoImage} alt="Minek van szezonja" />

@@ -32,6 +32,7 @@
 .Sider {
   position: sticky;
   top: 0px;
-  alignSelf: flex-start;
+  align-self: flex-start;
   height: 100vh;
+  z-index: 1;
 }
