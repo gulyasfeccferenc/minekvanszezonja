@@ -18,7 +18,58 @@
     <title>Minek van szezonja?</title>
   </head>
   <body>
+    <style>
+      body {
+        margin: 0;
+        height: 100%;
+        background-color: #7b68ee;
+      }
+
+      #root {
+        transition: all 2s ease-in;
+      }
+      #root:empty {
+        background-size: 96px;
+        background: url("data:image/png;base64,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") no-repeat 50% 50%;
+        position: absolute;
+        top: calc(50% - 96px);
+        left: calc(50% - 96px);
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+     }
+      @media (prefers-reduced-motion: no-preference) {
+        #root:empty {
+         -webkit-animation: App-logo-spin 2s linear infinite;
+         animation: App-logo-spin 2s linear infinite;
+       }
+      }
+      @-webkit-keyframes App-logo-spin {
+        0%,
+        to {
+          transform: rotate(-20deg);
+        }
+        50% {
+          transform: rotate(20deg);
+        }
+      }
+      @keyframes App-logo-spin {
+        0%,
+        to {
+          transform: rotate(-20deg);
+        }
+        50% {
+          transform: rotate(20deg);
+        }
+      }
+    </style>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-163347419-1');
+    </script>
   </body>
 </html>

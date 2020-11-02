@@ -11,21 +11,14 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid transparent;
   border-radius: 12px;
 }
-
 body {
   margin: 0;
   height: 100%;
-  font-family: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scrollbar-color: #79c23c #bb4c31;
   scrollbar-width: thin;
-  //background: linear-gradient(0deg, #FFF6A4, cornflowerblue);
-  background-color: darkseagreen !important;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
