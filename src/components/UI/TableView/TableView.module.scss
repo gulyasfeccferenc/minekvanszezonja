@@ -1,5 +1,5 @@
 .NoPadding {
-  padding: 0;
+  padding: 0 !important;
 }
 .GridContainer {
   display: grid;
@@ -11,7 +11,7 @@
   margin: 0 auto 1rem auto;
   overflow: auto;
 
-  &.sm-optimized {
+  &.smOptimized {
     grid-template-columns: auto 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
     grid-template-rows: 24px;
     align-content: space-between;

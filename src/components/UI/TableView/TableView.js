@@ -73,7 +73,7 @@ class TableView extends Component {
   }
 
   render() {
-    let mobileView = window.innerWidth < 400;
+    let mobileView = window.innerWidth < 460;
     if (Object.keys(this.state.plants).length > 0) {
       this.calculatePlantRows();
     } else {
@@ -99,43 +99,43 @@ class TableView extends Component {
           <Checkbox onChange={this.onFilterSelect}>Téli ❄</Checkbox>
         </div>
         <section className={mobileView ? classes.NoPadding : ''}>
-          <div className={classes.GridContainer}>
+          <div className={[classes.GridContainer, (mobileView ? classes.smOptimized : '')].join(' ')}>
             <div className={classes.GridHeader}></div>
             <div className={classes.GridHeader} title="Január">
-              Jan
+              {mobileView ? 'I' : 'Jan'}
             </div>
             <div className={classes.GridHeader} title="Február">
-              Feb
+              {mobileView ? 'II' : 'Feb'}
             </div>
             <div className={classes.GridHeader} title="Március">
-              Már
+              {mobileView ? 'III' : 'Már'}
             </div>
             <div className={classes.GridHeader} title="Április">
-              Ápr
+              {mobileView ? 'IV' : 'Ápr'}
             </div>
             <div className={classes.GridHeader} title="Május">
-              Máj
+              {mobileView ? 'V' : 'Máj'}
             </div>
             <div className={classes.GridHeader} title="Június">
-              Jún
+              {mobileView ? 'VI' : 'Jún'}
             </div>
             <div className={classes.GridHeader} title="Július">
-              Júl
+              {mobileView ? 'VII' : 'Júl'}
             </div>
             <div className={classes.GridHeader} title="Augusztus">
-              Aug
+              {mobileView ? 'VIII' : 'Aug'}
             </div>
             <div className={classes.GridHeader} title="Szeptember">
-              Szep
+              {mobileView ? 'IX' : 'Szep'}
             </div>
             <div className={classes.GridHeader} title="Október">
-              Okt
+              {mobileView ? 'X' : 'Okt'}
             </div>
             <div className={classes.GridHeader} title="November">
-              Nov
+              {mobileView ? 'XI' : 'Nov'}
             </div>
             <div className={classes.GridHeader} title="December">
-              Dec
+              {mobileView ? 'XII' : 'Dec'}
             </div>
             {this.plantRows}
           </div>

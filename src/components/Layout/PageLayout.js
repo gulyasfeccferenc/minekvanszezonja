@@ -49,7 +49,7 @@ class PageLayout extends Component {
             collapsed={this.state.showSideDrawer}
             onCollapse={this.toggleSideDrawer}
             className={styles.Sider}
-            collapsedWidth={window.innerWidth.toFixed(0) > 400 ? 80 : 0}
+            collapsedWidth={window.innerWidth.toFixed(0) > 460 ? 80 : 0}
           >
             <div className={styles.Logo}>
               <img src={logoImage} alt="Minek van szezonja" />
