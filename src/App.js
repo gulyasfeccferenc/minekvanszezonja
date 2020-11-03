@@ -58,7 +58,6 @@ class App extends Component {
         category: "User",
         action: "Hit search",
         label: value,
-        value: value,
       });
     } else {
       this.setState({ searchedItem: "" });
