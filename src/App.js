@@ -1,8 +1,5 @@
-import React, { Component } from "react";
+import React, {Component, lazy, Suspense} from "react";
 import "antd/dist/antd.min.css";
-import PageLayout from "./components/Layout/PageLayout";
-import TableView from "./components/UI/TableView/TableView";
-import NoMatch from "./components/Navigation/NoMatch/NoMatch";
 import {
   MemoryRouter,
   Redirect,
@@ -10,16 +7,22 @@ import {
   Switch,
   withRouter,
 } from "react-router";
-import Plant from "./components/UI/Plant/Plant";
 import "./App.module.scss";
-import About from "./components/Pages/About/About";
-import Login from "./components/Pages/Login/Login";
 import UserProvider from "./services/UserProvider";
-import CardView from "./components/UI/CardView/CardView";
 import { Input } from "antd";
 import ReactGA from "react-ga";
 
 const { Search } = Input;
+const Plant = lazy(() => import('./components/UI/Plant/Plant'));
+const About = lazy(() => import('./components/Pages/About/About'));
+const Login = lazy(() => import('./components/Pages/Login/Login'));
+const CardView = lazy(() => import('./components/UI/CardView/CardView'));
+const PageLayout = lazy(() => import('./components/Layout/PageLayout'));
+const TableView = lazy(() => import('./components/UI/TableView/TableView'));
+const NoMatch = lazy(() => import('./components/Navigation/NoMatch/NoMatch'));
+
+const renderLoader = () => <div id="suspense-loading"></div>;
+
 
 class App extends Component {
   user = null;
@@ -54,6 +57,7 @@ class App extends Component {
       ReactGA.event({
         category: "User",
         action: "Hit search",
+        label: value,
         value: value,
       });
     } else {
@@ -65,7 +69,8 @@ class App extends Component {
     return (
       <MemoryRouter>
         <UserProvider>
-          <PageLayout searchField={this.searchField}>
+          <Suspense fallback={renderLoader()}>
+            <PageLayout searchField={this.searchField}>
             <Switch>
               <Route
                 path="/"
@@ -89,6 +94,7 @@ class App extends Component {
               <Route component={NoMatch} />
             </Switch>
           </PageLayout>
+          </Suspense>
         </UserProvider>
       </MemoryRouter>
     );

@@ -103,7 +103,7 @@ class PageLayout extends Component {
             <Header className={styles.Header}>
               {this.searchBarNeeded() ? this.state.searchField : ""}
             </Header>
-            <Content style={{ margin: "0 16px" }}>
+            <Content style={{ margin: "0 4px" }}>
               <main className={styles.Content}>{this.props.children}</main>
             </Content>
             <Footer></Footer>
