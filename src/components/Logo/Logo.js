@@ -1,6 +1,6 @@
-import React from 'react';
-import logoImage from '../../radish.png';
-import classes from './Logo.module.scss';
+import React from "react";
+import logoImage from "../../radish.png";
+import classes from "./Logo.module.scss";
 
 const logo = (props) => (
   <div className={classes.Logo}>

@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import {
-  Card, Col, Empty, Row,
-} from 'antd';
-import { db } from '../../../services/firebase';
-import classes from '../TableView/TableView.module.scss';
+import React, { Component } from "react";
+import { Card, Col, Empty, Row } from "antd";
+import { db } from "../../../services/firebase";
+import classes from "../TableView/TableView.module.scss";
 
 const { Meta } = Card;
 
@@ -19,10 +17,10 @@ export default class CardView extends Component {
   componentDidMount() {
     // Responsivity
     this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
+    window.addEventListener("resize", this.updateWindowDimensions);
     // Getting data
     const self = this;
-    db.ref('plants/').on('value', (snapshot) => {
+    db.ref("plants/").on("value", (snapshot) => {
       const rawPlantData = [];
       snapshot.forEach((snap) => {
         rawPlantData.push({ ...snap.val(), id: snap.key });
@@ -32,7 +30,7 @@ export default class CardView extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
+    window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
   updateWindowDimensions() {
@@ -55,19 +53,19 @@ export default class CardView extends Component {
     const spanValue = this.calculateSpanValue();
     if (this.props.searchedItem && this.props.searchedItem.length > 2) {
       const filterValue = this.props.searchedItem.toString().toLowerCase();
-      this.filteredPlants = this.state.plants.filter((item) => item.name.toLowerCase().includes(filterValue));
+      this.filteredPlants = this.state.plants.filter((item) =>
+        item.name.toLowerCase().includes(filterValue)
+      );
 
       if (this.filteredPlants.length < 1) {
         this.plantCards = (
           <p className={classes.FullWidth}>
-            A keresett növény (
-            {this.props.searchedItem}
-            ) sajnos nem található!
+            A keresett növény ({this.props.searchedItem}) sajnos nem található!
           </p>
         );
       } else {
         this.plantCards = this.filteredPlants.map((item) => {
-          console.info('item', item);
+          console.info("item", item);
           return (
             <Col span={spanValue} key={`${item.id}_key`}>
               <Card
@@ -95,7 +93,7 @@ export default class CardView extends Component {
             size="small"
           >
             <Meta
-                // title={item.name}
+              // title={item.name}
               description={item.details}
             />
           </Card>

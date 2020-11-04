@@ -1,4 +1,4 @@
-import React, {Component, lazy, Suspense} from "react";
+import React, { Component, lazy, Suspense } from "react";
 import "antd/dist/antd.min.css";
 import {
   MemoryRouter,
@@ -13,16 +13,15 @@ import { Input } from "antd";
 import ReactGA from "react-ga";
 
 const { Search } = Input;
-const Plant = lazy(() => import('./components/UI/Plant/Plant'));
-const About = lazy(() => import('./components/Pages/About/About'));
-const Login = lazy(() => import('./components/Pages/Login/Login'));
-const CardView = lazy(() => import('./components/UI/CardView/CardView'));
-const PageLayout = lazy(() => import('./components/Layout/PageLayout'));
-const TableView = lazy(() => import('./components/UI/TableView/TableView'));
-const NoMatch = lazy(() => import('./components/Navigation/NoMatch/NoMatch'));
+const Plant = lazy(() => import("./components/UI/Plant/Plant"));
+const About = lazy(() => import("./components/Pages/About/About"));
+const Login = lazy(() => import("./components/Pages/Login/Login"));
+const CardView = lazy(() => import("./components/UI/CardView/CardView"));
+const PageLayout = lazy(() => import("./components/Layout/PageLayout"));
+const TableView = lazy(() => import("./components/UI/TableView/TableView"));
+const NoMatch = lazy(() => import("./components/Navigation/NoMatch/NoMatch"));
 
 const renderLoader = () => <div id="suspense-loading"></div>;
-
 
 class App extends Component {
   user = null;
@@ -70,29 +69,29 @@ class App extends Component {
         <UserProvider>
           <Suspense fallback={renderLoader()}>
             <PageLayout searchField={this.searchField}>
-            <Switch>
-              <Route
-                path="/"
-                exact={true}
-                render={() => <Redirect to="/table" />}
-              />
-              <Route path="/plants/new" component={Plant} new={true} />
-              <Route path="/plants/:plantId" component={Plant} />
-              <Route
-                path="/table"
-                exact
-                render={(props) => <TableView {...props} {...this.state} />}
-              />
-              <Route
-                path="/cards"
-                exact
-                render={(props) => <CardView {...props} {...this.state} />}
-              />
-              <Route path="/login" component={Login} />
-              <Route path="/about" component={About} />
-              <Route component={NoMatch} />
-            </Switch>
-          </PageLayout>
+              <Switch>
+                <Route
+                  path="/"
+                  exact={true}
+                  render={() => <Redirect to="/table" />}
+                />
+                <Route path="/plants/new" component={Plant} new={true} />
+                <Route path="/plants/:plantId" component={Plant} />
+                <Route
+                  path="/table"
+                  exact
+                  render={(props) => <TableView {...props} {...this.state} />}
+                />
+                <Route
+                  path="/cards"
+                  exact
+                  render={(props) => <CardView {...props} {...this.state} />}
+                />
+                <Route path="/login" component={Login} />
+                <Route path="/about" component={About} />
+                <Route component={NoMatch} />
+              </Switch>
+            </PageLayout>
           </Suspense>
         </UserProvider>
       </MemoryRouter>

@@ -1,13 +1,11 @@
-import React, { Component, Fragment } from 'react';
-import {
-  Button, Input, Space, Typography,
-} from 'antd';
+import React, { Component, Fragment } from "react";
+import { Button, Input, Space, Typography } from "antd";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
   UserOutlined,
-} from '@ant-design/icons';
-import { auth } from '../../../services/firebase';
+} from "@ant-design/icons";
+import { auth } from "../../../services/firebase";
 
 const { Title } = Typography;
 
@@ -15,17 +13,17 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: '',
-      password: '',
+      user: "",
+      password: "",
     };
   }
 
   onChangeHandler(event) {
     const { name, value } = event.currentTarget;
 
-    if (name === 'email') {
+    if (name === "email") {
       this.setState({ user: value });
-    } else if (name === 'password') {
+    } else if (name === "password") {
       this.setState({ password: value });
     }
   }
@@ -36,7 +34,7 @@ export default class Login extends Component {
       .signInWithEmailAndPassword(this.state.user, this.state.password)
       .catch((error) => {
         // setError("Error signing in with password and email!");
-        console.error('Error signing in with password and email', error);
+        console.error("Error signing in with password and email", error);
       });
   }
 
