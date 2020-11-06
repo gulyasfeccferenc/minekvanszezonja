@@ -11,6 +11,7 @@ import "./App.module.scss";
 import UserProvider from "./services/UserProvider";
 import { Input } from "antd";
 import ReactGA from "react-ga";
+import CookieConsent from "./components/UI/CookieConsent/CookieConsent";
 
 const { Search } = Input;
 const Plant = lazy(() => import("./components/UI/Plant/Plant"));
@@ -42,6 +43,7 @@ class App extends Component {
     this.state = {
       searchedItem: "",
       searchField: this.searchField,
+      cookiesAccepted: localStorage?.getItem("cookiesAccepted") | false,
     };
     ReactGA.initialize("UA-163347419-1");
   }
@@ -91,11 +93,22 @@ class App extends Component {
                 <Route path="/about" component={About} />
                 <Route component={NoMatch} />
               </Switch>
+              {this.state.cookiesAccepted ? null : (
+                <CookieConsent></CookieConsent>
+              )}
             </PageLayout>
           </Suspense>
         </UserProvider>
       </MemoryRouter>
     );
+  }
+
+  /**
+   * Utility function to handle persist cookie consent
+   */
+  acceptCookie() {
+    localStorage.setItem("CookiePolicy", true);
+    this.setState({ cookiesAccepted: true });
   }
 }
 
