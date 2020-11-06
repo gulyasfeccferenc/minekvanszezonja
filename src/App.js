@@ -43,9 +43,15 @@ class App extends Component {
     this.state = {
       searchedItem: "",
       searchField: this.searchField,
-      cookiesAccepted: localStorage?.getItem("cookiesAccepted") | false,
+      cookiesAccepted: true,
     };
     ReactGA.initialize("UA-163347419-1");
+  }
+
+  componentDidMount() {
+    this.setState({
+      cookiesAccepted: localStorage.getItem("CookiePolicy") === "true",
+    });
   }
 
   /**
@@ -94,7 +100,9 @@ class App extends Component {
                 <Route component={NoMatch} />
               </Switch>
               {this.state.cookiesAccepted ? null : (
-                <CookieConsent></CookieConsent>
+                <CookieConsent
+                  cookieClickHandler={() => this.acceptCookie()}
+                ></CookieConsent>
               )}
             </PageLayout>
           </Suspense>

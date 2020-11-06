@@ -5,6 +5,9 @@ import { Button } from "antd";
 export default class CookieConsent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      clickHandler: props.cookieClickHandler,
+    };
   }
 
   render() {
@@ -12,11 +15,11 @@ export default class CookieConsent extends Component {
       <div className={styles.CookieBanner}>
         <p>
           A sütik segítenek szolgáltatásaink biztosításában. Szolgáltatásaink
-          használatával beleegyezzel a sütik használatába.{" "}
-          <a href="">További információ</a>
+          használatával beleegyezzel a sütik használatába.
+          <a href="#">További információ</a>
         </p>
         <p>
-          <Button>Elfogadom</Button>
+          <Button onClick={() => this.state.clickHandler()}>Elfogadom</Button>
         </p>
       </div>
     );
