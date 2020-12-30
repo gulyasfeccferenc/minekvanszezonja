@@ -6,6 +6,8 @@ import {
   BuildOutlined,
   IdcardOutlined,
   LoginOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   TableOutlined,
 } from "@ant-design/icons";
 import logoImage from "../../radish.png";
@@ -20,6 +22,13 @@ class PageLayout extends Component {
       showSideDrawer: false,
       searchField: props.searchField,
     };
+    this.escFunction = this.escFunction.bind(this);
+  }
+
+  escFunction(event) {
+    if (event.keyCode === 27) {
+      this.setState({ showSideDrawer: true });
+    }
   }
 
   toggleSideDrawer = () => {
@@ -39,10 +48,24 @@ class PageLayout extends Component {
     );
   }
 
+  componentDidMount() {
+    document.addEventListener("keydown", this.escFunction, false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escFunction, false);
+  }
+
   render() {
     return (
       <Fragment>
         <Layout style={{ minHeight: "100vh" }}>
+          {React.createElement(
+            this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: styles.Trigger,
+              onClick: this.toggleSideDrawer,
+            }
+          )}
           <Sider
             collapsible
             breakpoint="md"
@@ -50,6 +73,7 @@ class PageLayout extends Component {
             onCollapse={this.toggleSideDrawer}
             className={styles.Sider}
             collapsedWidth={window.innerWidth.toFixed(0) > 460 ? 80 : 0}
+            trigger={null}
           >
             <div className={styles.Logo}>
               <img src={logoImage} alt="Minek van szezonja" />

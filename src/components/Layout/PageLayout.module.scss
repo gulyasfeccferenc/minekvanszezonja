@@ -31,9 +31,21 @@
 }
 
 .Sider {
-  position: sticky;
-  top: 0px;
+  position: absolute;
+  top: 0;
   align-self: flex-start;
   height: 100vh;
   z-index: 1;
+}
+
+.Trigger {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  color: white;
 }
