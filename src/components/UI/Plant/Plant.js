@@ -293,7 +293,9 @@ class Plant extends Component {
           </Popconfirm>
         ) : null}
         {plantDetails}
-        <p>A kiválasztott növény: {this.props.match.params.plantId}</p>
+        {adminMode ? (
+          <p>A kiválasztott növény: {this.props.match.params.plantId}</p>
+        ) : null}
       </div>
     );
   }
