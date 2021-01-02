@@ -105,7 +105,7 @@ class TableView extends Component {
               mobileView ? classes.smOptimized : "",
             ].join(" ")}
           >
-            <div className={classes.GridHeader}></div>
+            <div className={classes.GridHeader} />
             <div className={classes.GridHeader} title="Január">
               {mobileView ? "I" : "Jan"}
             </div>

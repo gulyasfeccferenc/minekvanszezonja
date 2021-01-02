@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import classes from "./Plant.module.scss";
 import DynamicInput from "../../Form/DynamicInput/DynamicInput";
 import { db } from "../../../services/firebase";
@@ -10,6 +10,8 @@ import {
 } from "@ant-design/icons";
 import { UserContext } from "../../../services/UserProvider";
 import Title from "antd/es/typography/Title";
+import PlantType from "../PlantType/PlantType";
+import plant_placeholder from "../../../assets/plant_placeholder.jpg";
 
 class Plant extends Component {
   static contextType = UserContext;
@@ -176,6 +178,30 @@ class Plant extends Component {
     return plantForm;
   }
 
+  generatePlantDetails() {
+    let plantForm = "";
+    const formElementArray = [];
+    for (let key in this.state.plantFormFields) {
+      formElementArray.push({
+        id: key,
+        config: this.state.plantFormFields[key],
+      });
+    }
+    if (!this.state.loading) {
+      plantForm = (
+        <Fragment>
+          <img src={plant_placeholder} alt="Kép a növényről" />
+          <p>
+            {this.state.plantFormFields.details.value ||
+              "Ehhez a növényhez nem tartozik leírás"}
+          </p>
+          <PlantType type={this.state.plantFormFields.planttype.value} />
+        </Fragment>
+      );
+    }
+    return plantForm;
+  }
+
   saveHandler = (event) => {
     event.preventDefault();
     this.saving = true;
@@ -235,9 +261,10 @@ class Plant extends Component {
   }
 
   render() {
-    if (!this.context)
-      return <Title>Ehhez a művelethez nincs jogosultságod</Title>;
-    const plantForm = this.generatePlantForm();
+    const adminMode = !!this.context;
+    const plantDetails = adminMode
+      ? this.generatePlantForm()
+      : this.generatePlantDetails();
 
     return (
       <div className={classes.Plant}>
@@ -251,7 +278,7 @@ class Plant extends Component {
         >
           Vissza
         </Button>
-        {!this.props.new && this.state.plantId ? (
+        {adminMode && !this.props.new && this.state.plantId ? (
           <Popconfirm
             title="Biztosan törölni szeretnéd?"
             onConfirm={() => {
@@ -265,7 +292,7 @@ class Plant extends Component {
             </Button>
           </Popconfirm>
         ) : null}
-        {plantForm}
+        {plantDetails}
         <p>A kiválasztott növény: {this.props.match.params.plantId}</p>
       </div>
     );
