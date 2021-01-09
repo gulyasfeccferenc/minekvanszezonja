@@ -57,6 +57,7 @@ class PageLayout extends Component {
 
   render() {
     let widthShouldCollapse = window.innerWidth.toFixed(0) > 460;
+    let fullSize = window.innerWidth.toFixed(0) > 800;
     return (
       <Fragment>
         <Layout style={{ minHeight: "100vh" }}>
@@ -130,7 +131,11 @@ class PageLayout extends Component {
             </Header>
             <Content
               style={{
-                marginLeft: widthShouldCollapse ? "0 80px 0 4px" : "0 4px",
+                marginLeft: fullSize
+                  ? "200px"
+                  : widthShouldCollapse
+                  ? "80px"
+                  : "4px",
               }}
             >
               <main className={styles.Content}>{this.props.children}</main>
