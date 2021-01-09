@@ -5,7 +5,6 @@ import classes from "./TableRow.module.scss";
 import { UserContext } from "../../../../services/UserProvider";
 
 const TableRow = (props) => {
-  const user = useContext(UserContext);
   const plantName = (
     <Tooltip title={props.description}>
       <div>{props.name}</div>
@@ -15,7 +14,7 @@ const TableRow = (props) => {
   return (
     <>
       <div className={classes.TableRow}>
-        {user ? navLink : plantName}
+        {navLink}
         <Tooltip title="Január">
           <div className={classes.Grid}>
             {props.season && props.season.includes(1) ? "X" : null}
