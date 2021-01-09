@@ -56,6 +56,7 @@ class PageLayout extends Component {
   }
 
   render() {
+    let widthShouldCollapse = window.innerWidth.toFixed(0) > 460;
     return (
       <Fragment>
         <Layout style={{ minHeight: "100vh" }}>
@@ -72,7 +73,7 @@ class PageLayout extends Component {
             collapsed={this.state.showSideDrawer}
             onCollapse={this.toggleSideDrawer}
             className={styles.Sider}
-            collapsedWidth={window.innerWidth.toFixed(0) > 460 ? 80 : 0}
+            collapsedWidth={widthShouldCollapse ? 80 : 0}
             trigger={null}
           >
             <div className={styles.Logo}>
@@ -127,7 +128,11 @@ class PageLayout extends Component {
             <Header className={styles.Header}>
               {this.searchBarNeeded() ? this.state.searchField : ""}
             </Header>
-            <Content style={{ margin: "0 4px" }}>
+            <Content
+              style={{
+                marginLeft: widthShouldCollapse ? "0 80px 0 4px" : "0 4px",
+              }}
+            >
               <main className={styles.Content}>{this.props.children}</main>
             </Content>
             <Footer></Footer>
