@@ -11,4 +11,8 @@
 .Card {
   display: inline-block;
   margin-left: 8px;
+
+  .ant-card-body {
+    padding: 18px 4px;
+  }
 }

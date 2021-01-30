@@ -1,10 +1,10 @@
 .Content {
   min-height: calc(100vh - 192px);
   position: relative;
-  margin: 80px auto 0;
+  margin: 70px auto 0;
+  background: linear-gradient(0deg, #aae5ff82, transparent);
 
   & > section {
-    background: rgba(255, 255, 255, 0.4);
     text-align: center;
   }
 }
@@ -30,8 +30,9 @@
 
   h1 {
     color: rgba(222, 234, 224, 1);
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 2px 2px 5px #e714f5;
     font-size: 24px;
+    font-family: "Pacifico", cursive;
   }
 
   &:hover {
