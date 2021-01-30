@@ -6,6 +6,7 @@ import { Card } from "antd";
 const { Meta } = Card;
 import plant_placeholder from "../../../assets/plant_placeholder.jpg";
 import ScrollContainer from "react-indiana-drag-scroll";
+import Title from "antd/es/typography/Title";
 
 export default class Dashboard extends Component {
   constructor() {
@@ -55,8 +56,8 @@ export default class Dashboard extends Component {
   render() {
     return (
       <Fragment>
-        <section>
-          <h1> {this.month} sztárjai</h1>
+        <section className={styles.Dashboard}>
+          <Title> {this.month} sztárjai</Title>
           <ul className={styles.CardContainer}>
             <ScrollContainer>{this.generateMonthHighlights()}</ScrollContainer>
           </ul>
