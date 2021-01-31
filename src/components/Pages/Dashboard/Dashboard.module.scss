@@ -16,3 +16,22 @@
     padding: 18px 4px;
   }
 }
+
+.QuickSearchContainer {
+  text-align: left;
+  max-height: 400px;
+  height: 100%;
+  padding: 0 16px;
+  overflow: auto;
+
+  & > div {
+    overflow: auto;
+    max-height: 350px;
+  }
+}
+
+.HighlightedContainer {
+  border: 1px dashed #9c27b0;
+  padding: 0 16px;
+  box-shadow: 1px 1px 10px #9c27b0;
+}

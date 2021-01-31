@@ -73,10 +73,10 @@ export default class Dashboard extends Component {
         <section className={styles.Dashboard}>
           <Title>Többi</Title>
           <Row>
-            <Col span={12}>
+            <Col span={12} className={styles.HighlightedContainer}>
               <HighlightedPlant></HighlightedPlant>
             </Col>
-            <Col span={12}>
+            <Col span={12} className={styles.QuickSearchContainer}>
               <QuickSearchTable {...this.props} plants={this.state.plants} />
             </Col>
           </Row>
