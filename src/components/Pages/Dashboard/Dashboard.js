@@ -2,15 +2,17 @@ import React, { Component, Fragment } from "react";
 import { db } from "../../../services/firebase";
 import * as styles from "./Dashboard.module.scss";
 import { months } from "../../../Constants";
-import { Card } from "antd";
+import { Card, Row, Col } from "antd";
 const { Meta } = Card;
 import plant_placeholder from "../../../assets/plant_placeholder.jpg";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Title from "antd/es/typography/Title";
+import HighlightedPlant from "./HighlightedPlant/HighlightedPlant";
+import QuickSearchTable from "./QuickSearchTable/QuickSearchTable";
 
 export default class Dashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.month = this.getCurrentMonth().label;
     this.state = {
       plants: [],
@@ -67,6 +69,17 @@ export default class Dashboard extends Component {
           <ul className={styles.CardContainer}>
             <ScrollContainer>{this.generateMonthHighlights()}</ScrollContainer>
           </ul>
+        </section>
+        <section className={styles.Dashboard}>
+          <Title>Többi</Title>
+          <Row>
+            <Col span={12}>
+              <HighlightedPlant></HighlightedPlant>
+            </Col>
+            <Col span={12}>
+              <QuickSearchTable {...this.props} plants={this.state.plants} />
+            </Col>
+          </Row>
         </section>
       </Fragment>
     );
