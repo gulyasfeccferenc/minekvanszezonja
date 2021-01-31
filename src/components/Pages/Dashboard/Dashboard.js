@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { db } from "../../../services/firebase";
 import * as styles from "./Dashboard.module.scss";
-
+import { months } from "../../../Constants";
 import { Card } from "antd";
 const { Meta } = Card;
 import plant_placeholder from "../../../assets/plant_placeholder.jpg";
@@ -11,7 +11,7 @@ import Title from "antd/es/typography/Title";
 export default class Dashboard extends Component {
   constructor() {
     super();
-    this.month = "Január";
+    this.month = this.getCurrentMonth().label;
     this.state = {
       plants: [],
     };
@@ -28,18 +28,16 @@ export default class Dashboard extends Component {
     });
   }
 
+  /**
+   * This should filter the plants of the actual month
+   * @returns {Array<Card>} Array with the generated cards
+   */
   generateMonthHighlights() {
     let plantsOfMonth = this.state.plants.filter(
       (plant) => plant.season.indexOf(1) > -1
     );
     return plantsOfMonth.map((item) => {
       return (
-        // <li>
-        //     {/*key={item.id + "_key"}*/}
-        //     {/*id={item.id}*/}
-        //     {item.name} - {item.details}
-        //     {/*season={item.season}*/}
-        // </li>
         <Card
           className={styles.Card}
           key={item.id}
@@ -51,6 +49,14 @@ export default class Dashboard extends Component {
         </Card>
       );
     });
+  }
+
+  /**
+   * Will gives back the current month according to the months array
+   * @returns {{color: string, label: string, value: number}} An object with a month (label, value, color)
+   */
+  getCurrentMonth() {
+    return months.find((item) => item.value === new Date().getMonth() + 1);
   }
 
   render() {
