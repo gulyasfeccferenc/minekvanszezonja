@@ -2,28 +2,13 @@ import React, { Component, Fragment } from "react";
 import { List, Avatar, Input } from "antd";
 import plantPlaceholder from "../../../../assets/plant_placeholder.jpg";
 import ReactGA from "react-ga";
+import { NavLink } from "react-router-dom";
 
 const { Search } = Input;
-
-const data = [
-  {
-    title: "Ant Design Title 1",
-  },
-  {
-    title: "Ant Design Title 2",
-  },
-  {
-    title: "Ant Design Title 3",
-  },
-  {
-    title: "Ant Design Title 4",
-  },
-];
 
 export default class QuickSearchTable extends Component {
   constructor(props) {
     super(props);
-    this.data = data;
     this.state = {
       plantsSource: [],
       searchedItem: "",
@@ -55,6 +40,10 @@ export default class QuickSearchTable extends Component {
     return plantList;
   };
 
+  selectCurrentPlant = (item) => {
+    this.props.selectPlant(item);
+  };
+
   render() {
     return (
       <Fragment>
@@ -69,10 +58,10 @@ export default class QuickSearchTable extends Component {
           size="small"
           onSearch={(searchedTerm) => this.filterBySearch(searchedTerm)}
           renderItem={(item) => (
-            <List.Item>
+            <List.Item onClick={() => this.selectCurrentPlant(item)}>
               <List.Item.Meta
                 avatar={<Avatar src={plantPlaceholder} />}
-                title={<a href="https://ant.design">{item.name}</a>}
+                title={<NavLink to={`/plants/${item.id}`}>{item.name}</NavLink>}
                 description={item.details}
               />
             </List.Item>

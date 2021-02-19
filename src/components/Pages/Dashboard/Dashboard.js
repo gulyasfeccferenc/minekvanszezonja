@@ -14,10 +14,12 @@ export default class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.month = this.getCurrentMonth().label;
-    this.state = {
-      plants: [],
-    };
   }
+
+  state = {
+    plants: [],
+    selectedPlant: "",
+  };
 
   componentDidMount() {
     const self = this;
@@ -61,6 +63,18 @@ export default class Dashboard extends Component {
     return months.find((item) => item.value === new Date().getMonth() + 1);
   }
 
+  /**
+   * Will look up the given plant by ID and set state accordingly
+   * @param selectedPlant
+   */
+  selectPlant = (selectedPlant) => {
+    let plant = null;
+    if (selectedPlant) {
+      plant = this.state.plants.find((item) => item.id === selectedPlant.id);
+      this.setState({ selectedPlant: plant });
+    }
+  };
+
   render() {
     return (
       <Fragment>
@@ -74,10 +88,17 @@ export default class Dashboard extends Component {
           <Title>Többi</Title>
           <Row>
             <Col span={12} className={styles.HighlightedContainer}>
-              <HighlightedPlant></HighlightedPlant>
+              <HighlightedPlant
+                {...this.props}
+                plant={this.state.selectedPlant}
+              />
             </Col>
             <Col span={12} className={styles.QuickSearchContainer}>
-              <QuickSearchTable {...this.props} plants={this.state.plants} />
+              <QuickSearchTable
+                {...this.props}
+                plants={this.state.plants}
+                selectPlant={this.selectPlant}
+              />
             </Col>
           </Row>
         </section>
