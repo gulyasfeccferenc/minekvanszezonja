@@ -62,7 +62,6 @@ export default class QuickSearchTable extends Component {
               <List.Item.Meta
                 avatar={<Avatar src={plantPlaceholder} />}
                 title={<NavLink to={`/plants/${item.id}`}>{item.name}</NavLink>}
-                description={item.details}
               />
             </List.Item>
           )}

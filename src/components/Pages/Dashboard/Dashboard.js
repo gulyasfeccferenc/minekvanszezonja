@@ -46,6 +46,7 @@ export default class Dashboard extends Component {
           className={styles.Card}
           key={item.id}
           hoverable
+          onClick={() => this.selectPlant(item)}
           style={{ width: 150 }}
           cover={<img alt="example" src={plant_placeholder} />}
         >
