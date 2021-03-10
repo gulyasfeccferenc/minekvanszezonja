@@ -6,6 +6,7 @@
 .CardContainer {
   white-space: nowrap;
   overflow: auto;
+  padding: 0;
 }
 
 .Card {
@@ -38,9 +39,10 @@
 }
 
 .HighlightedContainer {
-  border: 1px dashed #9c27b0;
+  border: 1px dashed #001529;
+  border-radius: 4px;
   padding: 0 16px;
-  box-shadow: 1px 1px 10px #9c27b0;
+  box-shadow: 1px 1px 10px #7d7d7d;
   overflow: auto;
   max-height: 400px;
 }

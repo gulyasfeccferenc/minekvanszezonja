@@ -58,7 +58,10 @@ export default class QuickSearchTable extends Component {
           size="small"
           onSearch={(searchedTerm) => this.filterBySearch(searchedTerm)}
           renderItem={(item) => (
-            <List.Item onClick={() => this.selectCurrentPlant(item)}>
+            <List.Item
+              onClick={() => this.selectCurrentPlant(item)}
+              key={`${new Date()}-${item.id}`}
+            >
               <List.Item.Meta
                 avatar={<Avatar src={plantPlaceholder} />}
                 title={<NavLink to={`/plants/${item.id}`}>{item.name}</NavLink>}
