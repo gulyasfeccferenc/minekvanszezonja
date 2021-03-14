@@ -1,17 +1,12 @@
 import React, { Component, lazy, Suspense } from "react";
 import "antd/dist/antd.min.css";
-import {
-  MemoryRouter,
-  Redirect,
-  Route,
-  Switch,
-  withRouter,
-} from "react-router";
+import { MemoryRouter, Route, Switch, withRouter } from "react-router";
 import "./App.module.scss";
 import UserProvider from "./services/UserProvider";
 import { Input } from "antd";
 import ReactGA from "react-ga";
 import CookieConsent from "./components/UI/CookieConsent/CookieConsent";
+import Dashboard from "./components/Pages/Dashboard/Dashboard";
 
 const { Search } = Input;
 const Plant = lazy(() => import("./components/UI/Plant/Plant"));
@@ -81,7 +76,7 @@ class App extends Component {
                 <Route
                   path="/"
                   exact={true}
-                  render={() => <Redirect to="/table" />}
+                  render={(props) => <Dashboard {...props} {...this.state} />}
                 />
                 <Route path="/plants/new" component={Plant} new={true} />
                 <Route path="/plants/:plantId" component={Plant} />
