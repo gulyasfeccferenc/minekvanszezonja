@@ -21,6 +21,9 @@ export default class Dashboard extends Component {
     selectedPlant: "",
   };
 
+  /**
+   * Lifecycle hook
+   */
   componentDidMount() {
     const self = this;
     db.ref("plants/").on("value", (snapshot) => {
@@ -29,7 +32,21 @@ export default class Dashboard extends Component {
         rawPlantData.push({ ...snap.val(), id: snap.key });
       });
       self.setState({ plants: rawPlantData });
+      self.setInitialHighlight(rawPlantData[0]);
     });
+  }
+
+  /**
+   * Utility function to get last selected plant or the first one from the list
+   * @param first
+   */
+  setInitialHighlight(first) {
+    let highlight;
+    const lastId = localStorage.getItem("lastHighlightedPlantId");
+    if (lastId) {
+      highlight = this.state.plants.find((plant) => plant.id === lastId);
+    }
+    this.setState({ selectedPlant: highlight ? highlight : first });
   }
 
   /**
@@ -73,6 +90,7 @@ export default class Dashboard extends Component {
     if (selectedPlant) {
       plant = this.state.plants.find((item) => item.id === selectedPlant.id);
       this.setState({ selectedPlant: plant });
+      localStorage.setItem("lastHighlightedPlantId", plant.id);
     }
   };
 

@@ -15,7 +15,10 @@ export default class HighlightedPlant extends Component {
 
   generateSeasonList() {
     return this.props.plant?.season?.map((season) => (
-      <li className={`${months[season - 1]?.color}`}>
+      <li
+        className={`${months[season - 1]?.color}`}
+        key={`id-of-${months[season - 1].label}`}
+      >
         {months[season - 1]?.label} {months[season - 1]?.emoji}
       </li>
     ));
@@ -30,7 +33,7 @@ export default class HighlightedPlant extends Component {
         <div
           style={{ backgroundImage: `url(${PlantPlaceholder})` }}
           className={classes.PlantImage}
-        ></div>
+        />
         <Title className={classes.Title}>{this.props.plant.name}</Title>
         <p>{this.props.plant.details}</p>
       </Fragment>

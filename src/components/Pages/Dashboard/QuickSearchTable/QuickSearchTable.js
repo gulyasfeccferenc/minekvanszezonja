@@ -56,7 +56,6 @@ export default class QuickSearchTable extends Component {
           itemLayout="horizontal"
           dataSource={this.filterList(this.props.plants)}
           size="small"
-          onSearch={(searchedTerm) => this.filterBySearch(searchedTerm)}
           renderItem={(item) => (
             <List.Item
               onClick={() => this.selectCurrentPlant(item)}
