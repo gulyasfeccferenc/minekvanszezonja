@@ -21,11 +21,8 @@
   &:hover {
     right: calc(100% - 100px);
     cursor: default;
-    background: linear-gradient(
-      -90deg,
-      rgba(#aae5ff82, 0.85),
-      rgba(#aae5ff82, 0.25)
-    );
+    background: #673ab7;
+    color: floralwhite;
   }
 
   ul {
