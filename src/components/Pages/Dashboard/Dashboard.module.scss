@@ -1,0 +1,49 @@
+.Dashboard {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.CardContainer {
+  white-space: nowrap;
+  overflow: auto;
+  padding: 0;
+}
+
+.Card {
+  display: inline-block;
+  margin-left: 8px;
+
+  .ant-card-body {
+    padding: 18px 4px;
+  }
+
+  .ant-list-item {
+    &:hover {
+      box-shadow: 1px 1px 6px;
+      transition: box-shadow 0.1s ease-in;
+    }
+  }
+}
+
+.QuickSearchContainer {
+  text-align: left;
+  max-height: 400px;
+  height: 100%;
+  padding: 0 16px;
+  margin-top: 8px;
+  overflow: auto;
+
+  & > div {
+    overflow: auto;
+    max-height: 350px;
+  }
+}
+
+.HighlightedContainer {
+  border: 1px dashed #001529;
+  border-radius: 4px;
+  padding: 0 16px;
+  box-shadow: 1px 1px 10px #7d7d7d;
+  overflow: auto;
+  max-height: 400px;
+}

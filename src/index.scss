@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 body::-webkit-scrollbar {
   width: 1em;
   background: transparent;
@@ -22,4 +24,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.ant-typography {
+  font-family: "Pacifico", cursive;
 }
