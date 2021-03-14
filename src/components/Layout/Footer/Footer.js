@@ -14,7 +14,9 @@ const footer = (props) => (
     <br />
     <p>
       Kérdés, ötlet, javaslat:{" "}
-      <a href="mailto:admin@minekvanszezonja.hu">admin🐛minekvanszezonja.hu</a>
+      <a href="mailto:ferenckoppany+minekvanszezonja@gmail.com">
+        ferenckoppany+minekvanszezonja🐛gmail.com
+      </a>
     </p>
     <p>
       Made with{" "}
