@@ -30,3 +30,6 @@ yarn-error.log*
 
 */firebase.js
 src/services/firebase.js
+/.firebase/
+/.firebaserc
+/firebase.json
