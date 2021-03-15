@@ -127,6 +127,7 @@ export default class Dashboard extends Component {
                 {...this.props}
                 plants={this.state.plants}
                 selectPlant={this.selectPlant}
+                selected={this.state.selectedPlant}
               />
             </Col>
           </Row>

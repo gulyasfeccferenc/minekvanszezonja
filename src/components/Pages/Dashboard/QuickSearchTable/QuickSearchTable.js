@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 import { List, Avatar, Input } from "antd";
 import plantPlaceholder from "../../../../assets/plant_placeholder.jpg";
 import ReactGA from "react-ga";
-import { NavLink } from "react-router-dom";
-
+import * as styles from "./QuickSearchTable.module.scss";
 const { Search } = Input;
 
 export default class QuickSearchTable extends Component {
@@ -46,7 +45,7 @@ export default class QuickSearchTable extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className={styles.ListItems}>
         <Search
           placeholder="Mit keresel?"
           allowClear
@@ -60,15 +59,20 @@ export default class QuickSearchTable extends Component {
             <List.Item
               onClick={() => this.selectCurrentPlant(item)}
               key={`${new Date()}-${item.id}`}
+              className={
+                this.props.selected?.id === item.id ? styles.SelectedItem : ""
+              }
             >
               <List.Item.Meta
                 avatar={<Avatar src={plantPlaceholder} />}
-                title={<NavLink to={`/plants/${item.id}`}>{item.name}</NavLink>}
+                title={
+                  /*<NavLink to={`/plants/${item.id}`}>{*/ item.name /*}</NavLink>*/
+                }
               />
             </List.Item>
           )}
         />
-      </Fragment>
+      </div>
     );
   }
 }
