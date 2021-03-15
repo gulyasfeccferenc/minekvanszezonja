@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Typography } from "antd";
 import * as classes from "./About.module.scss";
+import { NavLink } from "react-router-dom";
 
 const { Title } = Typography;
 
@@ -45,6 +46,9 @@ export default class About extends Component {
               Unsplash
             </a>
           </span>
+        </p>
+        <p>
+          <NavLink to={"/"}>🔙 Vissza</NavLink>
         </p>
       </div>
     );

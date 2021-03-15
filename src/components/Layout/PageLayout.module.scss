@@ -1,8 +1,9 @@
 .Content {
   min-height: calc(100vh - 70px);
   position: relative;
-  margin: 70px auto 0;
+  margin: 0 auto;
   background: linear-gradient(0deg, #aae5ff82, transparent);
+  padding-top: 80px;
 
   & > section {
     text-align: center;
