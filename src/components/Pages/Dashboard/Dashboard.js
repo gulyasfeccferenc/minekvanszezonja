@@ -104,7 +104,7 @@ export default class Dashboard extends Component {
           </ul>
         </section>
         <section className={styles.Dashboard}>
-          <Title>Többi</Title>
+          <Title>Bővebben</Title>
           <Row>
             <Col
               xs={24}

@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Typography } from "antd";
+import * as classes from "./About.module.scss";
 
 const { Title } = Typography;
 
 export default class About extends Component {
   render() {
     return (
-      <>
+      <div className={classes.About}>
         <Title>Minek van szezonja?</Title>
         <p>
           Az oldal tanulóprojektként jött létre, hogy a React keretrendszert
@@ -24,6 +25,13 @@ export default class About extends Component {
           <a href="https://minekvanszezonja.hu">https://minekvanszezonja.hu</a>{" "}
           domainre
         </p>
+        <h3>0.2</h3>
+        <p>
+          A korábbi táblázatos nézetet egy, a növények bővebb ismertetésére is
+          lehetőséget nyújtó, két oszlopra bontott elrendezés váltotta. Új
+          elemként megjelent a "Hónap sztárjai" sáv, ahol az adott hónap
+          növényei gyorsan áttekinthetőek.
+        </p>
 
         <h2>Külön köszönet:</h2>
         <p>
@@ -38,7 +46,7 @@ export default class About extends Component {
             </a>
           </span>
         </p>
-      </>
+      </div>
     );
   }
 }

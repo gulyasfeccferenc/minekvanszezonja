@@ -90,14 +90,12 @@ class App extends Component {
                   exact
                   render={(props) => <CardView {...props} {...this.state} />}
                 />
-                <Route path="/login" component={Login} />
-                <Route path="/about" component={About} />
+                <Route path="/login" exact={true} component={Login} />
+                <Route path="/about" exact={true} component={About} />
                 <Route component={NoMatch} />
               </Switch>
               {this.state.cookiesAccepted ? null : (
-                <CookieConsent
-                  cookieClickHandler={() => this.acceptCookie()}
-                ></CookieConsent>
+                <CookieConsent cookieClickHandler={() => this.acceptCookie()} />
               )}
             </PageLayout>
           </Suspense>
