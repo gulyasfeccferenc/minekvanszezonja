@@ -40,7 +40,6 @@ class App extends Component {
       searchField: this.searchField,
       cookiesAccepted: true,
     };
-    ReactGA.initialize("UA-163347419-1");
   }
 
   componentDidMount() {
