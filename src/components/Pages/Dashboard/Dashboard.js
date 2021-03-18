@@ -19,6 +19,7 @@ export default class Dashboard extends Component {
   state = {
     plants: [],
     selectedPlant: "",
+    interval: null,
   };
 
   /**
@@ -34,6 +35,28 @@ export default class Dashboard extends Component {
       self.setState({ plants: rawPlantData });
       self.setInitialHighlight(rawPlantData[0]);
     });
+
+    const scrollContainer = document.querySelector(".indiana-scroll-container");
+    if (scrollContainer) {
+      const scrollInterval = setInterval(() => {
+        let scrollAmount = scrollContainer.scrollLeft + 160;
+        if (
+          scrollContainer.scrollLeft ===
+          scrollContainer.scrollWidth - scrollContainer.offsetWidth
+        ) {
+          scrollAmount = 0;
+        }
+        scrollContainer.scroll({ left: scrollAmount, behavior: "smooth" });
+      }, 2500);
+      this.setState({ interval: scrollInterval });
+    }
+  }
+
+  /**
+   * Lifecycle hook
+   */
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   /**
