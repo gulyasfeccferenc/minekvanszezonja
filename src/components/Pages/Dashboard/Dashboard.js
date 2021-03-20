@@ -39,7 +39,7 @@ export default class Dashboard extends Component {
     const scrollContainer = document.querySelector(".indiana-scroll-container");
     if (scrollContainer) {
       const scrollInterval = setInterval(() => {
-        let scrollAmount = scrollContainer.scrollLeft + 160;
+        let scrollAmount = scrollContainer.scrollLeft + 158.5;
         if (
           scrollContainer.scrollLeft ===
           scrollContainer.scrollWidth - scrollContainer.offsetWidth
