@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { NextUIProvider } from '@nextui-org/react';
 import { UserProvider } from './contexts/user.context';
+import {PlantsProvider} from './contexts/plants.context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <NextUIProvider>
-        <UserProvider>
-            <App />
-        </UserProvider>
+        <PlantsProvider>
+            <UserProvider>
+                <App />
+            </UserProvider>
+        </PlantsProvider>
     </NextUIProvider>
   </React.StrictMode>
 );

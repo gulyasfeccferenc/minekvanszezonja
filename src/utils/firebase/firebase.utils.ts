@@ -12,7 +12,9 @@ import {
     getFirestore,
     doc,
     getDoc,
-    setDoc
+    setDoc,
+    collection,
+    writeBatch
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -39,6 +41,19 @@ export const auth = getAuth();
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (collectionKey: string, objectsToAdd: any) => {
+    const collectionRef = collection(db, collectionKey);
+    const batch = writeBatch(db);
+
+    objectsToAdd.forEach((categoryObject: any) => {
+        const docRef = doc(collectionRef, categoryObject.title.toLowerCase());
+        batch.set(docRef, categoryObject);
+    });
+
+    await batch.commit();
+    console.info('Setting collections and documents are successfully finished!');
+}
 
 export const createUserDocumentFromAuth = async (userAuth: User | null, additionalParameters?: {[name: string]: string}) => {
     if (userAuth) {
