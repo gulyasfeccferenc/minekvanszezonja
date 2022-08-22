@@ -1,6 +1,6 @@
-import {createContext, useState} from 'react';
+import {createContext, useEffect, useState} from 'react';
 
-import {addCollectionAndDocuments} from '../utils/firebase/firebase.utils';
+import {addCollectionAndDocuments, getCategoriesAndDocuments} from '../utils/firebase/firebase.utils';
 
 export const PlantsContext = createContext({
     plants: [],
@@ -9,7 +9,13 @@ export const PlantsContext = createContext({
 // @ts-ignore
 export const PlantsProvider = ({ children }) => {
     const [plants, setPlants] = useState([]);
-
+    useEffect(() => {
+        const getCategories = async () => {
+            const categoryMap = await getCategoriesAndDocuments();
+            console.info('categoriesmap', categoryMap);
+        }
+        getCategories();
+    })
     const value = { plants };
     return (
         <PlantsContext.Provider value={value}>
