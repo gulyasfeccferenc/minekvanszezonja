@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { NextUIProvider } from '@nextui-org/react';
 import { UserProvider } from './contexts/user.context';
@@ -12,13 +13,15 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <NextUIProvider>
-        <PlantsProvider>
-            <UserProvider>
-                <App />
-            </UserProvider>
-        </PlantsProvider>
-    </NextUIProvider>
+      <BrowserRouter>
+        <NextUIProvider>
+            <PlantsProvider>
+                <UserProvider>
+                    <App />
+                </UserProvider>
+            </PlantsProvider>
+        </NextUIProvider>
+      </BrowserRouter>
   </React.StrictMode>
 );
 

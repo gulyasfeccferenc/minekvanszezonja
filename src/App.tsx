@@ -1,16 +1,15 @@
-import React, {useContext, useEffect} from 'react';
-import './App.css';
-import LoginComponent from './pages/auth/Login.component';
-import {signOutUser} from './utils/firebase/firebase.utils';
-import {UserContext} from './contexts/user.context';
+import React from 'react';
+import {Route, Routes} from 'react-router';
+import NavBar from './components/navigation/NavBar.component';
 
 function App() {
-    const { currentUser } = useContext(UserContext);
 
   return (
-    <div className="App">
-        {currentUser ? <button onClick={signOutUser}>Engedj ki :'(</button> : <LoginComponent />}
-    </div>
+      <Routes>
+          <Route path='/' element={<NavBar />}>
+              <Route index element={<><h1>Homi</h1></>} />
+          </Route>
+      </Routes>
   );
 }
 
