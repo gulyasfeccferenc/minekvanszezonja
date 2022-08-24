@@ -15,7 +15,7 @@ const NavBar = () => {
                 <h1>Szia {currentUser?.displayName?.split(' ')[0]}</h1>
                 <button onClick={signOutUser}>Engedj ki :'(</button>
                 <ul>
-                    {Object.keys(plantsMap).map((plant: any) => <li>{plant.toString()}</li>)}
+                    {Object.keys(plantsMap).map((plant: any) => <li key={plant.toString()}>{plant.toString()}</li>)}
                 </ul>
             </> : <LoginComponent />}
             <Outlet />

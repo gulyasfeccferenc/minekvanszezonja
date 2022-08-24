@@ -10,7 +10,7 @@ import {
 import {getRedirectResult} from 'firebase/auth';
 import {setCurrentUser} from './store/user/user.action';
 import {useDispatch} from 'react-redux';
-import {setPlantsMap} from './store/plant/plant.action';
+import {setPlants} from './store/plant/plant.action';
 
 function App() {
     const dispatch = useDispatch()
@@ -21,12 +21,11 @@ function App() {
             }
             dispatch(setCurrentUser(user))
         });
-        const getCategories = async () => {
-            const plantsMap = await getCategoriesAndDocuments();
-            console.info('plantsMap', plantsMap);
-            dispatch(setPlantsMap(plantsMap));
+        const getCategoriesMap = async () => {
+            const plantsArray = await getCategoriesAndDocuments('plants');
+            dispatch(setPlants(plantsArray));
         }
-        getCategories();
+        getCategoriesMap();
         try {
             const redirect = async () => await getRedirectResult(auth);
 

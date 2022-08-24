@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eddf4f78-3751-4c6f-8f8f-170bacf7e116" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/plant/plant.action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/plant/plant.types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/root-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/user/user.action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/user/user.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/user/user.selector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/user/user.types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/reducer/reducer.utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navigation/NavBar.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/NavBar.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/plants.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/user.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/firebase/firebase.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/firebase/firebase.utils.ts" afterDir="false" />
     </list>
     <list id="cdd22dd4-bf6e-4d33-bb33-97b916aa013c" name="firebase" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +89,7 @@
       <workItem from="1660487689211" duration="1387000" />
       <workItem from="1660489432249" duration="3677000" />
       <workItem from="1660993862924" duration="27726000" />
-      <workItem from="1661281311692" duration="7462000" />
+      <workItem from="1661281311692" duration="8948000" />
     </task>
     <task id="LOCAL-00001" summary="Added previously created public assets and index.html">
       <created>1660670076797</created>
@@ -150,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661280108172</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Including redux instead of context API">
+      <created>1661367901644</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1661367901644</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +172,7 @@
     <MESSAGE value="Added PlantProvider to handle plants' related things and initialized DB with a set of data" />
     <MESSAGE value="Getting back plants, extended gitignore" />
     <MESSAGE value="Added some basic routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some basic routes" />
+    <MESSAGE value="Including redux instead of context API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Including redux instead of context API" />
   </component>
 </project>
