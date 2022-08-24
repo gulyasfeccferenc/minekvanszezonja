@@ -5,23 +5,22 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { NextUIProvider } from '@nextui-org/react';
-import { UserProvider } from './contexts/user.context';
-import {PlantsProvider} from './contexts/plants.context';
+import {Provider} from 'react-redux';
+import { store } from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-      <BrowserRouter>
-        <NextUIProvider>
-            <PlantsProvider>
-                <UserProvider>
-                    <App />
-                </UserProvider>
-            </PlantsProvider>
-        </NextUIProvider>
-      </BrowserRouter>
+      <Provider store={store}>
+          <BrowserRouter>
+              <NextUIProvider>
+                  <App />
+              </NextUIProvider>
+          </BrowserRouter>
+      </Provider>
   </React.StrictMode>
 );
 
