@@ -8,10 +8,9 @@ import {
 } from './utils/firebase/firebase.utils';
 import {getRedirectResult} from 'firebase/auth';
 import {setCurrentUser} from './store/user/user.action';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchPlantsAsync} from './store/plant/plant.action';
-import {selectIsPlantsLoading} from './store/plant/plant.selector';
-import {Loading} from '@nextui-org/react';
+import {useDispatch} from 'react-redux';
+import {fetchPlantsStart} from './store/plant/plant.action';
+
 
 function App() {
     const dispatch = useDispatch()
@@ -23,7 +22,7 @@ function App() {
             dispatch(setCurrentUser(user))
         });
         // @ts-ignore
-        dispatch(fetchPlantsAsync())
+        dispatch(fetchPlantsStart());
         try {
             const redirect = async () => await getRedirectResult(auth);
 
