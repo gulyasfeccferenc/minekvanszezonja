@@ -4,13 +4,14 @@ import NavBar from './components/navigation/NavBar.component';
 import {
     auth,
     createUserDocumentFromAuth,
-    getCategoriesAndDocuments,
     onAuthStateChangedListener
 } from './utils/firebase/firebase.utils';
 import {getRedirectResult} from 'firebase/auth';
 import {setCurrentUser} from './store/user/user.action';
-import {useDispatch} from 'react-redux';
-import {setPlants} from './store/plant/plant.action';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchPlantsAsync} from './store/plant/plant.action';
+import {selectIsPlantsLoading} from './store/plant/plant.selector';
+import {Loading} from '@nextui-org/react';
 
 function App() {
     const dispatch = useDispatch()
@@ -21,11 +22,8 @@ function App() {
             }
             dispatch(setCurrentUser(user))
         });
-        const getCategoriesMap = async () => {
-            const plantsArray = await getCategoriesAndDocuments('plants');
-            dispatch(setPlants(plantsArray));
-        }
-        getCategoriesMap();
+        // @ts-ignore
+        dispatch(fetchPlantsAsync())
         try {
             const redirect = async () => await getRedirectResult(auth);
 
@@ -41,7 +39,7 @@ function App() {
             console.error('Error while creating user', error);
         }
         return unsubscribe;
-    },[])
+    },[dispatch])
 
   return (
       <Routes>
