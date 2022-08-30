@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eddf4f78-3751-4c6f-8f8f-170bacf7e116" name="Default Changelist" comment="Including redux instead of context API">
-      <change afterPath="$PROJECT_DIR$/src/store/plant/plant.saga.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/root-saga.ts" afterDir="false" />
+    <list default="true" id="eddf4f78-3751-4c6f-8f8f-170bacf7e116" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavBar.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/NavBar.component.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/plant/plant.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/reducer/reducer.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/reducer/reducer.utils.ts" afterDir="false" />
     </list>
     <list id="cdd22dd4-bf6e-4d33-bb33-97b916aa013c" name="firebase" comment="" />
     <option name="SHOW_DIALOG" value="false" />

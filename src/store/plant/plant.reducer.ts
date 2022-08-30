@@ -1,21 +1,30 @@
-import {PLANT_ACTION_TYPES} from './plant.types';
+import {PLANT_ACTION_TYPES, Plants} from './plant.types';
+import {PlantAction} from './plant.action';
 
-export const PLANT_INITIAL_STATE = {
+export type PlantState = {
+    readonly plants: Plants[];
+    readonly isLoading: boolean;
+    readonly error: Error | null;
+}
+
+export const PLANT_INITIAL_STATE: PlantState = {
     plants: [],
     isLoading: false,
     error: null,
 }
 
-export const plantsReducer = (state: any = PLANT_INITIAL_STATE, action: any) => {
-    const { type, payload } = action;
+export const plantsReducer = (
+    state: PlantState = PLANT_INITIAL_STATE,
+    action = {} as PlantAction
+) => {
 
-    switch (type) {
+    switch (action.type) {
         case PLANT_ACTION_TYPES.FETCH_PLANTS_START:
             return {...state, isLoading: true };
         case PLANT_ACTION_TYPES.FETCH_PLANTS_SUCCESS:
-            return {...state, plants: payload,  isLoading: false };
+            return {...state, plants: action.payload,  isLoading: false };
         case PLANT_ACTION_TYPES.FETCH_PLANTS_FAILED:
-            return {...state, error: payload, isLoading: false }
+            return {...state, error: action.payload, isLoading: false }
         default:
             return state;
     }

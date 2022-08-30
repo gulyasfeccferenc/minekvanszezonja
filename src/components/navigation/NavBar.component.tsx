@@ -1,10 +1,10 @@
-import {signOutUser} from '../../utils/firebase/firebase.utils';
+import { signOutUser } from '../../utils/firebase/firebase.utils';
 import LoginComponent from '../../pages/auth/Login.component';
 import { useSelector } from 'react-redux';
-import {Outlet} from 'react-router';
-import {selectCurrentUser} from '../../store/user/user.selector';
-import {selectCurrentPlantsMap, selectIsPlantsLoading} from '../../store/plant/plant.selector';
-import {Loading} from '@nextui-org/react';
+import { Outlet } from 'react-router';
+import { selectCurrentUser } from '../../store/user/user.selector';
+import { selectCurrentPlantsMap, selectIsPlantsLoading } from '../../store/plant/plant.selector';
+import { Loading } from '@nextui-org/react';
 
 // @ts-ignore
 const NavBar = () => {
