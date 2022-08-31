@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Minek van szezonja
+
+An app created to get familiar with working with React while creating something useful.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
