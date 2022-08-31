@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
 import {PlantState} from './plant.reducer';
-import {PlantItem, PlantMap, Plants} from './plant.types';
+import {PlantMap, Plants} from './plant.types';
+import {RootState} from '../store';
 
-const selectPlantReducer = (state): PlantState => state.plants;
+const selectPlantReducer = (state: RootState): PlantState => state.plants;
 
 export const selectPlants = createSelector(
     [selectPlantReducer],

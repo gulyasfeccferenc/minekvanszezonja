@@ -1,19 +1,25 @@
-import { USER_ACTION_TYPES } from './user.types';
+import {AnyAction} from 'redux';
+import {setCurrentUser} from './user.action';
+import {UserData} from '../../utils/firebase/firebase.utils';
 
-const INITIAL_STATE = {
-    currentUser: null,
+export type UserState = {
+    readonly currentUser: UserData | null;
+    readonly isLoading: boolean;
+    readonly error: Error | null;
 }
 
-export const userReducer = (state: any = INITIAL_STATE, action: any) => {
-    const { type, payload } = action;
+const INITIAL_STATE: UserState = {
+    currentUser: null,
+    isLoading: false,
+    error: null,
+}
 
-    switch(type) {
-        case USER_ACTION_TYPES.SET_CURRENT_USER:
-            return {
-                ...state,
-                currentUser: payload
-            }
-        default:
-            return state;
+export const userReducer = (state: any = INITIAL_STATE, action: AnyAction) => {
+    if(setCurrentUser.match(action)) {
+        return {
+            ...state,
+            currentUser: action.payload
+        }
     }
+    return state;
 }

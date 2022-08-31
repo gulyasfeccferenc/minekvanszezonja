@@ -6,6 +6,8 @@ import { rootReducer } from './root-reducer';
 
 import { rootSaga } from './root-saga';
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 const sagaMiddleware = createSagaMiddleware();
 
 const middleWares = [

@@ -9,7 +9,7 @@ export function* fetchPlantsAsync() {
         // @ts-ignore
         const plantsArray = yield call(getCategoriesAndDocuments, 'plants');
         yield put(fetchPlantsSuccess(plantsArray))
-    } catch (error) {
+    } catch (error: any) {
         yield put(fetchPlantsFailed(error))
     }
 }
