@@ -1,5 +1,6 @@
-import {PLANT_ACTION_TYPES, Plants} from './plant.types';
-import {PlantAction} from './plant.action';
+import {Plants} from './plant.types';
+import {fetchPlantsFailed, fetchPlantsStart, fetchPlantsSuccess} from './plant.action';
+import {AnyAction} from 'redux';
 
 export type PlantState = {
     readonly plants: Plants[];
@@ -15,17 +16,16 @@ export const PLANT_INITIAL_STATE: PlantState = {
 
 export const plantsReducer = (
     state: PlantState = PLANT_INITIAL_STATE,
-    action = {} as PlantAction
+    action = {} as AnyAction
 ) => {
-
-    switch (action.type) {
-        case PLANT_ACTION_TYPES.FETCH_PLANTS_START:
-            return {...state, isLoading: true };
-        case PLANT_ACTION_TYPES.FETCH_PLANTS_SUCCESS:
-            return {...state, plants: action.payload,  isLoading: false };
-        case PLANT_ACTION_TYPES.FETCH_PLANTS_FAILED:
-            return {...state, error: action.payload, isLoading: false }
-        default:
-            return state;
+    if(fetchPlantsStart.match(action)){
+        return { ...state, isLoading: true };
     }
+    if(fetchPlantsFailed.match(action)){
+        return {...state, error: action.payload, isLoading: false };
+    }
+    if(fetchPlantsSuccess.match(action)){
+        return {...state, plants: action.payload,  isLoading: false };
+    }
+    return state;
 }

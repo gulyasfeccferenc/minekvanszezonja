@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eddf4f78-3751-4c6f-8f8f-170bacf7e116" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavBar.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/NavBar.component.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/plant/plant.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.action.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.selector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/plant/plant.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/plant/plant.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/reducer/reducer.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/reducer/reducer.utils.ts" afterDir="false" />
     </list>
     <list id="cdd22dd4-bf6e-4d33-bb33-97b916aa013c" name="firebase" comment="" />
@@ -156,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661536952320</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Advanced Typescript on plant store">
+      <created>1661888024039</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1661888024039</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +187,7 @@
     <MESSAGE value="Added some basic routes" />
     <MESSAGE value="Including redux instead of context API" />
     <MESSAGE value="Introducing redux-thunk to simplify async workflow with a new middleware, added a super-ugly loading spinner!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introducing redux-thunk to simplify async workflow with a new middleware, added a super-ugly loading spinner!" />
+    <MESSAGE value="Advanced Typescript on plant store" />
+    <option name="LAST_COMMIT_MESSAGE" value="Advanced Typescript on plant store" />
   </component>
 </project>
