@@ -1,24 +1,33 @@
 {
   "name": "minekvanszezonja",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.2.1",
-    "@react-firebase/database": "^0.3.11",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "firebase": "^7.17.1",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
-    "node-sass": "^7.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-ga": "^3.2.0",
-    "react-indiana-drag-scroll": "^1.8.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.0"
+    "@nextui-org/react": "^1.0.0-beta.9",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.49",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "firebase": "^9.9.3",
+    "node-sass": "~7.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.2.1",
+    "redux-thunk": "^2.4.1",
+    "reselect": "^4.1.6",
+    "sass": "^1.54.5",
+    "typed-redux-saga": "^1.5.0",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +36,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -42,23 +54,6 @@
     ]
   },
   "devDependencies": {
-    "antd": "^4.2.0",
-    "eslint": "^7.12.1",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.1.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
+    "@types/redux-logger": "^3.0.9"
   }
 }
