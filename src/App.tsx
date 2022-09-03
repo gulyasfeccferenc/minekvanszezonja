@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {Route, Routes} from 'react-router';
-import NavBar from './components/navigation/NavBar.component';
 import {
     auth,
     createUserDocumentFromAuth,
@@ -10,6 +9,10 @@ import {getRedirectResult} from 'firebase/auth';
 import {setCurrentUser} from './store/user/user.action';
 import {useDispatch} from 'react-redux';
 import {fetchPlantsStart} from './store/plant/plant.action';
+import NavBar from './components/Navigation/NavBar.component';
+import {PageshellComponent} from './components/Ui/pageshell.component';
+import {HomeComponent} from './pages/Home.component';
+import {AboutComponent} from './pages/About.component';
 
 
 function App() {
@@ -42,8 +45,9 @@ function App() {
 
   return (
       <Routes>
-          <Route path='/' element={<NavBar />}>
-              <Route index element={<><h1>Homi</h1></>} />
+          <Route path='/' element={<PageshellComponent />}>
+              <Route index element={<HomeComponent />} />
+              <Route path='/about' element={<AboutComponent />} />
           </Route>
       </Routes>
   );

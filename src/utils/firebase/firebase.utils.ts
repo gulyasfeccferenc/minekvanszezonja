@@ -81,6 +81,7 @@ export type UserData = {
     createdAt: Date;
     displayName: string;
     email: string;
+    photoURL: string;
 }
 
 export const createUserDocumentFromAuth = async (

@@ -1,28 +1,44 @@
-import { signOutUser } from '../../utils/firebase/firebase.utils';
-import LoginComponent from '../../pages/auth/Login.component';
+import {signInWithGoogleRedirect, signOutUser} from '../../utils/firebase/firebase.utils';
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router';
 import { selectCurrentUser } from '../../store/user/user.selector';
-import { selectCurrentPlantsMap, selectIsPlantsLoading } from '../../store/plant/plant.selector';
-import { Loading } from '@nextui-org/react';
+import mvszlogo from '../../assets/mvszlogo.png';
+import {Button } from '@nextui-org/react';
+import { Avatar } from '@nextui-org/react';
+import { Navbar } from "@nextui-org/react";
+import {NavBarLogo} from './NavBar.styles';
 
 // @ts-ignore
 const NavBar = () => {
-    const isPlantsLoading = useSelector(selectIsPlantsLoading);
-
     const currentUser = useSelector(selectCurrentUser);
-    const plantsMap = useSelector(selectCurrentPlantsMap);
+
     return (
-        <div className="App">
-            {currentUser ? <>
-                <h1>Szia {currentUser?.displayName?.split(' ')[0]}</h1>
-                <button onClick={signOutUser}>Engedj ki :'(</button>
-                {isPlantsLoading ? <Loading type="points" /> : <ul>
-                    {Object.keys(plantsMap).map((plant: any) => <li key={plant.toString()}>{plant.toString()}</li>)}
-                </ul>}
-            </> : <LoginComponent />}
-            <Outlet />
-        </div>
+        <Navbar isBordered={false} variant="sticky">
+            <Navbar.Brand>
+                <NavBarLogo src={mvszlogo} alt="minek van szezonja logo" />
+            </Navbar.Brand>
+            <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline">
+                <Navbar.Link href="/">kezdőoldal</Navbar.Link>
+                <Navbar.Link isActive href="/favourites">
+                    kedvenceid
+                </Navbar.Link>
+                <Navbar.Link href="/seasonal">szezonálisok</Navbar.Link>
+            </Navbar.Content>
+            <Navbar.Content>
+                {currentUser ?
+                    <>
+                        <Avatar
+                            squared
+                            text={currentUser?.displayName?.split(' ')[0]}
+                            src={currentUser.photoURL} />
+                        <Button auto flat href="#" onClick={signOutUser}>
+                            Kijelentkezés
+                        </Button>
+                    </> :
+                    <Navbar.Link color="inherit" href="#">
+                        <button onClick={signInWithGoogleRedirect}>Sign in with gógle</button>
+                    </Navbar.Link>}
+            </Navbar.Content>
+        </Navbar>
     )
 }
 
