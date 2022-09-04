@@ -1,10 +1,10 @@
 import {Card, Grid, Loading, Row, Text} from '@nextui-org/react';
 import {useSelector} from 'react-redux';
-import {selectCurrentPlantsMap, selectIsPlantsLoading} from '../store/plant/plant.selector';
+import {selectIsPlantsLoading, selectPlants} from '../store/plant/plant.selector';
 
 export const HomeComponent = () => {
     const isPlantsLoading = useSelector(selectIsPlantsLoading);
-    const plantsMap = useSelector(selectCurrentPlantsMap);
+    const plantsMap = useSelector(selectPlants);
 
     const list = [
         {
@@ -165,32 +165,30 @@ export const HomeComponent = () => {
             price: "$12.20",
         },
     ];
-
-    return (<>
-        {isPlantsLoading ? <Loading type="points" /> : <ul>
-            {Object.keys(plantsMap).map((plant: any) => <li key={plant.toString()}>{plant.toString()}</li>)}
-        </ul>}
+console.info('kiskacsa', plantsMap);
+    return (
         <Grid.Container gap={2} justify="flex-start">
-            {list.map((item, index) => (
+        {isPlantsLoading ? <Loading type="points" /> : <>
+            {Object.keys(plantsMap).map((plant: string, index: number) =>
                 <Grid xs={6} sm={3} key={index}>
                     <Card isPressable>
                         <Card.Body css={{ p: 0 }}>
                             <Card.Image
-                                src={"https://nextui.org" + item.img}
+                                src={plantsMap[plant].imgUrl}
                                 objectFit="cover"
                                 width="100%"
                                 height={140}
-                                alt={item.title}
+                                alt={plantsMap[plant].title}
                             />
                         </Card.Body>
                         <Card.Footer css={{ justifyItems: "flex-start" }}>
                             <Row wrap="wrap" justify="space-between" align="center">
-                                <Text b>{item.title}</Text>
+                                <Text b>{plantsMap[plant].title}</Text>
                             </Row>
                         </Card.Footer>
                     </Card>
-                </Grid>
-            ))}
+                </Grid>)}
+            </> }
         </Grid.Container>
-    </>);
+    );
 }
