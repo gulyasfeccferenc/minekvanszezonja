@@ -9,11 +9,10 @@ import {getRedirectResult} from 'firebase/auth';
 import {setCurrentUser} from './store/user/user.action';
 import {useDispatch} from 'react-redux';
 import {fetchPlantsStart} from './store/plant/plant.action';
-import NavBar from './components/Navigation/NavBar.component';
 import {PageshellComponent} from './components/Ui/pageshell.component';
 import {HomeComponent} from './pages/Home.component';
 import {AboutComponent} from './pages/About.component';
-
+import {NotFoundComponent} from './pages/NotFound.component';
 
 function App() {
     const dispatch = useDispatch()
@@ -48,6 +47,7 @@ function App() {
           <Route path='/' element={<PageshellComponent />}>
               <Route index element={<HomeComponent />} />
               <Route path='/about' element={<AboutComponent />} />
+              <Route path='*' element={<NotFoundComponent />} />
           </Route>
       </Routes>
   );

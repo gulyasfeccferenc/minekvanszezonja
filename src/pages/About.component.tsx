@@ -45,6 +45,21 @@ export const AboutComponent = () => {
               Unsplash
             </a>
           </span>
+          <span>
+            Photo by <a href="https://unsplash.com/@randyfath?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Randy Fath</a> on <a href="https://unsplash.com/s/photos/vegetables?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+          </span>
+          <span>
+            Photo by <a href="https://unsplash.com/@louishansel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Louis Hansel</a> on <a href="https://unsplash.com/s/photos/apple?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+          </span>
+            <span>
+                Photo by <a href="https://unsplash.com/@m_samson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Monkgogi Samson</a> on <a href="https://unsplash.com/s/photos/bean?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            </span>
+            <span>
+                Photo by <a href="https://unsplash.com/@unarchive?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jeremy Bezanger</a> on <a href="https://unsplash.com/s/photos/basil?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            </span>
+            <span>
+                Photo by <a href="https://unsplash.com/@mockupgraphics?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mockup Graphics</a> on <a href="https://unsplash.com/s/photos/nut?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            </span>
         </p>
         <p>
             Icon by <span><a href="https://www.flaticon.com/free-icons/vegetable" title="vegetable icons">Vegetable icons created by Freepik - Flaticon</a></span>

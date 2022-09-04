@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { NextUIProvider } from '@nextui-org/react';
 import {Provider} from 'react-redux';
 import { store } from './store/store';
+import {darkTheme} from './utils/theme.util';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,7 +17,7 @@ root.render(
   <React.StrictMode>
       <Provider store={store}>
           <BrowserRouter>
-              <NextUIProvider>
+              <NextUIProvider theme={darkTheme}>
                   <App />
               </NextUIProvider>
           </BrowserRouter>
