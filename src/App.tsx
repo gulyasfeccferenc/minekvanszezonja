@@ -13,6 +13,7 @@ import {PageshellComponent} from './components/Ui/pageshell.component';
 import {HomeComponent} from './pages/Home.component';
 import {AboutComponent} from './pages/About.component';
 import {NotFoundComponent} from './pages/NotFound.component';
+import {PlantDetailComponent} from './pages/PlantDetail.component';
 
 function App() {
     const dispatch = useDispatch()
@@ -46,6 +47,7 @@ function App() {
       <Routes>
           <Route path='/' element={<PageshellComponent />}>
               <Route index element={<HomeComponent />} />
+              <Route path='/plants/:plantId' element={<PlantDetailComponent />} />
               <Route path='/about' element={<AboutComponent />} />
               <Route path='*' element={<NotFoundComponent />} />
           </Route>

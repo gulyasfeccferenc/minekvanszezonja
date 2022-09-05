@@ -14,9 +14,9 @@ export const selectCurrentPlantsMap = createSelector(
     [selectPlants],
     (plants): PlantMap => plants
     .reduce((acc: Plants, category: Plants) => {
-        const {title, items} = category;
+        const {id, items} = category;
         // @ts-ignore
-        acc[title.toLowerCase()] = items;
+        acc[id.toLowerCase()] = {items, ...category};
         return acc;
     }, {} as PlantMap));
 

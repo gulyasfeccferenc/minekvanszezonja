@@ -9,7 +9,7 @@ export type PlantItem = {
     id: string | number;
     name: string;
     description?: string;
-    imageUrl: string;
+    imgUrl: string;
     freshFrom: number;
     freshTo: number;
     storedFrom: number;
@@ -17,13 +17,15 @@ export type PlantItem = {
 }
 
 export type Plants = {
+    id: string;
     title: string;
     description: string;
-    imageUrl: string;
+    imgUrl: string;
     category: Array<string>;
-    items: Array<PlantItem>;
+    items?: Array<PlantItem>;
 }
 
 export type PlantMap = {
-    [key: string]: PlantItem
+    [key: string]: PlantItem;
 }
+
