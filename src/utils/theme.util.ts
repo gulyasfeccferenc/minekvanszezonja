@@ -25,7 +25,11 @@ export const darkTheme = createTheme({
             // ...  more colors
         },
         space: {},
-        fonts: {}
+        fonts: {
+            sans: "'Comfortaa', 'Segoe UI', 'Roboto', 'Oxygen',\n" +
+                "  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n" +
+                "  sans-serif"
+        }
     }
 })
 
@@ -54,6 +58,10 @@ export const lightTheme = createTheme({
             // ...  more colors
         },
         space: {},
-        fonts: {}
+        fonts: {
+            sans: "'Comfortaa', 'Segoe UI', 'Roboto', 'Oxygen',\n" +
+                "  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n" +
+                "  sans-serif"
+        }
     }
 });

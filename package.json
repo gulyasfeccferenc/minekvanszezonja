@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "dependencies": {
+    "@fontsource/comfortaa": "^4.5.9",
     "@nextui-org/react": "^1.0.0-beta.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
