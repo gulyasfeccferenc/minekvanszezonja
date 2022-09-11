@@ -4,6 +4,9 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(45deg, #6f59e8 10%,transparent 10%,transparent 90%,#6f59e8 90%),linear-gradient(135deg, transparent 40%, #6f59e880 40%, #6f59e880 60%, transparent 0),linear-gradient(45deg, transparent 40%, #6f59e8 40%, #6f59e8 60%, transparent 0);
+  background-size: 3em 3em;
+  background-color: #7b68ee;
 }
 
 code {

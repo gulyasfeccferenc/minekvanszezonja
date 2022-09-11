@@ -12,7 +12,7 @@ const NavBar = () => {
     const currentUser = useSelector(selectCurrentUser);
 
     return (
-        <Navbar isBordered={false} variant="sticky">
+        <Navbar isBordered={false} variant="sticky" disableShadow={true}>
             <Navbar.Brand>
                 <NavBarLogo src={mvszlogo} alt="minek van szezonja logo" />
             </Navbar.Brand>
