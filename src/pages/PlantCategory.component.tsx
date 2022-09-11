@@ -36,7 +36,7 @@ export const PlantCategoryComponent: React.FC<{}> = () => {
                 </Row>
                 <Row>
                     <ul>
-                        {currentPlantCategory.items.map((plant: PlantItem) => <li><NavLink to={'/plant/' + plant.id}>{plant.name}</NavLink></li>)}
+                        {currentPlantCategory.items.map((plant: PlantItem) => <li key={plant.id}><NavLink to={`/plants/${currentPlantCategory.id}/${plant.id}`}>{plant.name}</NavLink></li>)}
                     </ul>
                 </Row>
             </Grid>

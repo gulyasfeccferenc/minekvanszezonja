@@ -48,8 +48,8 @@ function App() {
       <Routes>
           <Route path='/' element={<PageshellComponent />}>
               <Route index element={<HomeComponent />} />
+              <Route path='/plants/:categoryId/:plantId' element={<PlantDetailComponent />} />
               <Route path='/plants/:categoryId' element={<PlantCategoryComponent />} />
-              <Route path='/plant/:plantId' element={<PlantDetailComponent />} />
               <Route path='/about' element={<AboutComponent />} />
               <Route path='*' element={<NotFoundComponent />} />
           </Route>
