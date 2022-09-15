@@ -13,10 +13,11 @@ const NavBar = () => {
 
     return (
         <Navbar isBordered={false} variant="sticky" disableShadow={true}>
+            <Navbar.Toggle showIn="xs" />
             <Navbar.Brand>
                 <NavBarLogo src={mvszlogo} alt="minek van szezonja logo" />
             </Navbar.Brand>
-            <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline">
+            <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline-rounded">
                 <Navbar.Link href="/">kezdőoldal</Navbar.Link>
                 <Navbar.Link isActive href="/favourites">
                     kedvenceid
@@ -34,9 +35,8 @@ const NavBar = () => {
                             Kijelentkezés
                         </Button>
                     </> :
-                    <Navbar.Link color="inherit" href="#">
-                        <button onClick={signInWithGoogleRedirect}>Sign in with gógle</button>
-                    </Navbar.Link>}
+                    <Button onClick={signInWithGoogleRedirect} shadow color="secondary" auto>Bejelentkezés</Button>
+                    }
             </Navbar.Content>
         </Navbar>
     )
