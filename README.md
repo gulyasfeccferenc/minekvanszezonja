@@ -12,19 +12,19 @@ My developer journey take me through
 ![Minekvanszezonja 2.0](https://gulyasfeccferenc.github.io/img/minekvanszezonja.png)
 
 What my future plans technology-wise?
-- [] React hooks
-- [] Authentication
-- [] Redux
-- [] Firestore
-- [] Build pipelines
+- [ ] React hooks
+- [ ] Authentication
+- [ ] Redux
+- [ ] Firestore
+- [ ] Build pipelines
 
 And what does it mean feature-wise?
-- [] Basket and seasonal list (to collect favourite veggies after sign in)
-- [] Admin pages to manage plants
-- [] Filters, better search
-- [] Location data to suggest local markets
-- [] Multilanguage + Separated database by countries
-- [] Themes
+- [ ] Basket and seasonal list (to collect favourite veggies after sign in)
+- [ ] Admin pages to manage plants
+- [ ] Filters, better search
+- [ ] Location data to suggest local markets
+- [ ] Multilanguage + Separated database by countries
+- [ ] Themes
 
 
 
