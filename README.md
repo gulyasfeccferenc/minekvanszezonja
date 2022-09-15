@@ -1,48 +1,41 @@
 # Minek van szezonja
 
-An app created to get familiar with working with React while creating something useful.
+An app created to get familiar with working with React, while creating something useful.
+
+My developer journey take me through 
+[*] Learn the basics of React with [Maximillian Schwartzmüller from AcadeMind](https://www.udemy.com/certificate/UC-82cd4e4a-9002-42a7-a2c0-170faa7f82d0/)
+[*] Created the whole site with a pretty basic look and content (v1)
+[*] The previously mentioned Udemy course got re-recorded to include React v16 features and hooks, so I've started a rewrite as well
+[*] Wanted to get my hands dirty with PWAs, get some Google Analytics involved and generally some better looking UI
+[*] After all data was added the new version went live (v2)
+![Minekvanszezonja 2.0](https://gulyasfeccferenc.github.io/img/minekvanszezonja.png)
+
+What my future plans technology-wise?
+[] React hooks
+[] Authentication
+[] Redux
+[] Firestore
+[] Build pipelines
+
+And what does it mean feature-wise?
+[] Basket and seasonal list (to collect favourite veggies after sign in)
+[] Admin pages to manage plants
+[] Filters, better search
+[] Location data to suggest local markets
+[] Multilanguage + Separated database by countries
+[] Themes
+
+
+
+### Technical info, copyrights and stuff
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thanks for the special assets to: 
+* Photo by [Elena Mozhvilo](https://unsplash.com/@miracleday?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) [Unsplash](https://unsplash.com/s/photos/broccoli)
+* Photo by [Randy Fath](https://unsplash.com/@randyfath) on [Unsplash](https://unsplash.com/s/photos/vegetables)
+* Photo by [Louis Hansel](https://unsplash.com/@louishansel) on [Unsplash](https://unsplash.com/s/photos/apple)
+* Photo by [Monkgogi Samson](https://unsplash.com/@m_samson) on [Unsplash](https://unsplash.com/s/photos/bean)
+* Photo by [Jeremy Bezanger](https://unsplash.com/@unarchive) on [Unsplash](https://unsplash.com/s/photos/basil)
+* Photo by [Mockup Graphics](https://unsplash.com/@mockupgraphics) on [Unsplash](https://unsplash.com/s/photos/nut)
+* Icon by [Vegetable icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/vegetable)
