@@ -3,27 +3,28 @@
 An app created to get familiar with working with React, while creating something useful.
 
 My developer journey take me through 
-[*] Learn the basics of React with [Maximillian Schwartzmüller from AcadeMind](https://www.udemy.com/certificate/UC-82cd4e4a-9002-42a7-a2c0-170faa7f82d0/)
-[*] Created the whole site with a pretty basic look and content (v1)
-[*] The previously mentioned Udemy course got re-recorded to include React v16 features and hooks, so I've started a rewrite as well
-[*] Wanted to get my hands dirty with PWAs, get some Google Analytics involved and generally some better looking UI
-[*] After all data was added the new version went live (v2)
+- [x] Learn the basics of React with [Maximillian Schwartzmüller from AcadeMind](https://www.udemy.com/certificate/UC-82cd4e4a-9002-42a7-a2c0-170faa7f82d0/)
+- [x] Created the whole site with a pretty basic look and content (v1)
+- [x] The previously mentioned Udemy course got re-recorded to include React v16 features and hooks, so I've started a rewrite as well
+- [x] Wanted to get my hands dirty with PWAs, get some Google Analytics involved and generally some better looking UI
+- [x] After all data was added the new version went live (v2):
+
 ![Minekvanszezonja 2.0](https://gulyasfeccferenc.github.io/img/minekvanszezonja.png)
 
 What my future plans technology-wise?
-[] React hooks
-[] Authentication
-[] Redux
-[] Firestore
-[] Build pipelines
+- [] React hooks
+- [] Authentication
+- [] Redux
+- [] Firestore
+- [] Build pipelines
 
 And what does it mean feature-wise?
-[] Basket and seasonal list (to collect favourite veggies after sign in)
-[] Admin pages to manage plants
-[] Filters, better search
-[] Location data to suggest local markets
-[] Multilanguage + Separated database by countries
-[] Themes
+- [] Basket and seasonal list (to collect favourite veggies after sign in)
+- [] Admin pages to manage plants
+- [] Filters, better search
+- [] Location data to suggest local markets
+- [] Multilanguage + Separated database by countries
+- [] Themes
 
 
 
