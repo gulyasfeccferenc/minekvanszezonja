@@ -8,6 +8,7 @@ My developer journey take me through
 - [x] The previously mentioned Udemy course got re-recorded to include React v16 features and hooks, so I've started a rewrite as well
 - [x] Wanted to get my hands dirty with PWAs, get some Google Analytics involved and generally some better looking UI
 - [x] After all data was added the new version went live (v2):
+- [x] Technology evolved, there was a bunch of uncovered things, so I went and finished the [Zero to Mastery React](https://www.udemy.com/certificate/UC-96c23343-5e2c-499f-a3fd-b06180d07db0/) course as well
 
 ![Minekvanszezonja 2.0](https://gulyasfeccferenc.github.io/img/minekvanszezonja.png)
 
