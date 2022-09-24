@@ -6,10 +6,13 @@ import {Button } from '@nextui-org/react';
 import { Avatar } from '@nextui-org/react';
 import { Navbar } from "@nextui-org/react";
 import {NavBarLogo} from './NavBar.styles';
+import { useLocation } from 'react-router';
+import { Link } from "react-router-dom";
 
 // @ts-ignore
 const NavBar = () => {
     const currentUser = useSelector(selectCurrentUser);
+    const { pathname } = useLocation();
 
     return (
         <Navbar isBordered={false} variant="sticky" disableShadow={true}>
@@ -18,11 +21,11 @@ const NavBar = () => {
                 <NavBarLogo src={mvszlogo} alt="minek van szezonja logo" />
             </Navbar.Brand>
             <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline-rounded">
-                <Navbar.Link href="/">kezdőoldal</Navbar.Link>
-                <Navbar.Link isActive href="/favourites">
+                <Navbar.Link as={Link} isActive={'/' == pathname} to={"/"}>kezdőoldal</Navbar.Link>
+                <Navbar.Link as={Link} isActive={'/favourites' == pathname} to={"/favourites"}>
                     kedvenceid
                 </Navbar.Link>
-                <Navbar.Link href="/seasonal">szezonálisok</Navbar.Link>
+                <Navbar.Link as={Link} isActive={'/seasonal' == pathname} to={"/seasonal"}>szezonálisok</Navbar.Link>
             </Navbar.Content>
             <Navbar.Content>
                 {currentUser ?
