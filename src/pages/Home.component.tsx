@@ -1,9 +1,16 @@
 import {Card, Grid, Loading, Row, Text} from '@nextui-org/react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {selectCurrentPlantsMap, selectIsPlantsLoading, selectPlants} from '../store/plant/plant.selector';
+import {selectIsPlantsLoading, selectPlants} from '../store/plant/plant.selector';
+import {fetchPlantsAsync} from '../store/plant/plant.action';
+import {useEffect} from 'react';
 
 export const HomeComponent = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        // @ts-ignore
+        dispatch(fetchPlantsAsync());
+    }, []);
     const isPlantsLoading = useSelector(selectIsPlantsLoading);
     const plantsMap = useSelector(selectPlants);
 

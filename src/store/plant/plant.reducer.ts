@@ -1,31 +1,22 @@
-import {Plants} from './plant.types';
-import {fetchPlantsFailed, fetchPlantsStart, fetchPlantsSuccess} from './plant.action';
-import {AnyAction} from 'redux';
+import {PLANT_ACTION_TYPES} from './plant.types';
 
-export type PlantState = {
-    readonly plants: Plants[];
-    readonly isLoading: boolean;
-    readonly error: Error | null;
-}
-
-export const PLANT_INITIAL_STATE: PlantState = {
+export const PLANT_INITIAL_STATE = {
     plants: [],
     isLoading: false,
     error: null,
 }
 
-export const plantsReducer = (
-    state: PlantState = PLANT_INITIAL_STATE,
-    action = {} as AnyAction
-) => {
-    if(fetchPlantsStart.match(action)){
-        return { ...state, isLoading: true };
+export const plantsReducer = (state: any = PLANT_INITIAL_STATE, action: any) => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case PLANT_ACTION_TYPES.FETCH_PLANTS_START:
+            return {...state, isLoading: true };
+        case PLANT_ACTION_TYPES.FETCH_PLANTS_SUCCESS:
+            return {...state, plants: payload,  isLoading: false };
+        case PLANT_ACTION_TYPES.FETCH_PLANTS_FAILED:
+            return {...state, error: payload, isLoading: false }
+        default:
+            return state;
     }
-    if(fetchPlantsFailed.match(action)){
-        return {...state, error: action.payload, isLoading: false };
-    }
-    if(fetchPlantsSuccess.match(action)){
-        return {...state, plants: action.payload,  isLoading: false };
-    }
-    return state;
 }

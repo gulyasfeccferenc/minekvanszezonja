@@ -1,9 +1,6 @@
 import { createSelector } from 'reselect';
-import {PlantState} from './plant.reducer';
-import {PlantMap, Plants} from './plant.types';
-import {RootState} from '../store';
 
-const selectPlantReducer = (state: RootState): PlantState => state.plants;
+const selectPlantReducer = (state: any) => state.plants;
 
 export const selectPlants = createSelector(
     [selectPlantReducer],
@@ -12,13 +9,13 @@ export const selectPlants = createSelector(
 
 export const selectCurrentPlantsMap = createSelector(
     [selectPlants],
-    (plants): PlantMap => plants
-    .reduce((acc: Plants, category: Plants) => {
-        const {id, items} = category;
-        // @ts-ignore
-        acc[id.toLowerCase()] = {items, ...category};
-        return acc;
-    }, {} as PlantMap));
+    (plants) => plants
+        .reduce((acc: any, category: any) => {
+            const {title, items} = category;
+            // @ts-ignore
+            acc[title.toLowerCase()] = items;
+            return acc;
+        }, {}));
 
 export const selectIsPlantsLoading = createSelector(
     [selectPlantReducer],

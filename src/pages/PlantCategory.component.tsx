@@ -1,11 +1,19 @@
 import {useParams} from 'react-router';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {selectPlants} from '../store/plant/plant.selector';
 import {Card, Container, Grid, Row, Text} from '@nextui-org/react';
 import {PlantItem, Plants} from '../store/plant/plant.types';
 import {NavLink, useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
+import {fetchPlantsAsync} from '../store/plant/plant.action';
 
 export const PlantCategoryComponent: React.FC<{}> = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        // @ts-ignore
+        dispatch(fetchPlantsAsync());
+    }, []);
+
     let { categoryId } = useParams();
     const plantsMap = useSelector(selectPlants);
     const navigate = useNavigate();
