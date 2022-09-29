@@ -6,6 +6,8 @@ export const selectUserReducer = (state: RootState): UserState => state.user;
 
 export const selectUserIsAdminReducer = (state: RootState): UserState => state.user;
 
+export const selectLoginInProgress = (state: RootState): boolean => state.user.isLoading;
+
 export const selectCurrentUser = createSelector(
     selectUserReducer,
     (user) => user.currentUser);

@@ -15,7 +15,7 @@ const INITIAL_STATE: UserState = {
     error: null,
 }
 
-export const userReducer = (state: any = INITIAL_STATE, action: AnyAction) => {
+export const userReducer = (state: UserState = INITIAL_STATE, action: AnyAction) => {
     if(action.type === USER_ACTION_TYPES.SET_CURRENT_USER) {
         return {
             ...state,
