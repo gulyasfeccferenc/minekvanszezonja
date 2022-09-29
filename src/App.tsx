@@ -1,13 +1,7 @@
 import React, {useEffect} from 'react';
-import {Route, Routes} from 'react-router';
-import {
-    auth,
-    createUserDocumentFromAuth,
-    onAuthStateChangedListener
-} from './utils/firebase/firebase.utils';
-import {getRedirectResult} from 'firebase/auth';
-import {setCurrentUser} from './store/user/user.action';
-import {useDispatch} from 'react-redux';
+import {Navigate, Route, Routes, useLocation} from 'react-router';
+import {checkUserSession, userCheckStart} from './store/user/user.action';
+import {useDispatch, useSelector} from 'react-redux';
 import {fetchPlantsStart} from './store/plant/plant.action';
 import {PageshellComponent} from './components/Ui/pageshell.component';
 import {HomeComponent} from './pages/Home.component';
@@ -15,33 +9,34 @@ import {AboutComponent} from './pages/About.component';
 import {NotFoundComponent} from './pages/NotFound.component';
 import {PlantDetailComponent} from './pages/PlantDetail.component';
 import {PlantCategoryComponent} from './pages/PlantCategory.component';
+import {selectIsUserAdmin} from './store/user/user.selector';
+import AdminComponent from './pages/Admin/Admin.component';
+
+const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
+    const { children } = props
+    const isAdmin = useSelector(selectIsUserAdmin);
+    const location = useLocation()
+    return isAdmin ? (
+        <>{children}</>
+    ) : (
+        <Navigate
+            replace={true}
+            to="/login"
+            state={{ from: `${location.pathname}${location.search}` }}
+        />
+    )
+}
 
 function App() {
     const dispatch = useDispatch()
     useEffect(() => {
-        const unsubscribe = onAuthStateChangedListener((user: any) => {
-            if (user) {
-                createUserDocumentFromAuth(user).then();
-            }
-            dispatch(setCurrentUser(user))
-        });
+        dispatch(userCheckStart());
+        // @ts-ignore
+        dispatch(checkUserSession());
         // @ts-ignore
         dispatch(fetchPlantsStart());
-        try {
-            const redirect = async () => await getRedirectResult(auth);
 
-            redirect().then((response: any) => {
-                if (response != null) {
-                    const userDocRef = async (response: any) => await createUserDocumentFromAuth(response?.user);
-                    userDocRef(response).then((user: any) => {
-                        dispatch(setCurrentUser(response.user));
-                    });
-                }
-            })
-        } catch (error) {
-            console.error('Error while creating user', error);
-        }
-        return unsubscribe;
+        //return unsubscribe;
     },[dispatch])
 
   return (
@@ -51,6 +46,7 @@ function App() {
               <Route path='/plants/:categoryId/:plantId' element={<PlantDetailComponent />} />
               <Route path='/plants/:categoryId' element={<PlantCategoryComponent />} />
               <Route path='/about' element={<AboutComponent />} />
+              <Route path='/admin' element={<PrivateRoute><AdminComponent /></PrivateRoute>} />
               <Route path='*' element={<NotFoundComponent />} />
           </Route>
       </Routes>

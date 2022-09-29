@@ -8,6 +8,7 @@ import { Navbar } from "@nextui-org/react";
 import {NavBarLogo} from './NavBar.styles';
 import { useLocation } from 'react-router';
 import { Link } from "react-router-dom";
+import {useEffect} from 'react';
 
 // @ts-ignore
 const NavBar = () => {
@@ -26,6 +27,7 @@ const NavBar = () => {
                     kedvenceid
                 </Navbar.Link>
                 <Navbar.Link as={Link} isActive={'/seasonal' == pathname} to={"/seasonal"}>szezonálisok</Navbar.Link>
+                {currentUser?.isAdmin ? <Navbar.Link as={Link} isActive={'/admin' == pathname} to={"/admin"}>Admin</Navbar.Link> : <></>}
             </Navbar.Content>
             <Navbar.Content>
                 {currentUser ?

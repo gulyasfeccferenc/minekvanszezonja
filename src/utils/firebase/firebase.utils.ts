@@ -1,12 +1,13 @@
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, signInWithRedirect,
+import {
+    getAuth, signInWithRedirect,
     GoogleAuthProvider,
     User,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-    NextOrObserver,
+    NextOrObserver, getRedirectResult,
 } from "firebase/auth"
 import {
     getFirestore,
@@ -20,6 +21,7 @@ import {
     QueryDocumentSnapshot
 } from 'firebase/firestore';
 import {Plants} from '../../store/plant/plant.types';
+import {setCurrentUser} from '../../store/user/user.action';
 
 const firebaseConfig = {
     apiKey: "AIzaSyClQeoiYnePZNGK_5GCQZQ3xyJtUJBGcew",
@@ -78,51 +80,37 @@ export type AdditionalInformation = {
 }
 
 export type UserData = {
-    createdAt: Date;
-    displayName: string;
-    email: string;
-    photoURL: string;
+    createdAt?: Date;
+    displayName?: string;
+    email?: string;
+    photoURL?: string;
+    isAdmin?: boolean;
 }
 
 export const createUserDocumentFromAuth = async (
     userAuth: User,
     additionalParameters = {} as AdditionalInformation
-): Promise<void | QueryDocumentSnapshot<UserData>> => {
+): Promise<void|UserData> => {
     if (userAuth) {
         const userDocRef = doc(db, 'users', userAuth.uid);
         const userSnapshot = await getDoc(userDocRef);
-
         if (!userSnapshot.exists()) {
-            const { displayName, email } = userAuth;
+            const { displayName, email, photoURL } = userAuth;
+            const isAdmin = false;
             const createdAt = new Date();
             try {
                 await setDoc(userDocRef, {
-                    displayName, email, createdAt
+                    displayName, email, createdAt, isAdmin, photoURL
                 }).then((innerUser) => {})
             } catch (error) {
                 console.error('Error creating the user', error)
             }
         }
-        return userSnapshot as unknown as QueryDocumentSnapshot<UserData>;
+        return userSnapshot.data() as UserData;
     }
 };
-
-export const createAuthUserWithEmailAndPassword = async (email: string, password: string) => {
-    if (!email || !password) return;
-    return await signInWithEmailAndPassword(auth, email, password);
-}
 
 export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback: NextOrObserver<User>) => onAuthStateChanged(auth, callback)
 
-export const getCurrentUser = (): Promise<User | null> => {
-    return new Promise((resolve, reject) => {
-        const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
-            unsubscribe();
-            resolve(userAuth);
-        },
-            reject
-        );
-    });
-}

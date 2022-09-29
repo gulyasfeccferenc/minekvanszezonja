@@ -11,11 +11,9 @@ export const fetchPlantsSuccess = (plantsArray: any) => createAction(PLANT_ACTIO
 export const fetchPlantsFailed = (error: any) => createAction(PLANT_ACTION_TYPES.FETCH_PLANTS_FAILED, error);
 
 export const fetchPlantsAsync = () => async (dispatch: any) => {
-    console.info('>>>> async izé started');
     dispatch(fetchPlantsStart());
     try {
         const plantsArray = await getCategoriesAndDocuments('plants');
-        console.info('planstarray', plantsArray);
         dispatch(fetchPlantsSuccess(plantsArray));
     } catch (error) {
         dispatch(fetchPlantsFailed(error));
