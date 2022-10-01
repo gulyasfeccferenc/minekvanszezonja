@@ -1,8 +1,8 @@
 import {signInWithGoogleRedirect, signOutUser} from '../../utils/firebase/firebase.utils';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../store/user/user.selector';
+import {selectCurrentUser, selectLoginInProgress} from '../../store/user/user.selector';
 import mvszlogo from '../../assets/mvszlogo.png';
-import {Button } from '@nextui-org/react';
+import {Button, Loading } from '@nextui-org/react';
 import { Avatar } from '@nextui-org/react';
 import { Navbar } from "@nextui-org/react";
 import {NavBarLogo} from './NavBar.styles';
@@ -14,7 +14,7 @@ import {useEffect} from 'react';
 const NavBar = () => {
     const currentUser = useSelector(selectCurrentUser);
     const { pathname } = useLocation();
-
+    const userLoading = useSelector(selectLoginInProgress);
     return (
         <Navbar isBordered={false} variant="sticky" disableShadow={true}>
             <Navbar.Toggle showIn="xs" />
@@ -39,8 +39,7 @@ const NavBar = () => {
                         <Button auto flat href="#" onClick={signOutUser}>
                             Kijelentkezés
                         </Button>
-                    </> :
-                    <Button onClick={signInWithGoogleRedirect} shadow color="secondary" auto>Bejelentkezés</Button>
+                    </> : (userLoading ? <Loading></Loading> : <Button onClick={signInWithGoogleRedirect} shadow color="secondary" auto>Bejelentkezés</Button>)
                     }
             </Navbar.Content>
         </Navbar>

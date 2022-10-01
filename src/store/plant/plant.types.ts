@@ -29,3 +29,11 @@ export type PlantMap = {
     [key: string]: PlantItem;
 }
 
+export interface IPlantCategoryRow extends Record<string, any> {
+    id: string;
+    title: string;
+    description: string;
+    imgUrl: string;
+    category: Array<string>;
+    items?: Array<PlantItem>;
+};
