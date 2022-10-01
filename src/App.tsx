@@ -11,6 +11,8 @@ import {PlantDetailComponent} from './pages/PlantDetail.component';
 import {PlantCategoryComponent} from './pages/PlantCategory.component';
 import {selectIsUserAdmin} from './store/user/user.selector';
 import AdminComponent from './pages/Admin/Admin.component';
+import {AdminCategoryEditComponent} from './pages/Admin/AdminCategoryEdit.component';
+import {AdminItemEditComponent} from './pages/Admin/AdminItemEdit.component';
 
 const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
     const { children } = props
@@ -47,6 +49,8 @@ function App() {
               <Route path='/plants/:categoryId' element={<PlantCategoryComponent />} />
               <Route path='/about' element={<AboutComponent />} />
               <Route path='/admin' element={<PrivateRoute><AdminComponent /></PrivateRoute>} />
+              <Route path='/admin/:categoryId' element={<PrivateRoute><AdminCategoryEditComponent /></PrivateRoute>} />
+              <Route path='/admin/:categoryId/:plantId' element={<PrivateRoute><AdminItemEditComponent /></PrivateRoute>} />
               <Route path='*' element={<NotFoundComponent />} />
           </Route>
       </Routes>

@@ -57,6 +57,44 @@ export const HeaderContainer = styled('div', {
     justifyContent: 'space-between'
 })
 
+export const StyledSelectContainer = styled('div', {
+    background: "transparent",
+    border: "none",
+    boxShadow: "0 0 0 2px rgba(255, 255, 255, 0.15)",
+    transition: "box-shadow 0.25s ease 0s",
+    flex: "1 1 0%",
+    position: "relative",
+    borderRadius: "0.875rem",
+    display: "inline-flex",
+    verticalAlign: "middle",
+    alignItems: "center",
+    userSelect: "none",
+})
+
+export const StyledSelect = styled('select', {
+    padding: "0 0.375rem",
+    margin: "0.5rem 0.75rem",
+    background: "transparent",
+    border: "none",
+    color: "var(--nextui--inputTextColor)",
+    borderRadius: "0px",
+    outline: "none",
+    width: "100%",
+    height: "100%",
+    minWidth: "0px",
+    appearance: "none"
+})
+export const StyledOption = styled('option', {
+    padding: "0 0.375rem",
+    margin: "0.5rem 0.75rem",
+    background: "transparent",
+    border: "none",
+    width: "100%",
+    height: "100%",
+    minWidth: "0px",
+    appearance: "none"
+})
+
 type IconProps = {
     fill?: string;
     size?: string | number;

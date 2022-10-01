@@ -4,11 +4,12 @@ import {Button, Col, Row, Table, Text, Tooltip, User} from '@nextui-org/react';
 import {Key} from 'react';
 import { IPlantCategoryRow } from '../../store/plant/plant.types';
 import {DeleteIcon, EditIcon, EyeIcon, HeaderContainer, IconButton, StyledBadge} from './Admin.styles';
+import {useNavigate} from 'react-router-dom';
 
 const AdminComponent = () => {
     const plantmap = useSelector(selectPlants);
     let rows: IPlantCategoryRow[] = plantmap;
-
+    let navigate = useNavigate();
     const columns = [
         {
             key: "title",
@@ -45,7 +46,7 @@ const AdminComponent = () => {
                         </Col>
                         <Col css={{ d: "flex" }}>
                             <Tooltip content="Edit plant">
-                                <IconButton onClick={() => console.log("Edit plant", plant.id)}>
+                                <IconButton onClick={() => navigate(plant.id)}>
                                     <EditIcon size={20} fill="#979797" />
                                 </IconButton>
                             </Tooltip>
@@ -73,7 +74,7 @@ const AdminComponent = () => {
     return <>
         <HeaderContainer>
             <Text h1 css={{display: 'inline-block'}}>Listing categories</Text>
-            <Button shadow css={{alignSelf: 'center'}} >Add category</Button>
+            <Button shadow css={{alignSelf: 'center'}} onPress={() => navigate('new')}>Add category</Button>
         </HeaderContainer>
         <Table
             aria-label="Table listing all plant category"

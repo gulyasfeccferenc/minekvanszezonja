@@ -5,6 +5,13 @@ export enum PLANT_ACTION_TYPES {
     FETCH_PLANTS_FAILED = 'FETCH_PLANTS_FAILED',
 }
 
+export enum PlantCategory {
+    FRUIT = "FRUIT",
+    VEGETABLE = "VEGETABLE",
+    HERB = "HERB",
+    NUT = "NUT"
+}
+
 export type PlantItem = {
     id: string | number;
     name: string;
@@ -21,7 +28,7 @@ export type Plants = {
     title: string;
     description: string;
     imgUrl: string;
-    category: Array<string>;
+    category: PlantCategory;
     items?: Array<PlantItem>;
 }
 
@@ -34,6 +41,6 @@ export interface IPlantCategoryRow extends Record<string, any> {
     title: string;
     description: string;
     imgUrl: string;
-    category: Array<string>;
+    category: PlantCategory;
     items?: Array<PlantItem>;
 };
