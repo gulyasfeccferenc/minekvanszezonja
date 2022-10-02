@@ -44,3 +44,16 @@ export interface IPlantCategoryRow extends Record<string, any> {
     category: PlantCategory;
     items?: Array<PlantItem>;
 };
+
+export interface IPlantItemRow extends Record<string, any> {
+    id: string;
+    name: string;
+    description?: string;
+    imgUrl?: string;
+    freshFrom: number;
+    freshTo: number;
+    storedFrom: number;
+    storedTo: number;
+};
+
+
