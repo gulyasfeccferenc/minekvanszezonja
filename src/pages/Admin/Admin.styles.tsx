@@ -62,7 +62,7 @@ export const StyledSelectContainer = styled('div', {
     border: "none",
     boxShadow: "0 0 0 2px rgba(255, 255, 255, 0.15)",
     transition: "box-shadow 0.25s ease 0s",
-    flex: "1 1 0%",
+    flex: "1 1 100%",
     position: "relative",
     borderRadius: "0.875rem",
     display: "inline-flex",
@@ -87,12 +87,24 @@ export const StyledSelect = styled('select', {
 export const StyledOption = styled('option', {
     padding: "0 0.375rem",
     margin: "0.5rem 0.75rem",
-    background: "transparent",
+    background: "var(--nextui-colors-backgroundContrast)",
     border: "none",
     width: "100%",
     height: "100%",
     minWidth: "0px",
     appearance: "none"
+});
+export const StyledLabel = styled('label', {
+    display: "block",
+    flex: '1',
+    width: '100%',
+    fontWeight: "var(--nextui-fontWeights-normal)",
+    color: "var(--nextui-colors-primary)",
+    padding: "0 0 0 var(--nextui-space-2)",
+    marginBottom: "var(--nextui-space-3)",
+    fontSize: "var(--nextui--inputFontSize)",
+    lineHeight: "var(--nextui-lineHeights-md)",
+    userSelect: "none",
 })
 
 type IconProps = {

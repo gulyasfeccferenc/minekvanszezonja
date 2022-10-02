@@ -10,7 +10,6 @@ type AdminItemListingProps = {
 }
 
 export const AdminItemListingComponent = (props: AdminItemListingProps) => {
-    console.info('props', props);
     const columns = [
         {
             key: "name",
@@ -41,7 +40,7 @@ export const AdminItemListingComponent = (props: AdminItemListingProps) => {
     const navigate = useNavigate();
     const renderCell = (plant: IPlantItemRow, columnKey: Key) => {
         const cellValue = plant[columnKey];
-        console.info('columnKey', columnKey);
+
         switch (columnKey) {
             case 'freshFrom':
             case 'freshTo':

@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {selectPlants} from '../../store/plant/plant.selector';
 import {useNavigate} from 'react-router-dom';
 import {PlantCategory, Plants} from '../../store/plant/plant.types';
-import {Button, Collapse, Container, Grid, Input, Row, Text, Textarea} from '@nextui-org/react';
+import {Button, Collapse, Container, Grid, Input, Text, Textarea} from '@nextui-org/react';
 import {HeaderContainer, StyledOption, StyledSelect, StyledSelectContainer} from './Admin.styles';
 import {useState} from 'react';
 import {AdminItemListingComponent} from './AdminItemListing.component';
@@ -40,7 +40,7 @@ export const AdminCategoryEditComponent = () => {
             <Text h1 css={{display: 'inline-block'}}>{currentPlantCategory.title || 'New item'}</Text>
             <Button shadow css={{alignSelf: 'center'}} onPress={() => navigate('new')}>Add item</Button>
         </HeaderContainer>
-        <Collapse.Group>
+        <Collapse.Group accordion={false}>
             <Collapse title="Category settings" expanded>
                 <Container css={{backgroundColor: "var(--nextui-colors-backgroundAlpha)"}} fluid>
             <Grid.Container gap={2} justify="center">
