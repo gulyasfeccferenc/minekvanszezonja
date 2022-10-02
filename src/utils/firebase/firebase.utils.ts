@@ -18,7 +18,8 @@ import {
     writeBatch,
     getDocs,
     query,
-    QueryDocumentSnapshot
+    QueryDocumentSnapshot,
+    updateDoc
 } from 'firebase/firestore';
 import {Plants} from '../../store/plant/plant.types';
 import {setCurrentUser} from '../../store/user/user.action';
@@ -104,6 +105,15 @@ export const createUserDocumentFromAuth = async (
                 }).then((innerUser) => {})
             } catch (error) {
                 console.error('Error creating the user', error)
+            }
+        } else {
+            const { photoURL } = userAuth;
+            try {
+                await updateDoc(userDocRef, {
+                    photoURL
+                }).then((innerUser) => {})
+            } catch (error) {
+                console.error('Error refreshing the user', error)
             }
         }
         return userSnapshot.data() as UserData;
