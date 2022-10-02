@@ -1,8 +1,9 @@
-import {Table} from '@nextui-org/react';
+import {Col, Row, Table, Tooltip} from '@nextui-org/react';
 import {IPlantItemRow, PlantItem} from '../../store/plant/plant.types';
 import {useNavigate} from 'react-router-dom';
 import {Key} from 'react';
 import {MonthConverter} from '../../utils/data.util';
+import {DeleteIcon, EditIcon, EyeIcon, IconButton} from './Admin.styles';
 
 type AdminItemListingProps = {
     categoryItems: PlantItem[]|undefined;
@@ -10,7 +11,6 @@ type AdminItemListingProps = {
 
 export const AdminItemListingComponent = (props: AdminItemListingProps) => {
     console.info('props', props);
-    let navigate = useNavigate();
     const columns = [
         {
             key: "name",
@@ -38,7 +38,7 @@ export const AdminItemListingComponent = (props: AdminItemListingProps) => {
         { label: "ACTIONS", key: "actions" },
     ];
     const rows: any = props.categoryItems || [];
-
+    const navigate = useNavigate();
     const renderCell = (plant: IPlantItemRow, columnKey: Key) => {
         const cellValue = plant[columnKey];
         console.info('columnKey', columnKey);
@@ -48,7 +48,36 @@ export const AdminItemListingComponent = (props: AdminItemListingProps) => {
             case 'storedTo':
             case 'storedFrom':
                 return MonthConverter(cellValue);
-
+            case 'actions':
+                return (
+                    <Row justify="center" align="center">
+                        <Col css={{ d: "flex" }}>
+                            <Tooltip content="Details">
+                                <IconButton onClick={() => console.log("View plant", plant.id)}>
+                                    <EyeIcon size={20} fill="#979797" />
+                                </IconButton>
+                            </Tooltip>
+                        </Col>
+                        <Col css={{ d: "flex" }}>
+                            <Tooltip content="Edit plant">
+                                <IconButton onClick={() => navigate(''+plant.id)}>
+                                    <EditIcon size={20} fill="#979797" />
+                                </IconButton>
+                            </Tooltip>
+                        </Col>
+                        <Col css={{ d: "flex" }}>
+                            <Tooltip
+                                content="Delete plant"
+                                color="error"
+                                onClick={() => console.log("Delete plant", plant.id)}
+                            >
+                                <IconButton>
+                                    <DeleteIcon size={20} fill="#FF0080" />
+                                </IconButton>
+                            </Tooltip>
+                        </Col>
+                    </Row>
+                );
             default:
                 return cellValue;
         }
