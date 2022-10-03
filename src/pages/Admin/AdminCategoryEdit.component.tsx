@@ -5,8 +5,9 @@ import {useNavigate} from 'react-router-dom';
 import {PlantCategory, Plants} from '../../store/plant/plant.types';
 import {Button, Collapse, Container, Grid, Input, Text, Textarea} from '@nextui-org/react';
 import {HeaderContainer, StyledOption, StyledSelect, StyledSelectContainer} from './Admin.styles';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {AdminItemListingComponent} from './AdminItemListing.component';
+import {addCollectionAndDocuments} from '../../utils/firebase/firebase.utils';
 
 export const AdminCategoryEditComponent = () => {
     let { categoryId } = useParams();
@@ -14,24 +15,40 @@ export const AdminCategoryEditComponent = () => {
     const navigate = useNavigate();
     let currentPlantCategory: Plants = plantsMap.filter( (plantCategory: Plants) => plantCategory.id === categoryId )[0];
     const [category, setCategory] = useState<PlantCategory>((currentPlantCategory?.category.toString().toUpperCase() as PlantCategory));
+    const [plantCategory, setPlantCategory] = useState<Plants>(currentPlantCategory);
 
-    if ('new' == categoryId) {
-        currentPlantCategory = {
-            id: '',
-            title: '',
-            description: '',
-            imgUrl: '',
-            category: PlantCategory.FRUIT
+    useEffect(() => {
+        if ('new' == categoryId) {
+            currentPlantCategory = {
+                id: '',
+                title: '',
+                description: '',
+                imgUrl: '',
+                category: PlantCategory.FRUIT
+            }
         }
-    }
-    if (!currentPlantCategory) {
-        navigate('/not-found');
-        return (<></>)
-    }
-
+        if (!currentPlantCategory) {
+            navigate('/not-found');
+        }
+        setPlantCategory(currentPlantCategory);
+    }, []);
 
     const handleSelect = (e: any) => {
         setCategory(e.target.value as PlantCategory);
+        const tempPlant = plantCategory;
+        tempPlant.category = e.target.value as PlantCategory;
+        setPlantCategory(tempPlant);
+    }
+
+    const handleSave = (e: any) => {
+        addCollectionAndDocuments('plants', [...plantsMap, plantCategory]);
+    }
+
+    const updateModel = (event: any) => {
+        const tempPlant = plantCategory;
+        // @ts-ignore
+        tempPlant[event.target.name] = event.target.value;
+        setPlantCategory(tempPlant);
     }
 
     return <>
@@ -51,6 +68,8 @@ export const AdminCategoryEditComponent = () => {
                         fullWidth
                         color="primary"
                         size="lg"
+                        name='imgUrl'
+                        onChange={updateModel}
                         value={currentPlantCategory.imgUrl}
                         label="Plant category image"
                         placeholder="ImageURL"
@@ -63,6 +82,8 @@ export const AdminCategoryEditComponent = () => {
                         fullWidth
                         color="primary"
                         size="lg"
+                        name='title'
+                        onChange={updateModel}
                         value={currentPlantCategory.title}
                         label="Plant category name"
                         placeholder="E.g.: Alma"
@@ -75,6 +96,8 @@ export const AdminCategoryEditComponent = () => {
                         fullWidth
                         color="primary"
                         size="lg"
+                        onChange={updateModel}
+                        name='description'
                         value={currentPlantCategory.description}
                         label="Plant category description"
                         placeholder="Your definitive description of the category. Only plain text for now"
@@ -91,7 +114,7 @@ export const AdminCategoryEditComponent = () => {
                     </StyledSelectContainer>
                 </Grid>
                 <Grid md={12} xs={12} direction="row-reverse">
-                    <Button shadow color="secondary" onPress={() => console.log('handle saving')}>💾 Save item</Button>
+                    <Button shadow color="secondary" onPress={handleSave}>💾 Save item</Button>
                 </Grid>
             </Grid.Container>
         </Container>

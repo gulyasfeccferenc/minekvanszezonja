@@ -50,7 +50,7 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 export const db = getFirestore();
 
 export type ObjectToAdd = {
-    title: string;
+    id: string;
 }
 
 export const addCollectionAndDocuments = async <T extends ObjectToAdd> (
@@ -58,9 +58,8 @@ export const addCollectionAndDocuments = async <T extends ObjectToAdd> (
     objectsToAdd: Array<T>): Promise<void> => {
     const collectionRef = collection(db, collectionKey);
     const batch = writeBatch(db);
-
     objectsToAdd.forEach((categoryObject) => {
-        const docRef = doc(collectionRef, categoryObject.title.toLowerCase());
+        const docRef = doc(collectionRef, categoryObject.id.toLowerCase());
         batch.set(docRef, categoryObject);
     });
 
