@@ -7,7 +7,7 @@ import {Button, Collapse, Container, Grid, Input, Text, Textarea} from '@nextui-
 import {HeaderContainer, StyledOption, StyledSelect, StyledSelectContainer} from './Admin.styles';
 import {useEffect, useState} from 'react';
 import {AdminItemListingComponent} from './AdminItemListing.component';
-import {addCollectionAndDocuments} from '../../utils/firebase/firebase.utils';
+import {addCollectionAndDocuments, addSingleDocument, updateSingleDocument} from '../../utils/firebase/firebase.utils';
 
 export const AdminCategoryEditComponent = () => {
     let { categoryId } = useParams();
@@ -34,14 +34,25 @@ export const AdminCategoryEditComponent = () => {
     }, []);
 
     const handleSelect = (e: any) => {
-        setCategory(e.target.value as PlantCategory);
         const tempPlant = plantCategory;
+        setCategory(e.target.value as PlantCategory);
         tempPlant.category = e.target.value as PlantCategory;
         setPlantCategory(tempPlant);
     }
 
+    // TODO: This should be done over Redux
     const handleSave = (e: any) => {
-        addCollectionAndDocuments('plants', [...plantsMap, plantCategory]);
+        if (!plantCategory.id) {
+            addSingleDocument('plants', plantCategory).then(response => {
+                console.info('>>> Item successfully written', response);
+                navigate('/');
+            })
+        } else {
+            updateSingleDocument('plants', plantCategory).then(response => {
+                console.info('>>> Item successfully updated', response);
+                navigate('/');
+            })
+        }
     }
 
     const updateModel = (event: any) => {
@@ -54,7 +65,7 @@ export const AdminCategoryEditComponent = () => {
     return <>
         <HeaderContainer>
             <Button light css={{alignSelf: 'center'}} onPress={() => navigate('/admin')} color="warning">🔙 Back to listing</Button>
-            <Text h1 css={{display: 'inline-block'}}>{currentPlantCategory.title || 'New item'}</Text>
+            <Text h1 css={{display: 'inline-block'}}>{plantCategory?.title || 'New item'}</Text>
             <Button shadow css={{alignSelf: 'center'}} onPress={() => navigate('new')}>Add item</Button>
         </HeaderContainer>
         <Collapse.Group accordion={false}>
@@ -70,7 +81,7 @@ export const AdminCategoryEditComponent = () => {
                         size="lg"
                         name='imgUrl'
                         onChange={updateModel}
-                        value={currentPlantCategory.imgUrl}
+                        value={plantCategory?.imgUrl}
                         label="Plant category image"
                         placeholder="ImageURL"
                     />
@@ -84,7 +95,7 @@ export const AdminCategoryEditComponent = () => {
                         size="lg"
                         name='title'
                         onChange={updateModel}
-                        value={currentPlantCategory.title}
+                        value={plantCategory?.title}
                         label="Plant category name"
                         placeholder="E.g.: Alma"
                     />
@@ -98,7 +109,7 @@ export const AdminCategoryEditComponent = () => {
                         size="lg"
                         onChange={updateModel}
                         name='description'
-                        value={currentPlantCategory.description}
+                        value={plantCategory?.description}
                         label="Plant category description"
                         placeholder="Your definitive description of the category. Only plain text for now"
                     />
@@ -120,7 +131,7 @@ export const AdminCategoryEditComponent = () => {
         </Container>
             </Collapse>
             <Collapse title="Category items" expanded>
-                <AdminItemListingComponent categoryItems={currentPlantCategory.items}></AdminItemListingComponent>
+                <AdminItemListingComponent categoryItems={plantCategory?.items}></AdminItemListingComponent>
             </Collapse>
         </Collapse.Group>
     </>

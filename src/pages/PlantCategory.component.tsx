@@ -40,11 +40,11 @@ export const PlantCategoryComponent: React.FC<{}> = () => {
             </Grid>
             <Grid xs={12} md={6}>
                 <Row>
-                    <Text>{currentPlantCategory.description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab architecto doloribus dolorum enim et expedita id iste itaque, laudantium numquam perferendis perspiciatis placeat possimus quisquam sequi sit soluta unde.</Text>
+                    <Text>{currentPlantCategory?.description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab architecto doloribus dolorum enim et expedita id iste itaque, laudantium numquam perferendis perspiciatis placeat possimus quisquam sequi sit soluta unde.</Text>
                 </Row>
                 <Row>
                     <ul>
-                        {currentPlantCategory.items.map((plant: PlantItem) => <li key={plant.id}><NavLink to={`/plants/${currentPlantCategory.id}/${plant.id}`}>{plant.name}</NavLink></li>)}
+                        {currentPlantCategory?.items?.map((plant: PlantItem) => <li key={plant.id}><NavLink to={`/plants/${currentPlantCategory.id}/${plant.id}`}>{plant.name}</NavLink></li>)}
                     </ul>
                 </Row>
             </Grid>

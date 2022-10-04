@@ -4,10 +4,9 @@ import {
     getAuth, signInWithRedirect,
     GoogleAuthProvider,
     User,
-    signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-    NextOrObserver, getRedirectResult,
+    NextOrObserver
 } from "firebase/auth"
 import {
     getFirestore,
@@ -18,11 +17,10 @@ import {
     writeBatch,
     getDocs,
     query,
-    QueryDocumentSnapshot,
-    updateDoc
+    updateDoc,
+    addDoc
 } from 'firebase/firestore';
 import {Plants} from '../../store/plant/plant.types';
-import {setCurrentUser} from '../../store/user/user.action';
 
 const firebaseConfig = {
     apiKey: "AIzaSyClQeoiYnePZNGK_5GCQZQ3xyJtUJBGcew",
@@ -53,13 +51,23 @@ export type ObjectToAdd = {
     id: string;
 }
 
+export const addSingleDocument = (collectionKey: string, objectToAdd: any): Promise<any> => {
+    const collectionRef = collection(db, collectionKey);
+    return addDoc(collectionRef, objectToAdd);
+}
+export const updateSingleDocument = (collectionKey: string, objectToAdd: any): Promise<any> => {
+    const collectionRef = collection(db, collectionKey);
+    const docRef = doc(collectionRef, objectToAdd.id);
+    return setDoc(docRef, objectToAdd, {merge: true});
+}
+
 export const addCollectionAndDocuments = async <T extends ObjectToAdd> (
     collectionKey: string,
     objectsToAdd: Array<T>): Promise<void> => {
     const collectionRef = collection(db, collectionKey);
     const batch = writeBatch(db);
     objectsToAdd.forEach((categoryObject) => {
-        const docRef = doc(collectionRef, categoryObject.id.toLowerCase());
+        const docRef = doc(collectionRef, categoryObject.id);
         batch.set(docRef, categoryObject);
     });
 
@@ -72,7 +80,9 @@ export const getCategoriesAndDocuments = async (document: string): Promise<Plant
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(docSnapshot => docSnapshot.data() as Plants);
+    return querySnapshot.docs.map(docSnapshot => {
+        return {...docSnapshot.data(), id: docSnapshot.id} as Plants
+    });
 }
 
 export type AdditionalInformation = {
