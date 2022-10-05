@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {Button, Container, Grid, Input, Progress, Text, Textarea} from '@nextui-org/react';
 import {HeaderContainer} from './Admin.styles';
 import {AdminGridSelectInputComponent} from './AdminGridSelectInput.component';
+import {updateSingleDocument} from '../../utils/firebase/firebase.utils';
 
 
 export const AdminItemEditComponent = () => {
@@ -20,12 +21,12 @@ export const AdminItemEditComponent = () => {
         storedFrom: 0,
         storedTo: 0,
     });
+    const [currentPlantCategory, setCurrentPlantCategory] = useState<Plants>();
     let { plantId, categoryId } = useParams();
     const plantsMap = useSelector(selectPlants);
     const navigate = useNavigate();
-    let currentPlantCategory: Plants|undefined;
     useEffect(() => {
-        currentPlantCategory = plantsMap.filter( (plant: Plants) => plant.id === categoryId )[0]; //TODO: Put these selection into redux
+        setCurrentPlantCategory(plantsMap.filter( (plant: Plants) => plant.id == categoryId )[0]); //TODO: Put these selection into redux
         let filteredPlant;
         if (currentPlantCategory && currentPlantCategory.items) {
             filteredPlant = currentPlantCategory.items.filter((plant: PlantItem) => plant.id == plantId)[0];
@@ -48,6 +49,26 @@ export const AdminItemEditComponent = () => {
         setCurrentPlant(newPlant);
     }
 
+    const updateModel = (event: any) => {
+        const tempPlant = currentPlant;
+        // @ts-ignore
+        tempPlant[event.target.name] = event.target.value;
+        setCurrentPlant(tempPlant);
+    }
+
+    const handleSave = () => {
+        if (currentPlantCategory && currentPlantCategory.items) {
+            currentPlantCategory.items = [...currentPlantCategory.items, currentPlant];
+        } else if (currentPlantCategory) {
+            currentPlantCategory.items = [currentPlant];
+        }
+
+        updateSingleDocument('plants', currentPlantCategory).then(response => {
+            console.info('>>> Item successfully updated', response);
+            navigate('/');
+        })
+    }
+
     return <>
         <HeaderContainer>
             <Button light css={{alignSelf: 'center'}} onPress={() => navigate('/admin/'+categoryId)} color="warning">🔙 Back to {categoryId}</Button>
@@ -63,6 +84,8 @@ export const AdminItemEditComponent = () => {
                         fullWidth
                         color="primary"
                         size="lg"
+                        name='imgUrl'
+                        onChange={updateModel}
                         value={currentPlant.imgUrl}
                         label="Plant category image"
                         placeholder="ImageURL"
@@ -75,6 +98,8 @@ export const AdminItemEditComponent = () => {
                         fullWidth
                         color="primary"
                         size="lg"
+                        name='name'
+                        onChange={updateModel}
                         value={currentPlant.name}
                         label="Plant category name"
                         placeholder="E.g.: Alma"
@@ -87,6 +112,8 @@ export const AdminItemEditComponent = () => {
                         fullWidth
                         color="primary"
                         size="lg"
+                        name='description'
+                        onChange={updateModel}
                         value={currentPlant?.description}
                         label="Plant category description"
                         placeholder="Your definitive description of the category. Only plain text for now"
@@ -147,7 +174,7 @@ export const AdminItemEditComponent = () => {
                               status="warning" />
                 </Grid>
                 <Grid md={12} xs={12} direction="row-reverse">
-                    <Button shadow color="secondary" onPress={() => console.log('handle saving')}>💾 Save item</Button>
+                    <Button shadow color="secondary" onPress={handleSave}>💾 Save item</Button>
                 </Grid>
             </Grid.Container>
         </Container></>
