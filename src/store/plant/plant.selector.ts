@@ -21,3 +21,4 @@ export const selectIsPlantsLoading = createSelector(
     [selectPlantReducer],
     (plantsSlice: any) => plantsSlice.isLoading
 )
+

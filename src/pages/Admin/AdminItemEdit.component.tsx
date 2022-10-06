@@ -1,13 +1,14 @@
 import {PlantItem, Plants} from "../../store/plant/plant.types";
 import {useParams} from 'react-router';
-import {useSelector} from 'react-redux';
-import {selectPlants} from '../../store/plant/plant.selector';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectIsPlantsLoading, selectPlants} from '../../store/plant/plant.selector';
 import {useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
-import {Button, Container, Grid, Input, Progress, Text, Textarea} from '@nextui-org/react';
+import {Button, Container, Grid, Input, Loading, Progress, Text, Textarea} from '@nextui-org/react';
 import {HeaderContainer} from './Admin.styles';
 import {AdminGridSelectInputComponent} from './AdminGridSelectInput.component';
 import {updateSingleDocument} from '../../utils/firebase/firebase.utils';
+import {savePlantItemFailed, savePlantItemStart, savePlantItemSuccess} from '../../store/plant/plant.action';
 
 
 export const AdminItemEditComponent = () => {
@@ -22,9 +23,13 @@ export const AdminItemEditComponent = () => {
         storedTo: 0,
     });
     const [currentPlantCategory, setCurrentPlantCategory] = useState<Plants>();
-    let { plantId, categoryId } = useParams();
+    const { plantId, categoryId } = useParams();
     const plantsMap = useSelector(selectPlants);
+    const isLoading = useSelector(selectIsPlantsLoading);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
     useEffect(() => {
         setCurrentPlantCategory(plantsMap.filter( (plant: Plants) => plant.id == categoryId )[0]); //TODO: Put these selection into redux
         let filteredPlant;
@@ -57,6 +62,7 @@ export const AdminItemEditComponent = () => {
     }
 
     const handleSave = () => {
+        dispatch(savePlantItemStart(currentPlantCategory, currentPlant));
         if (currentPlantCategory && currentPlantCategory.items) {
             currentPlantCategory.items = [...currentPlantCategory.items, currentPlant];
         } else if (currentPlantCategory) {
@@ -65,8 +71,9 @@ export const AdminItemEditComponent = () => {
 
         updateSingleDocument('plants', currentPlantCategory).then(response => {
             console.info('>>> Item successfully updated', response);
+            dispatch(savePlantItemSuccess());
             navigate('/');
-        })
+        }).catch(error => dispatch(savePlantItemFailed()));
     }
 
     return <>
@@ -174,7 +181,7 @@ export const AdminItemEditComponent = () => {
                               status="warning" />
                 </Grid>
                 <Grid md={12} xs={12} direction="row-reverse">
-                    <Button shadow color="secondary" onPress={handleSave}>💾 Save item</Button>
+                    <Button shadow color="secondary" onPress={handleSave}>{ isLoading ? <Loading></Loading> : '💾 Save item'}</Button>
                 </Grid>
             </Grid.Container>
         </Container></>

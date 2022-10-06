@@ -1,4 +1,4 @@
-import { PLANT_ACTION_TYPES } from './plant.types';
+import {PLANT_ACTION_TYPES, PlantItem, Plants} from './plant.types';
 import { createAction } from '../../utils/reducer/reducer.utils';
 import {getCategoriesAndDocuments} from '../../utils/firebase/firebase.utils';
 
@@ -19,3 +19,9 @@ export const fetchPlantsAsync = () => async (dispatch: any) => {
         dispatch(fetchPlantsFailed(error));
     }
 }
+
+export const savePlantItemStart = (category: Plants|undefined, plantItem: PlantItem) => createAction(PLANT_ACTION_TYPES.SAVE_PLANT_ITEM_START, {category, plantItem});
+
+export const savePlantItemSuccess = () => createAction(PLANT_ACTION_TYPES.SAVE_PLANT_ITEM_SUCCESS);
+
+export const savePlantItemFailed = () => createAction(PLANT_ACTION_TYPES.SAVE_PLANT_ITEM_FAILED);
