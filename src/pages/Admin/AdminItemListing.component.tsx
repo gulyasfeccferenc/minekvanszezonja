@@ -7,6 +7,7 @@ import {DeleteIcon, EditIcon, EyeIcon, IconButton} from './Admin.styles';
 
 type AdminItemListingProps = {
     categoryItems: PlantItem[]|undefined;
+    category: string | undefined;
 }
 
 export const AdminItemListingComponent = (props: AdminItemListingProps) => {
@@ -36,7 +37,11 @@ export const AdminItemListingComponent = (props: AdminItemListingProps) => {
         },
         { label: "ACTIONS", key: "actions" },
     ];
-    const rows: any = props.categoryItems || [];
+    const rows: any = props.categoryItems?.map((item, index) => {
+        item.id = index;
+        return item;
+    }) || [];
+
     const navigate = useNavigate();
     const renderCell = (plant: IPlantItemRow, columnKey: Key) => {
         const cellValue = plant[columnKey];
@@ -59,7 +64,7 @@ export const AdminItemListingComponent = (props: AdminItemListingProps) => {
                         </Col>
                         <Col css={{ d: "flex" }}>
                             <Tooltip content="Edit plant">
-                                <IconButton onClick={() => navigate(''+plant.id)}>
+                                <IconButton onClick={() => navigate(plant.id.toString())}>
                                     <EditIcon size={20} fill="#979797" />
                                 </IconButton>
                             </Tooltip>

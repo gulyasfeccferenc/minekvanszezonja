@@ -131,7 +131,7 @@ export const AdminCategoryEditComponent = () => {
         </Container>
             </Collapse>
             <Collapse title="Category items" expanded>
-                <AdminItemListingComponent categoryItems={plantCategory?.items}></AdminItemListingComponent>
+                <AdminItemListingComponent categoryItems={plantCategory?.items} category={categoryId}></AdminItemListingComponent>
             </Collapse>
         </Collapse.Group>
     </>

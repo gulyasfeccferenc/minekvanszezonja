@@ -63,16 +63,18 @@ export const AdminItemEditComponent = () => {
 
     const handleSave = () => {
         dispatch(savePlantItemStart(currentPlantCategory, currentPlant));
+        const currentPlantCopy = currentPlant;
+        currentPlantCopy.id = currentPlantCategory?.items?.length || 0;
         if (currentPlantCategory && currentPlantCategory.items) {
-            currentPlantCategory.items = [...currentPlantCategory.items, currentPlant];
+            currentPlantCategory.items = [...currentPlantCategory.items, currentPlantCopy];
         } else if (currentPlantCategory) {
-            currentPlantCategory.items = [currentPlant];
+            currentPlantCategory.items = [currentPlantCopy];
         }
 
         updateSingleDocument('plants', currentPlantCategory).then(response => {
             console.info('>>> Item successfully updated', response);
             dispatch(savePlantItemSuccess());
-            navigate('/');
+            navigate(currentPlantCopy.id.toString());
         }).catch(error => dispatch(savePlantItemFailed()));
     }
 
