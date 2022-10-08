@@ -15,9 +15,9 @@ import {AdminCategoryEditComponent} from './pages/Admin/AdminCategoryEdit.compon
 import {AdminItemEditComponent} from './pages/Admin/AdminItemEdit.component';
 
 const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
-    const { children } = props
+    const { children } = props;
     const isAdmin = useSelector(selectIsUserAdmin);
-    const location = useLocation()
+    const location = useLocation();
     return isAdmin ? (
         <>{children}</>
     ) : (
@@ -26,7 +26,7 @@ const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
             to="/login"
             state={{ from: `${location.pathname}${location.search}` }}
         />
-    )
+    );
 }
 
 function App() {

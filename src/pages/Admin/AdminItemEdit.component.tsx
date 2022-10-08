@@ -31,10 +31,11 @@ export const AdminItemEditComponent = () => {
 
 
     useEffect(() => {
-        setCurrentPlantCategory(plantsMap.filter( (plant: Plants) => plant.id == categoryId )[0]); //TODO: Put these selection into redux
+        const plantCategoryTemp = plantsMap.filter( (plant: Plants) => plant.id == categoryId )[0];
+        setCurrentPlantCategory(plantCategoryTemp); //TODO: Put these selection into redux
         let filteredPlant;
-        if (currentPlantCategory && currentPlantCategory.items) {
-            filteredPlant = currentPlantCategory.items.filter((plant: PlantItem) => plant.id == plantId)[0];
+        if (plantCategoryTemp && plantCategoryTemp.items) {
+            filteredPlant = plantCategoryTemp.items.filter((plant: PlantItem) => plant.id == plantId)[0];
         }
         if (filteredPlant) {
             setCurrentPlant(filteredPlant);
