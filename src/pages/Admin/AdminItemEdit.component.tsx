@@ -5,8 +5,8 @@ import {selectIsPlantsLoading, selectPlants} from '../../store/plant/plant.selec
 import {useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {Button, Container, Grid, Input, Loading, Progress, Text, Textarea} from '@nextui-org/react';
-import {HeaderContainer} from './Admin.styles';
-import {AdminGridSelectInputComponent} from './AdminGridSelectInput.component';
+import {HeaderContainer} from './styles/Admin.styles';
+import {AdminGridSelectInputComponent} from '../../components/Admin/AdminGridSelectInput.component';
 import {updateSingleDocument} from '../../utils/firebase/firebase.utils';
 import {savePlantItemFailed, savePlantItemStart, savePlantItemSuccess} from '../../store/plant/plant.action';
 

@@ -3,7 +3,7 @@ import {IPlantItemRow, PlantItem} from '../../store/plant/plant.types';
 import {useNavigate} from 'react-router-dom';
 import {Key} from 'react';
 import {MonthConverter} from '../../utils/data.util';
-import {DeleteIcon, EditIcon, EyeIcon, IconButton} from './Admin.styles';
+import {DeleteIcon, EditIcon, EyeIcon, IconButton} from '../../pages/Admin/styles/Admin.styles';
 
 type AdminItemListingProps = {
     categoryItems: PlantItem[]|undefined;

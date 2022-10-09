@@ -4,9 +4,9 @@ import {selectPlants} from '../../store/plant/plant.selector';
 import {useNavigate} from 'react-router-dom';
 import {PlantCategory, Plants} from '../../store/plant/plant.types';
 import {Button, Collapse, Container, Grid, Input, Text, Textarea} from '@nextui-org/react';
-import {HeaderContainer, StyledOption, StyledSelect, StyledSelectContainer} from './Admin.styles';
+import {HeaderContainer, StyledOption, StyledSelect, StyledSelectContainer} from './styles/Admin.styles';
 import {useEffect, useState} from 'react';
-import {AdminItemListingComponent} from './AdminItemListing.component';
+import {AdminItemListingComponent} from '../../components/Admin/AdminItemListing.component';
 import {addCollectionAndDocuments, addSingleDocument, updateSingleDocument} from '../../utils/firebase/firebase.utils';
 
 export const AdminCategoryEditComponent = () => {

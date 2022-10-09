@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {Button, Col, Row, Table, Text, Tooltip, User} from '@nextui-org/react';
 import {Key} from 'react';
 import { IPlantCategoryRow } from '../../store/plant/plant.types';
-import {DeleteIcon, EditIcon, EyeIcon, HeaderContainer, IconButton, StyledBadge} from './Admin.styles';
+import {DeleteIcon, EditIcon, EyeIcon, HeaderContainer, IconButton, StyledBadge} from './styles/Admin.styles';
 import {useNavigate} from 'react-router-dom';
 
 const AdminComponent = () => {

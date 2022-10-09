@@ -1,4 +1,4 @@
-import {StyledLabel, StyledOption, StyledSelect, StyledSelectContainer} from './Admin.styles';
+import {StyledLabel, StyledOption, StyledSelect, StyledSelectContainer} from '../../pages/Admin/styles/Admin.styles';
 import {monthEnumList} from '../../utils/data.util';
 
 type AdminGridSelectInputProps = {
