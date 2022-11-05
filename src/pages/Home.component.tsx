@@ -23,16 +23,16 @@ export const HomeComponent = () => {
                     <Card isPressable onClick={() => {navigate(`/plants/${plantsMap[plant].id}`)}}>
                         <Card.Body css={{ p: 0 }}>
                             <Card.Image
-                                src={plantsMap[plant].imgUrl}
+                                src={plantsMap[plant].imgurl}
                                 objectFit="cover"
                                 width="100%"
                                 height={140}
-                                alt={plantsMap[plant].title}
+                                alt={plantsMap[plant].name}
                             />
                         </Card.Body>
                         <Card.Footer css={{ justifyItems: "flex-start" }}>
                             <Row wrap="wrap" justify="space-between" align="center">
-                                <Text b>{plantsMap[plant].title}</Text>
+                                <Text b>{plantsMap[plant].name}</Text>
                             </Row>
                         </Card.Footer>
                     </Card>

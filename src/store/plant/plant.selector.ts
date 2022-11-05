@@ -11,6 +11,7 @@ export const selectCurrentPlantsMap = createSelector(
     [selectPlants],
     (plants) => plants
         .reduce((acc: any, category: any) => {
+            console.info('Reducing in progress', category);
             const {title, items} = category;
             // @ts-ignore
             acc[title.toLowerCase()] = items;

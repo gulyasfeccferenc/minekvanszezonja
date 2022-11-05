@@ -31,6 +31,7 @@ export type Plants = {
     title: string;
     description: string;
     imgUrl: string;
+    category_id?: number;
     category: PlantCategory;
     items?: Array<PlantItem>;
 }

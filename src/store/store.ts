@@ -17,7 +17,7 @@ type ExtendedPersistConfig = PersistConfig<RootState> & {
 }*/
 
 const middleWares = [
-    process.env.NODE_ENV !== 'production'
+    process.env.NODE_ENV == 'production'
     && logger,
     thunk,
 ].filter((middleware): middleware is Middleware => Boolean(middleware));

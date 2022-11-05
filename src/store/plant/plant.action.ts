@@ -13,7 +13,9 @@ export const fetchPlantsFailed = (error: any) => createAction(PLANT_ACTION_TYPES
 export const fetchPlantsAsync = () => async (dispatch: any) => {
     dispatch(fetchPlantsStart());
     try {
-        const plantsArray = await getCategoriesAndDocuments('plants');
+        const response = await fetch('http://localhost:4000/species').then(res => res.json());
+        const plantsArray = response;
+        console.info('plantsarray', plantsArray);
         dispatch(fetchPlantsSuccess(plantsArray));
     } catch (error) {
         dispatch(fetchPlantsFailed(error));

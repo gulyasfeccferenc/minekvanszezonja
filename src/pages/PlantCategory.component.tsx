@@ -17,23 +17,24 @@ export const PlantCategoryComponent: React.FC<{}> = () => {
     let { categoryId } = useParams();
     const plantsMap = useSelector(selectPlants);
     const navigate = useNavigate();
-    let currentPlantCategory = plantsMap.filter( (plantCategory: Plants) => plantCategory.id === categoryId )[0];
+    let currentPlantCategory = plantsMap.filter( (plantCategory: Plants) => plantCategory.id == categoryId )[0];
+
     if (!currentPlantCategory) {
         navigate('/not-found');
         return (<></>)
     }
     return (<Container>
-        <Text h1 css={{ m: 'auto', textAlign: 'center' }}>{currentPlantCategory.title}</Text>
+        <Text h1 css={{ m: 'auto', textAlign: 'center' }}>{currentPlantCategory.name}</Text>
         <Grid.Container gap={1}>
             <Grid xs={12} md={6}>
                 <Card css={{ $$cardColor: '$colors$secondary', p: 0, maxWidth: 400 }}>
                     <Card.Body css={{p: 0}}>
                         <Card.Image
-                            src={currentPlantCategory.imgUrl}
+                            src={currentPlantCategory.imgurl}
                             objectFit="cover"
                             width="100%"
                             height="100%"
-                            alt={currentPlantCategory?.title}
+                            alt={currentPlantCategory?.name}
                         />
                     </Card.Body>
                 </Card>
