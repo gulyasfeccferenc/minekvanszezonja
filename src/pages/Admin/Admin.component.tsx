@@ -12,7 +12,7 @@ const AdminComponent = () => {
     let navigate = useNavigate();
     const columns = [
         {
-            key: "title",
+            key: "name",
             label: "Name",
         },
         {
@@ -24,11 +24,12 @@ const AdminComponent = () => {
 
     const renderCell = (plant: IPlantCategoryRow, columnKey: Key) => {
         const cellValue = plant[columnKey];
+        console.info('plantcategoryrow', plant);
         switch (columnKey) {
-            case 'title':
+            case 'name':
                 return (
                     <User squared src={plant.imgUrl} name={cellValue} css={{ p: 0 }}>
-                        Plants in category: {plant.items?.length}
+                        Plants in category: {plant.items?.length || 0}
                     </User>
                 );
             case 'category':
