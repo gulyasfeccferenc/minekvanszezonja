@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Navigate, Route, Routes, useLocation} from 'react-router';
 import {checkUserSession, userCheckStart} from './store/user/user.action';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchPlantsStart} from './store/plant/plant.action';
+import {fetchPlants} from './store/plant/plant.action';
 import {PageshellComponent} from './components/Ui/pageshell.component';
 import {HomeComponent} from './pages/Home.component';
 import {AboutComponent} from './pages/About.component';
@@ -32,14 +32,15 @@ const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
 function App() {
     const dispatch = useDispatch()
     useEffect(() => {
+        console.info("Use me, effect!!!");
         dispatch(userCheckStart());
         // @ts-ignore
         dispatch(checkUserSession());
         // @ts-ignore
-        dispatch(fetchPlantsStart());
+        dispatch(fetchPlants());
 
         //return unsubscribe;
-    },[dispatch])
+    },[])
 
   return (
       <Routes>

@@ -1,19 +1,18 @@
 import {PLANT_ACTION_TYPES, PlantItem, Plants} from './plant.types';
 import { createAction } from '../../utils/reducer/reducer.utils';
-import {getCategoriesAndDocuments} from '../../utils/firebase/firebase.utils';
 
 export const setPlants = (plantsArray: any) => createAction(PLANT_ACTION_TYPES.SET_PLANTS, plantsArray);
 
-export const fetchPlantsStart = () => createAction(PLANT_ACTION_TYPES.FETCH_PLANTS_START);
+export const fetchPlantsStart2 = () => createAction(PLANT_ACTION_TYPES.FETCH_PLANTS_START);
 
 export const fetchPlantsSuccess = (plantsArray: any) => createAction(PLANT_ACTION_TYPES.FETCH_PLANTS_SUCCESS, plantsArray);
 
 export const fetchPlantsFailed = (error: any) => createAction(PLANT_ACTION_TYPES.FETCH_PLANTS_FAILED, error);
 
-export const fetchPlantsAsync = () => async (dispatch: any) => {
-    dispatch(fetchPlantsStart());
+export const fetchPlants = () => async (dispatch: any) => {
+    dispatch(fetchPlantsStart2());
     try {
-        const response = await fetch('http://192.168.0.100:4000/species').then(res => res.json());
+        const response = await fetch('http://localhost:4000/species').then(res => res.json());
         const plantsArray = response;
         console.info('EZ AZ A plantsarray', plantsArray);
         dispatch(fetchPlantsSuccess(plantsArray));
